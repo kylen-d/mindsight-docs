@@ -1,0 +1,2995 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../phenomena-plugin-tutorial/">
+      
+      
+        <link rel="next" href="../object-detection-plugin-tutorial/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Gaze Plugin Tutorial: Gaze-LLE - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gaze-plugin-tutorial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gaze Plugin Tutorial: Gaze-LLE
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../studies/run-a-study-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/inference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/pipeline-yaml-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#per-face-vs-scene-level-when-to-use-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Face vs Scene-Level: When to Use Which
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#per-face-vs-scene-level-when-to-use-which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Face vs Scene-Level: When to Use Which
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gaze-plugin-tutorial">Gaze Plugin Tutorial<a class="headerlink" href="#gaze-plugin-tutorial" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>See also:</strong> <a href="../phenomena-plugin-tutorial/">Phenomena Plugin Tutorial</a> | <a href="../object-detection-plugin-tutorial/">Object Detection Plugin Tutorial</a> | <a href="../data-collection-plugin-tutorial/">Data Collection Plugin Tutorial</a></p>
+</blockquote>
+<p>This tutorial covers all three gaze plugin patterns by walking through real backends that ship with MindSight:</p>
+<ul>
+<li><strong><a href="#part-a-per-face-backend-mobilegaze">Part A — Per-face mode:</a></strong> The MobileGaze backend (<code>mindsight/GazeTracking/Backends/MGaze/MGaze_Tracking.py</code>), which crops each face and estimates pitch/yaw angles independently.</li>
+<li><strong><a href="#part-b-scene-level-backend-gaze-lle">Part B — Scene-level mode:</a></strong> The Gaze-LLE backend (<code>Plugins/GazeTracking/Gazelle/gazelle_backend.py</code>), which processes the full frame and all faces in a single DINOv2 forward pass.</li>
+<li><strong><a href="#part-c-composite-backend-temporarily-removed">Part C — Composite / processing augmentation:</a></strong> Previously demonstrated via the GazelleSnap plugin, which was removed in v0.8. A replacement composite-plugin example is TODO.</li>
+</ul>
+<hr />
+<h2 id="per-face-vs-scene-level-when-to-use-which">Per-Face vs Scene-Level: When to Use Which<a class="headerlink" href="#per-face-vs-scene-level-when-to-use-which" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Per-face (<code>mode="per_face"</code>)</th>
+<th>Scene-level (<code>mode="scene"</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core method</td>
+<td><code>estimate(face_bgr)</code> → <code>(pitch, yaw, conf)</code></td>
+<td><code>estimate_frame(frame, bboxes)</code> → <code>[(xy, conf)]</code></td>
+</tr>
+<tr>
+<td>Input</td>
+<td>Single cropped face image</td>
+<td>Full frame + all face bounding boxes</td>
+</tr>
+<tr>
+<td>Gaze format</td>
+<td>Pitch/yaw angles (radians)</td>
+<td>Pixel coordinates in the original frame</td>
+</tr>
+<tr>
+<td>GPU passes</td>
+<td>One per face</td>
+<td>One for all faces</td>
+</tr>
+<tr>
+<td>Ray construction</td>
+<td>Handled by <code>run_pitchyaw_pipeline</code></td>
+<td>Handled by the gaze coordinator's default scene handler</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Lightweight models, CPU, ONNX inference</td>
+<td>Heavy models, GPU batch processing, heatmap outputs</td>
+</tr>
+</tbody>
+</table>
+<p>Choose your mode based on what your model produces. If it outputs pitch/yaw angles from a face crop, use per-face. If it takes the full scene and outputs gaze target coordinates, use scene-level.</p>
+<hr />
+<h1 id="part-a-per-face-backend-mobilegaze">Part A: Per-Face Backend (MobileGaze)<a class="headerlink" href="#part-a-per-face-backend-mobilegaze" title="Permanent link">&para;</a></h1>
+<p>The MobileGaze plugin (<code>MGazePlugin</code>) is MindSight's default gaze backend. It supports both ONNX and PyTorch inference, wrapping the vendored <code>gaze-estimation</code> library. It demonstrates the per-face pattern where <code>estimate()</code> receives a single cropped face and returns pitch/yaw angles.</p>
+<p><strong>Source:</strong> <code>mindsight/GazeTracking/Backends/MGaze/MGaze_Tracking.py</code></p>
+<hr />
+<h2 id="a1-file-structure">A1. File Structure<a class="headerlink" href="#a1-file-structure" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mindsight/GazeTracking/Backends/MGaze/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── __init__.py
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── MGaze_Tracking.py       # PLUGIN_CLASS = MGazePlugin
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── MGaze_Config.py         # DEFAULT_ONNX_MODEL, ARCH_CHOICES, DATA_CONFIG
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── gaze-estimation/        # Vendored gaze-estimation library
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ├── models/
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │   ├── resnet.py
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │   ├── mobilenet.py
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │   └── mobileone.py
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ├── onnx_inference.py    # GazeEstimationONNX base class
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    └── config.py
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Weights/MGaze/              # weights live OUTSIDE the code tree
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>└── mobileone_s0_gaze.onnx  # default shipped model
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MobileGaze is a built-in core backend (resolved directly by <code>create_gaze_engine</code> since v1.0, not registered as a plugin); its code lives under <code>mindsight/GazeTracking/Backends/MGaze/</code>. Model weights are <strong>not</strong> bundled beside the code — they resolve through <code>resolve_weight("MGaze", ...)</code> to the shared <code>Weights/MGaze/</code> directory (there is no <code>gaze-estimation/weights/</code> subdir). The gaze registry scans <code>Plugins/GazeTracking/</code> only, for external plugins.</p>
+</div>
+<hr />
+<h2 id="a2-configuration-module">A2. Configuration Module<a class="headerlink" href="#a2-configuration-module" title="Permanent link">&para;</a></h2>
+<p><code>MGaze_Config.py</code> centralises model paths and dataset parameters:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mindsight.weights</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_weight</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Default ONNX model — resolved via the shared Weights/MGaze/ directory.</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">DEFAULT_ONNX_MODEL</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">resolve_weight</span><span class="p">(</span><span class="s2">&quot;MGaze&quot;</span><span class="p">,</span> <span class="s2">&quot;mobileone_s0_gaze.onnx&quot;</span><span class="p">))</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">ARCH_CHOICES</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet34&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet50&quot;</span><span class="p">,</span> <span class="s2">&quot;mobilenetv2&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="s2">&quot;mobileone_s0&quot;</span><span class="p">,</span> <span class="s2">&quot;mobileone_s1&quot;</span><span class="p">,</span> <span class="s2">&quot;mobileone_s2&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="s2">&quot;mobileone_s3&quot;</span><span class="p">,</span> <span class="s2">&quot;mobileone_s4&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">]</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">DATA_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="s2">&quot;gaze360&quot;</span><span class="p">:</span>  <span class="p">{</span><span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&quot;binwidth&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;angle&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">},</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="s2">&quot;mpiigaze&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="s2">&quot;binwidth&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;angle&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">},</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>The <code>DATA_CONFIG</code> controls bin-based regression: gaze direction is predicted as a probability distribution over <code>bins</code> discrete bins, each <code>binwidth</code> degrees wide, spanning <code>±angle</code> degrees.</p>
+<hr />
+<h2 id="a3-the-estimation-engines">A3. The Estimation Engines<a class="headerlink" href="#a3-the-estimation-engines" title="Permanent link">&para;</a></h2>
+<p>MobileGaze wraps two interchangeable estimation engines behind the same <code>estimate(face_bgr)</code> interface.</p>
+<h3 id="pytorch-engine">PyTorch Engine<a class="headerlink" href="#pytorch-engine" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">GazeEstimationTorch</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_path</span><span class="p">,</span> <span class="n">arch</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gaze360&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">):</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="n">cfg</span> <span class="o">=</span> <span class="n">DATA_CONFIG</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_bins</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binwidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_angle</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;bins&quot;</span><span class="p">],</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;binwidth&quot;</span><span class="p">],</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">resolve_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">idx_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">utils_gaze</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">arch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bins</span><span class="p">,</span> <span class="n">inference_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">weight_path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>                                         <span class="n">weights_only</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_tf</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>            <span class="n">transforms</span><span class="o">.</span><span class="n">ToPILImage</span><span class="p">(),</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">448</span><span class="p">),</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]),</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="p">])</span>
+</code></pre></div>
+<p>The <code>estimate()</code> method:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_bgr</span><span class="p">):</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tf</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">face_bgr</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="n">pitch_logits</span><span class="p">,</span> <span class="n">yaw_logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">pp</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">pitch_logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">yp</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">yaw_logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">to_rad</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx_tensor</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binwidth</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_angle</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">conf</span> <span class="o">=</span> <span class="n">_softmax_confidence</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">pp</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="n">yp</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bins</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="k">return</span> <span class="n">to_rad</span><span class="p">(</span><span class="n">pp</span><span class="p">),</span> <span class="n">to_rad</span><span class="p">(</span><span class="n">yp</span><span class="p">),</span> <span class="n">conf</span>
+</code></pre></div>
+<p>Step-by-step:</p>
+<ol>
+<li><strong>Preprocess</strong> — Convert BGR→RGB, resize to 448×448, normalize with ImageNet stats.</li>
+<li><strong>Forward pass</strong> — Model outputs two sets of logits: one for pitch bins, one for yaw bins.</li>
+<li><strong>Softmax</strong> — Convert logits to probability distributions.</li>
+<li><strong>Expectation</strong> — Compute the weighted sum <code>Σ(probability × bin_index)</code> to get the predicted bin, then convert to degrees and radians.</li>
+<li><strong>Confidence</strong> — The peak softmax probability indicates how "certain" the model is. The <code>_softmax_confidence</code> helper maps the average peak from <code>[1/n_bins, 1]</code> onto <code>[0, 1]</code>.</li>
+</ol>
+<h3 id="onnx-engine">ONNX Engine<a class="headerlink" href="#onnx-engine" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">_GazeONNXWithConf</span><span class="p">(</span><span class="n">GazeEstimationONNX</span><span class="p">):</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_bgr</span><span class="p">):</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_names</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">face_bgr</span><span class="p">)})</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="n">pp</span><span class="p">,</span> <span class="n">yp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="n">conf</span> <span class="o">=</span> <span class="n">_softmax_confidence</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">pp</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="n">yp</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bins</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="k">return</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">conf</span>
+</code></pre></div>
+<p>Extends the vendored <code>GazeEstimationONNX</code> class with confidence scoring using the same <code>_softmax_confidence</code> formula. The <code>preprocess</code>, <code>decode</code>, and <code>softmax</code> methods are inherited from the base class.</p>
+<h3 id="confidence-scoring">Confidence Scoring<a class="headerlink" href="#confidence-scoring" title="Permanent link">&para;</a></h3>
+<p>Both engines share this helper:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_softmax_confidence</span><span class="p">(</span><span class="n">pitch_probs_max</span><span class="p">,</span> <span class="n">yaw_probs_max</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">):</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">uniform</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">n_bins</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="p">((</span><span class="n">pitch_probs_max</span> <span class="o">+</span> <span class="n">yaw_probs_max</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">uniform</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">uniform</span><span class="p">),</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="p">))</span>
+</code></pre></div>
+<p>A uniform distribution (maximum uncertainty) maps to 0.0; a perfect one-hot (maximum certainty) maps to 1.0.</p>
+<hr />
+<h2 id="a4-the-plugin-class">A4. The Plugin Class<a class="headerlink" href="#a4-the-plugin-class" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MGazePlugin</span><span class="p">(</span><span class="n">GazePlugin</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;mgaze&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;per_face&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">is_fallback</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">engine</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_bgr</span><span class="p">):</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">face_bgr</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">mindsight.GazeTracking.pitchyaw_pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_pitchyaw_pipeline</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="k">return</span> <span class="n">run_pitchyaw_pipeline</span><span class="p">(</span><span class="n">gaze_eng</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="key-decisions">Key decisions<a class="headerlink" href="#key-decisions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>is_fallback = True</code></strong> — MobileGaze is tried last, only if no other gaze plugin was activated. This makes it the automatic default without blocking user-installed plugins.</li>
+<li><strong>Wrapper pattern</strong> — The plugin wraps an interchangeable engine (<code>GazeEstimationTorch</code> or <code>_GazeONNXWithConf</code>). The plugin class itself is thin — it delegates <code>estimate()</code> directly.</li>
+<li><strong><code>run_pipeline()</code> delegation</strong> — Instead of letting the gaze coordinator's default handler crop faces and call <code>estimate()</code> individually, MobileGaze delegates to <code>run_pitchyaw_pipeline</code>. This shared pipeline handles face cropping, left-to-right sorting, temporal smoothing, ray construction, and adaptive snap for any per-face pitch/yaw backend.</li>
+</ul>
+<h3 id="the-run_pitchyaw_pipeline-helper">The <code>run_pitchyaw_pipeline</code> helper<a class="headerlink" href="#the-run_pitchyaw_pipeline-helper" title="Permanent link">&para;</a></h3>
+<p>Any per-face plugin that outputs <code>(pitch, yaw, confidence)</code> can use this shared pipeline:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">mindsight.GazeTracking.pitchyaw_pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_pitchyaw_pipeline</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="k">return</span> <span class="n">run_pitchyaw_pipeline</span><span class="p">(</span><span class="n">gaze_eng</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p>The pipeline handles:</p>
+<ol>
+<li><strong>Face cropping</strong> — Extracts face ROIs from the full frame using RetinaFace bounding boxes.</li>
+<li><strong>Eye centre extraction</strong> — Uses RetinaFace keypoints for accurate gaze origin (falls back to bbox centre).</li>
+<li><strong>Left-to-right sorting</strong> — Deterministic face ordering for consistent track ID assignment.</li>
+<li><strong>Temporal smoothing</strong> — Applies the <code>GazeSmootherReID</code> if one is available in context.</li>
+<li><strong>Ray construction</strong> — Converts pitch/yaw to 2D direction, scales by ray length and face width.</li>
+<li><strong>Forward gaze dead zone</strong> — Suppresses errant rays when both angles are near zero.</li>
+<li><strong>Adaptive snap</strong> — Extends or snaps ray tips to nearby objects with hysteresis.</li>
+</ol>
+<p>Returns the standard 7-tuple: <code>(persons_gaze, face_confs, face_bboxes, face_track_ids, face_objs, ray_snapped, ray_extended)</code>.</p>
+<hr />
+<h2 id="a5-cli-activation">A5. CLI Activation<a class="headerlink" href="#a5-cli-activation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_arguments</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">g</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;MGaze backend&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">g</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--mgaze-model&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">DEFAULT_ONNX_MODEL</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to MGaze model weights (.onnx or .pt)&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">g</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--mgaze-arch&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">ARCH_CHOICES</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Architecture name (required for .pt models)&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">g</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--mgaze-dataset&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;gaze360&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Dataset config key (default: gaze360)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>from_args</code> method resolves the weight through <code>Weights/MGaze/</code> and
+auto-selects between ONNX and PyTorch based on the file extension. A bare,
+<strong>extensionless</strong> family name (e.g. <code>resnet50</code>) is resolved per-machine by
+<code>resolve_mgaze_family</code> — a <code>.pt</code> build on CUDA, the <code>_gaze.onnx</code> build elsewhere —
+so one shared preset works on NVIDIA lab machines and Macs alike:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">from_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">mindsight.weights</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_mgaze_family</span><span class="p">,</span> <span class="n">resolve_weight</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;mgaze_model&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="p">:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">model</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="c1"># Extensionless family name: pick the build for this machine.</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="n">family</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="p">:</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="n">family</span> <span class="o">=</span> <span class="n">model</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">resolve_mgaze_family</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">resolve_weight</span><span class="p">(</span><span class="s2">&quot;MGaze&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">))</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MGaze model not found: </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>    <span class="n">arch</span>    <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;mgaze_arch&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>    <span class="n">dataset</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;mgaze_dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;gaze360&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;.pt&quot;</span><span class="p">:</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">arch</span> <span class="ow">and</span> <span class="n">family</span><span class="p">:</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>            <span class="n">arch</span> <span class="o">=</span> <span class="n">family</span>          <span class="c1"># the family stem IS the architecture name</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">arch</span><span class="p">:</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;--mgaze-arch is required for .pt models&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>        <span class="n">device</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>        <span class="n">engine</span> <span class="o">=</span> <span class="n">GazeEstimationTorch</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">arch</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>        <span class="kn">import</span><span class="w"> </span><span class="nn">onnxruntime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ort</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>        <span class="n">prefs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CoreMLExecutionProvider&quot;</span><span class="p">,</span> <span class="s2">&quot;CUDAExecutionProvider&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>                 <span class="s2">&quot;DirectMLExecutionProvider&quot;</span><span class="p">,</span> <span class="s2">&quot;CPUExecutionProvider&quot;</span><span class="p">]</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>        <span class="n">avail</span> <span class="o">=</span> <span class="n">ort</span><span class="o">.</span><span class="n">get_available_providers</span><span class="p">()</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>        <span class="n">prov</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prefs</span> <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">avail</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;CPUExecutionProvider&quot;</span><span class="p">]</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>        <span class="n">engine</span> <span class="o">=</span> <span class="n">_GazeONNXWithConf</span><span class="p">(</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>            <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>            <span class="n">session</span><span class="o">=</span><span class="n">ort</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">providers</span><span class="o">=</span><span class="n">prov</span><span class="p">))</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="onnx-provider-selection">ONNX provider selection<a class="headerlink" href="#onnx-provider-selection" title="Permanent link">&para;</a></h3>
+<p>The ONNX path tries providers in priority order: CoreML (Apple Silicon) → CUDA → DirectML → CPU, falling back to CPU. This gives automatic hardware acceleration without user configuration.</p>
+<hr />
+<h2 id="a6-running-mobilegaze">A6. Running MobileGaze<a class="headerlink" href="#a6-running-mobilegaze" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Default ONNX (auto-selected, shipped with MindSight)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python<span class="w"> </span>MindSight.py<span class="w"> </span>--source<span class="w"> </span>video.mp4
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Explicit ONNX model</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>python<span class="w"> </span>MindSight.py<span class="w"> </span>--source<span class="w"> </span>video.mp4<span class="w"> </span>--mgaze-model<span class="w"> </span>weights/resnet18_gaze.onnx
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># PyTorch model (requires architecture specification)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>python<span class="w"> </span>MindSight.py<span class="w"> </span>--source<span class="w"> </span>video.mp4<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span>--mgaze-model<span class="w"> </span>weights/resnet50_gaze360.pt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span>--mgaze-arch<span class="w"> </span>resnet50<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span>--mgaze-dataset<span class="w"> </span>gaze360
+</code></pre></div>
+<hr />
+<h2 id="a7-writing-your-own-per-face-plugin">A7. Writing Your Own Per-Face Plugin<a class="headerlink" href="#a7-writing-your-own-per-face-plugin" title="Permanent link">&para;</a></h2>
+<p>To create a new per-face gaze backend as a plugin:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Plugins/GazeTracking/MyBackend/my_backend.py</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">Plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">GazePlugin</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyGazeBackend</span><span class="p">(</span><span class="n">GazePlugin</span><span class="p">):</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_gaze&quot;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;per_face&quot;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>        <span class="c1"># Load your model here</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_bgr</span><span class="p">):</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="sd">        Receive a cropped face image (BGR numpy array).</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="sd">        Return (pitch_radians, yaw_radians, confidence).</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>        <span class="c1"># Your inference here — preprocess, forward pass, postprocess</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>        <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">face_bgr</span><span class="p">)</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># your confidence metric</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">yaw</span><span class="p">),</span> <span class="n">confidence</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Delegate to the shared per-face pipeline.&quot;&quot;&quot;</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">mindsight.GazeTracking.pitchyaw_pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_pitchyaw_pipeline</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>        <span class="k">return</span> <span class="n">run_pitchyaw_pipeline</span><span class="p">(</span><span class="n">gaze_eng</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_arguments</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>        <span class="n">g</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;My Gaze Backend&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>        <span class="n">g</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--my-gaze-model&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>                       <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to model weights. Activates this backend.&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>    <span class="nd">@classmethod</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">from_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>        <span class="n">model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s2">&quot;my_gaze_model&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="p">:</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>            <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="n">PLUGIN_CLASS</span> <span class="o">=</span> <span class="n">MyGazeBackend</span>
+</code></pre></div>
+<h3 id="what-you-get-for-free">What you get for free<a class="headerlink" href="#what-you-get-for-free" title="Permanent link">&para;</a></h3>
+<p>By implementing just <code>estimate()</code> and delegating <code>run_pipeline()</code> to <code>run_pitchyaw_pipeline</code>, your plugin automatically inherits:</p>
+<ul>
+<li>Face cropping from RetinaFace detections</li>
+<li>Eye-landmark gaze origin (with bbox-centre fallback)</li>
+<li>Temporal smoothing via <code>GazeSmootherReID</code></li>
+<li>Left-to-right face sorting for deterministic track IDs</li>
+<li>Confidence-scaled ray length (<code>--conf-ray</code>)</li>
+<li>Adaptive ray snapping with hysteresis (<code>--adaptive-ray</code>)</li>
+<li>Forward gaze dead zone (<code>--forward-gaze-threshold</code>)</li>
+<li>All CLI gaze flags work without any extra code in your plugin</li>
+</ul>
+<h3 id="if-you-need-more-control">If you need more control<a class="headerlink" href="#if-you-need-more-control" title="Permanent link">&para;</a></h3>
+<p>Override <code>run_pipeline()</code> entirely to handle smoothing, ray construction, or multi-face batching yourself. Your method receives:</p>
+<table>
+<thead>
+<tr>
+<th>Kwarg</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frame</code></td>
+<td>ndarray</td>
+<td>Full BGR frame</td>
+</tr>
+<tr>
+<td><code>faces</code></td>
+<td>list[dict]</td>
+<td>RetinaFace face detections</td>
+</tr>
+<tr>
+<td><code>objects</code></td>
+<td>list[Detection]</td>
+<td>Non-person detections</td>
+</tr>
+<tr>
+<td><code>gaze_cfg</code></td>
+<td>GazeConfig</td>
+<td>Ray and snap parameters</td>
+</tr>
+<tr>
+<td><code>smoother</code></td>
+<td>GazeSmootherReID | None</td>
+<td>Temporal smoothing tracker</td>
+</tr>
+<tr>
+<td><code>snap_temporal</code></td>
+<td>SnapTemporalState | None</td>
+<td>Temporal snap engage/release state</td>
+</tr>
+<tr>
+<td><code>aux_frames</code></td>
+<td>dict</td>
+<td>Auxiliary per-participant video streams</td>
+</tr>
+</tbody>
+</table>
+<p>Must return the 7-tuple: <code>(persons_gaze, face_confs, face_bboxes, face_track_ids, face_objs, ray_snapped, ray_extended)</code>.</p>
+<hr />
+<h1 id="part-b-scene-level-backend-gaze-lle">Part B: Scene-Level Backend (Gaze-LLE)<a class="headerlink" href="#part-b-scene-level-backend-gaze-lle" title="Permanent link">&para;</a></h1>
+<p>Gaze-LLE is a scene-level gaze estimator built on DINOv2. It processes the entire scene image together with face bounding boxes in a single forward pass, producing per-face gaze-point heatmaps. (Its code identifiers and flags retain the <code>gazelle</code> spelling.)</p>
+<p><strong>Source:</strong> <code>Plugins/GazeTracking/Gazelle/gazelle_backend.py</code></p>
+<hr />
+<h2 id="b1-file-structure">B1. File Structure<a class="headerlink" href="#b1-file-structure" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Plugins/GazeTracking/Gazelle/
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>├── __init__.py
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>├── gazelle_backend.py          # PLUGIN_CLASS = GazeEstimationGazelle
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>└── gazelle/                    # Vendored Gazelle library
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    └── gazelle/
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        ├── model.py            # get_gazelle_model(), load_gazelle_state_dict()
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        ├── backbone.py         # DINOv2 backbone
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        ├── dataloader.py
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        └── utils.py
+</code></pre></div>
+<hr />
+<h2 id="b2-class-definition">B2. Class Definition<a class="headerlink" href="#b2-class-definition" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">GazeEstimationGazelle</span><span class="p">(</span><span class="n">GazePlugin</span><span class="p">):</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gazelle&quot;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;scene&quot;</span>
+</code></pre></div>
+<p><code>mode = "scene"</code> tells the gaze coordinator to call <code>estimate_frame()</code> (full frame + all bounding boxes) rather than <code>estimate()</code> (single cropped face).</p>
+<h3 id="model-variants">Model variants<a class="headerlink" href="#model-variants" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">_VALID_MODELS</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="s2">&quot;gazelle_dinov2_vitb14&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="s2">&quot;gazelle_dinov2_vitl14&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="s2">&quot;gazelle_dinov2_vitb14_inout&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="s2">&quot;gazelle_dinov2_vitl14_inout&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Backbone</th>
+<th>In/Out scoring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gazelle_dinov2_vitb14</code></td>
+<td>ViT-B/14</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>gazelle_dinov2_vitb14_inout</code></td>
+<td>ViT-B/14</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>gazelle_dinov2_vitl14</code></td>
+<td>ViT-L/14</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>gazelle_dinov2_vitl14_inout</code></td>
+<td>ViT-L/14</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>_inout</code> variants add a head predicting whether each person is looking inside or outside the frame. When in-frame confidence falls below the threshold, gaze confidence is attenuated.</p>
+<h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">ckpt_path</span><span class="p">,</span> <span class="n">inout_threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>             <span class="n">skip_frames</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">use_fp16</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_compile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">):</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>model_name</code></td>
+<td>Which variant to load</td>
+</tr>
+<tr>
+<td><code>ckpt_path</code></td>
+<td>Path to <code>.pt</code> checkpoint</td>
+</tr>
+<tr>
+<td><code>inout_threshold</code></td>
+<td>Confidence cutoff for <code>_inout</code> models (default 0.5)</td>
+</tr>
+<tr>
+<td><code>skip_frames</code></td>
+<td>Reuse cached results for N frames between inference</td>
+</tr>
+<tr>
+<td><code>use_fp16</code></td>
+<td>Half-precision on CUDA/MPS</td>
+</tr>
+<tr>
+<td><code>use_compile</code></td>
+<td><code>torch.compile()</code> wrapper (PyTorch 2.0+)</td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td><code>"auto"</code>, <code>"cpu"</code>, <code>"cuda"</code>, or <code>"mps"</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b3-the-estimate_frame-method">B3. The <code>estimate_frame()</code> Method<a class="headerlink" href="#b3-the-estimate_frame-method" title="Permanent link">&para;</a></h2>
+<p>The core method for scene-level backends:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">estimate_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_bgr</span><span class="p">,</span> <span class="n">face_bboxes_px</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</code></pre></div>
+<h3 id="data-flow">Data flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Early return</strong> if no faces.</li>
+<li><strong>Frame-skip check</strong> — reuse cached result if skip is active and face count unchanged.</li>
+<li><strong>BGR→RGB</strong> — <code>frame_bgr[:, :, ::-1]</code> zero-copy view, then PIL wrap.</li>
+<li><strong>Normalize bboxes</strong> — <code>(x1/w, y1/h, x2/w, y2/h)</code> for Gaze-LLE's <code>[0,1]</code> range.</li>
+<li><strong>Transform</strong> — Resize 448×448, ToTensor, ImageNet normalize, unsqueeze, to device.</li>
+<li><strong>Forward pass</strong> — <code>model({"images": tensor, "bboxes": [norm]})</code> with <code>torch.no_grad()</code>.</li>
+<li><strong>Heatmap extraction</strong> — <code>out["heatmap"][0]</code> gives <code>[N, 64, 64]</code> per-face heatmaps.</li>
+<li><strong>Batched peak extraction</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">hm_flat</span> <span class="o">=</span> <span class="n">heatmaps</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">start_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># [N, 4096]</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">maxvals</span><span class="p">,</span> <span class="n">argmaxes</span> <span class="o">=</span> <span class="n">hm_flat</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># [N], [N]</span>
+</code></pre></div>
+<p>All N heatmaps are processed in one batched operation, with a single <code>.cpu().numpy()</code> call.</p>
+<ol>
+<li><strong>Pixel coordinate conversion</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">argmaxes_np</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">xy</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">idx</span> <span class="o">%</span> <span class="mi">64</span> <span class="o">/</span> <span class="mi">64</span> <span class="o">*</span> <span class="n">w</span><span class="p">,</span> <span class="n">idx</span> <span class="o">//</span> <span class="mi">64</span> <span class="o">/</span> <span class="mi">64</span> <span class="o">*</span> <span class="n">h</span><span class="p">])</span>
+</code></pre></div>
+<ol>
+<li><strong>Inout attenuation</strong> — For <code>_inout</code> models, if confidence &lt; threshold: <code>conf *= score</code>.</li>
+<li><strong>Cache and return</strong> — Store results for frame-skip reuse.</li>
+</ol>
+<hr />
+<h2 id="b4-the-raw_heatmaps-method">B4. The <code>raw_heatmaps()</code> Method<a class="headerlink" href="#b4-the-raw_heatmaps-method" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">raw_heatmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_bgr</span><span class="p">,</span> <span class="n">face_bboxes_px</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</code></pre></div>
+<p>Returns the full <code>[N, 64, 64]</code> sigmoid-activated heatmaps. Useful for visualization or analysis beyond the peak point.</p>
+<hr />
+<h2 id="b5-cli-activation">B5. CLI Activation<a class="headerlink" href="#b5-cli-activation" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--gazelle-model PATH</code></td>
+<td>str</td>
+<td>None</td>
+<td>Checkpoint path. <strong>Activates the backend.</strong></td>
+</tr>
+<tr>
+<td><code>--gazelle-name</code></td>
+<td>choice</td>
+<td><code>gazelle_dinov2_vitb14</code></td>
+<td>Model variant</td>
+</tr>
+<tr>
+<td><code>--gazelle-inout-threshold</code></td>
+<td>float</td>
+<td>0.5</td>
+<td>In/out confidence threshold</td>
+</tr>
+<tr>
+<td><code>--gazelle-device</code></td>
+<td>str</td>
+<td><code>auto</code></td>
+<td>Device override</td>
+</tr>
+<tr>
+<td><code>--gazelle-skip-frames</code></td>
+<td>int</td>
+<td>0</td>
+<td>Frames between inference</td>
+</tr>
+<tr>
+<td><code>--gazelle-fp16</code></td>
+<td>flag</td>
+<td>False</td>
+<td>Half-precision</td>
+</tr>
+<tr>
+<td><code>--gazelle-compile</code></td>
+<td>flag</td>
+<td>False</td>
+<td><code>torch.compile()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b6-running-gaze-lle">B6. Running Gaze-LLE<a class="headerlink" href="#b6-running-gaze-lle" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Standard usage</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>python<span class="w"> </span>MindSight.py<span class="w"> </span>--source<span class="w"> </span>video.mp4<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span>--gazelle-model<span class="w"> </span>checkpoints/gazelle_dinov2_vitb14_inout.pt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span>--gazelle-name<span class="w"> </span>gazelle_dinov2_vitb14_inout<span class="w"> </span>--gazelle-fp16
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># With frame-skipping for slower hardware</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>python<span class="w"> </span>MindSight.py<span class="w"> </span>--source<span class="w"> </span>video.mp4<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">    </span>--gazelle-model<span class="w"> </span>checkpoints/gazelle.pt<span class="w"> </span>--gazelle-skip-frames<span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+<hr />
+<h1 id="key-design-patterns-both-modes">Key Design Patterns (Both Modes)<a class="headerlink" href="#key-design-patterns-both-modes" title="Permanent link">&para;</a></h1>
+<h3 id="backend-selection">Backend selection<a class="headerlink" href="#backend-selection" title="Permanent link">&para;</a></h3>
+<p>The gaze coordinator tries plugins in registration order. The first <code>from_args</code> that returns a non-<code>None</code> instance wins. Plugins with <code>is_fallback = True</code> (like MobileGaze) are tried last, making them the automatic default.</p>
+<h3 id="lazy-loading">Lazy loading<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
+<p>All expensive operations (model loading, weight transfer to GPU) happen inside <code>from_args()</code>, not at import time. If the activation flag is not set, no resources are consumed.</p>
+<h3 id="plugin_class-sentinel">PLUGIN_CLASS sentinel<a class="headerlink" href="#plugin_class-sentinel" title="Permanent link">&para;</a></h3>
+<p>Both plugins expose <code>PLUGIN_CLASS = ClassName</code> at module level. This is what <code>PluginRegistry.discover()</code> looks for:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># At the bottom of your module:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">PLUGIN_CLASS</span> <span class="o">=</span> <span class="n">MGazePlugin</span>       <span class="c1"># per-face</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">PLUGIN_CLASS</span> <span class="o">=</span> <span class="n">GazeEstimationGazelle</span>  <span class="c1"># scene-level</span>
+</code></pre></div>
+<hr />
+<h2 id="part-c-composite-backend-temporarily-removed">Part C: Composite Backend (temporarily removed)<a class="headerlink" href="#part-c-composite-backend-temporarily-removed" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Removed in v0.8.</strong> The previous Part C used the GazelleSnap plugin as a worked example of a composite backend -- a plugin that combines per-face gaze estimation with post-processing features like ray forming and heatmap blending. GazelleSnap was deprecated (its features were folded into the core <code>mindsight/PostProcessing/RayForming/</code> pipeline) and deleted in v0.8.</p>
+<p>A replacement composite-plugin example (likely rewritten around one of the surviving plugins such as IrisRefinedGaze) is TODO. In the meantime, read Parts A and B for the per-face and scene-level patterns, and skim <code>mindsight/PostProcessing/RayForming/gazelle_provider.py</code> for the core integration pattern that replaced GazelleSnap.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2851 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../pipeline/">
+      
+      
+        <link rel="next" href="../../phenomena/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Understanding the Outputs - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#understanding-the-outputs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Understanding the Outputs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../studies/run-a-study-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-csv-one-tidy-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary CSV -- one tidy table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phenomena-events-csv-the-episode-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena-events CSV -- the episode stream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-tracker-stream-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-tracker stream tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-frame-events-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-frame events CSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provenance-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provenance manifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heatmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heatmaps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time-series charts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotated-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotated video
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-mode-aggregates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project-mode aggregates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-resume-ledger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The resume ledger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-files-land" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the files land
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-hand-to-an-analyst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to hand to an analyst
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/inference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/pipeline-yaml-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-csv-one-tidy-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary CSV -- one tidy table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phenomena-events-csv-the-episode-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena-events CSV -- the episode stream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-tracker-stream-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-tracker stream tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-frame-events-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-frame events CSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provenance-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provenance manifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heatmaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heatmaps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time-series charts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotated-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotated video
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-mode-aggregates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project-mode aggregates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-resume-ledger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The resume ledger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-files-land" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the files land
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-hand-to-an-analyst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to hand to an analyst
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="understanding-the-outputs">Understanding the Outputs<a class="headerlink" href="#understanding-the-outputs" title="Permanent link">&para;</a></h1>
+<p>A MindSight run produces several complementary files. They are independent --
+you enable only the ones you need -- and they land under an <code>Outputs/</code>
+directory. This page explains what each file is, when to use it, and how to load
+it into an analysis.</p>
+<p>If you just want the short answer: the <strong>summary CSV</strong> is the file most analyses
+pull from, the <strong>phenomena-events CSV</strong> is where every timed episode lives, and
+the <strong>provenance manifest</strong> is what makes a result traceable. Everything else is
+either finer-grained (the per-frame events CSV, per-tracker streams) or a visual
+aid (heatmaps, charts, annotated video).</p>
+<p>Every CSV MindSight writes is <strong>tidy long-format</strong>: one typed value per row, one
+column per field, and no <code>#</code>-prefixed section headers. Files load directly into
+R (<code>read.csv</code>) or pandas (<code>pd.read_csv</code>) without any reshaping.</p>
+<h2 id="summary-csv-one-tidy-table">Summary CSV -- one tidy table<a class="headerlink" href="#summary-csv-one-tidy-table" title="Permanent link">&para;</a></h2>
+<p>The post-run aggregation is a single file, <code>{stem}_summary.csv</code>, with exactly
+one header and one row per scalar metric:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>video_name,conditions,phenomenon,participant,partner,object,metric,value
+</code></pre></div>
+<p>Every enabled tracker contributes rows into this one table -- there are no
+per-tracker sections. The <code>phenomenon</code> column tells you which measure a row
+belongs to, and <code>metric</code>/<code>value</code> carry the number. <code>participant</code>, <code>partner</code>, and
+<code>object</code> are filled in only when a metric is scoped to them (they are empty
+strings otherwise). In single-video mode <code>video_name</code> and <code>conditions</code> are empty
+strings; in project mode they identify the source, so many videos stack into one
+file with no format change.</p>
+<p>A few example rows from a run with joint attention, mutual gaze, and object
+look-time enabled (single-video mode, so the first two columns are blank):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>video_name,conditions,phenomenon,participant,partner,object,metric,value
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>,,joint_attention,all,,,frames_active,842
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>,,joint_attention,all,,,pct_of_video,46.7813
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>,,mutual_gaze,P0,P1,,frames_active,315
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>,,mutual_gaze,P0,P1,,pct_of_video,17.5000
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>,,object_look_time,P0,,cup,seconds_active,12.500
+</code></pre></div>
+<p><strong>How to filter it.</strong> Because every measure lives in the same table, you select
+what you want with an ordinary row filter rather than by reading a particular
+section. In R:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;trimmed_summary.csv&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># All joint-attention active-frame counts:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nf">subset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">phenomenon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;joint_attention&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;frames_active&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># One participant&#39;s look-time across objects:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nf">subset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">phenomenon</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;object_look_time&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">participant</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;P0&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Pivot a metric wide if you prefer a matrix:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nf">pivot_wider</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">names_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metric</span><span class="p">,</span><span class="w"> </span><span class="n">values_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p>Note that <code>value</code> is read as text (some metrics are integer frame counts, others
+are formatted seconds or percentages); coerce with <code>as.numeric(df$value)</code> after
+filtering to a single metric.</p>
+<p><strong>When to use it.</strong> Almost always. This is the file most statistical analyses
+start from.</p>
+<h2 id="phenomena-events-csv-the-episode-stream">Phenomena-events CSV -- the episode stream<a class="headerlink" href="#phenomena-events-csv-the-episode-stream" title="Permanent link">&para;</a></h2>
+<p>Alongside the summary, a run writes <code>{stem}_phenomena_events.csv</code>: one merged,
+time-ordered stream of every <em>episode</em> every tracker recorded -- each
+mutual-gaze pair while it was active, each aversion streak, each confirmed
+joint-attention span, each point event (a gaze-following or social-referencing
+moment). The summary tells you <em>how much</em>; this file tells you <em>when</em>.</p>
+<p>Its header is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>video_name,conditions,phenomenon,participant,partner,object,frame_start,frame_end,t_start,t_end,duration_s
+</code></pre></div>
+<p>Frame bounds are always present; <code>t_start</code>, <code>t_end</code>, and <code>duration_s</code> are
+seconds (blank only when the frame rate is unknown). Point events have
+<code>frame_start == frame_end</code> and a zero duration. Example rows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>video_name,conditions,phenomenon,participant,partner,object,frame_start,frame_end,t_start,t_end,duration_s
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>,,mutual_gaze,P0,P1,,120,168,4.000,5.600,1.600
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>,,joint_attention,all,,cup,300,354,10.000,11.800,1.800
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>,,tip_convergence,P0+P1,,,410,470,13.667,15.667,2.000
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>,,social_referencing,P2,,cup,502,502,16.733,16.733,0.000
+</code></pre></div>
+<p><strong>When to use it.</strong> Any analysis of timing, duration, or sequence -- episode
+counts and lengths, overlap between phenomena, alignment against an external
+event track. It is written whenever at least one tracker logged an episode.
+(The scanpath tracker records no episodes, so it never appears here; its
+fixations live in its own stream, below.)</p>
+<h2 id="per-tracker-stream-tables">Per-tracker stream tables<a class="headerlink" href="#per-tracker-stream-tables" title="Permanent link">&para;</a></h2>
+<p>Some trackers emit a row-per-event table of their own, written alongside the
+summary as <code>{stem}_&lt;stream&gt;.csv</code>. The built-in one is the scanpath stream,
+<code>{stem}_scanpath.csv</code>, with one row per confirmed fixation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>video_name,conditions,participant,fixation_index,object
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>,,P0,0,cup
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>,,P0,1,plate
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>,,P0,2,knife
+</code></pre></div>
+<p><code>fixation_index</code> is that participant's fixation order (0-based), and <code>object</code> is
+the fixated class. Feature plugins add their own streams the same way when
+enabled -- for example <code>{stem}_novel_salience_events.csv</code>,
+<code>{stem}_eye_movement_events.csv</code>, <code>{stem}_pupillometry_timeseries.csv</code>, and
+<code>{stem}_pupillometry_blinks.csv</code>. Each is written only when it has data.</p>
+<h2 id="per-frame-events-csv">Per-frame events CSV<a class="headerlink" href="#per-frame-events-csv" title="Permanent link">&para;</a></h2>
+<p><code>{stem}_Events.csv</code> is the finest-grained table: one row per gaze-object hit per
+frame. If a participant's gaze ray intersects two objects in the same frame,
+that is two rows; if nobody hits any object on a frame, that frame contributes
+no rows. Its columns are:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>frame,t_seconds,face_idx,object,object_conf,bbox_x1,bbox_y1,bbox_x2,bbox_y2,joint_attention,joint_attention_confirmed,participant_label
+</code></pre></div>
+<p><code>t_seconds</code> is the frame's timestamp, and <code>joint_attention</code> /
+<code>joint_attention_confirmed</code> are per-frame flags for raw and temporally-confirmed
+joint attention. In project mode a <code>video_name</code> and <code>conditions</code> column are
+prepended so rows from many videos stack.</p>
+<p><strong>When to use it.</strong> Anything needing frame-level granularity -- custom
+downstream analysis, validation against human coding, fixation or transition
+extraction. If you only care about aggregate look-time per object, the summary
+CSV already has it. In project mode this file is written automatically; in CLI
+single-video mode you request it with <code>--log PATH</code>.</p>
+<h2 id="provenance-manifest">Provenance manifest<a class="headerlink" href="#provenance-manifest" title="Permanent link">&para;</a></h2>
+<p>Each run writes a <code>{stem}_manifest.json</code> beside the summary. It records exactly
+what produced that run's data: the full resolved configuration, a run-identity
+hash, the model-weight hashes, and the library versions in play. Because
+everything that affects the result is captured, a run is auditable after the
+fact -- if two runs of the "same" study disagree, the manifests tell you what
+actually differed.</p>
+<p>The manifest is written <strong>only when at least one file output is configured</strong>. A
+pure on-screen preview run (no summary, log, video, heatmap, or charts) writes
+no manifest, because there is no data file to make traceable.</p>
+<p><strong>When to use it.</strong> Keep it. You may never open it by hand, but it is what lets
+you (or a reviewer) trust a result months later.</p>
+<h2 id="heatmaps">Heatmaps<a class="headerlink" href="#heatmaps" title="Permanent link">&para;</a></h2>
+<p>One image per participant, accumulated from that participant's gaze-ray
+endpoints over the whole video, Gaussian-blurred and blended over a background
+frame. A participant with no collected gaze data produces no heatmap -- check
+the console if one is missing. The background is a single frame, so a scene that
+changes substantially over the video will not be fully reflected.</p>
+<p><strong>When to use it.</strong> A quick, human-legible picture of where attention
+concentrated. Not a substitute for the CSVs in analysis.</p>
+<h2 id="time-series-charts">Time-series charts<a class="headerlink" href="#time-series-charts" title="Permanent link">&para;</a></h2>
+<p>Post-run charts showing phenomena metrics over time -- joint-attention
+percentage, gaze-following events, and so on -- one multi-panel image per video
+plus per-tracker images. Only trackers that expose time-series data contribute;
+some lighter trackers do not.</p>
+<p><strong>When to use it.</strong> A visual sanity check, or to see <em>when</em> in a video a
+phenomenon spiked. For statistics, use the underlying CSVs.</p>
+<h2 id="annotated-video">Annotated video<a class="headerlink" href="#annotated-video" title="Permanent link">&para;</a></h2>
+<p>The source video re-rendered with overlays: object bounding boxes colour-coded
+by attention state, face rectangles with participant labels, gaze rays with
+state-aware endpoints, and phenomena dashboard panels. It is the slowest output
+by a wide margin.</p>
+<p><strong>When to use it.</strong> To confirm that detection and ray forming are doing what you
+think -- indispensable during parameter tuning. Turn it off for production
+batches once you trust the pipeline. Face anonymization, when enabled, blurs or
+blacks out faces here (and in heatmap backgrounds).</p>
+<h2 id="project-mode-aggregates">Project-mode aggregates<a class="headerlink" href="#project-mode-aggregates" title="Permanent link">&para;</a></h2>
+<p>When you process a whole project rather than a single video, MindSight also
+concatenates each per-video tidy table into a project-level file and, if your
+videos carry condition tags, splits each one by condition. The global files
+(written into <code>Outputs/CSV Files/</code>) are:</p>
+<ul>
+<li><code>Global_summary.csv</code> -- every video's summary stacked.</li>
+<li><code>Global_Events.csv</code> -- every video's per-frame events stacked.</li>
+<li><code>Global_phenomena_events.csv</code> -- every video's episode stream stacked.</li>
+<li><code>Global_scanpath.csv</code> -- every video's fixation stream stacked.</li>
+<li><code>Global_novel_salience_events.csv</code>, <code>Global_eye_movement_events.csv</code>,
+  <code>Global_pupillometry_timeseries.csv</code>, <code>Global_pupillometry_blinks.csv</code> --
+  the corresponding feature-plugin streams, each written only when at least one
+  video produced that stream.</li>
+</ul>
+<p>Because every tidy table already carries <code>video_name</code> and <code>conditions</code> as its
+first two columns, concatenation is a pure append with one header. When
+conditions are defined, <code>Outputs/By Condition/</code> additionally holds one
+<code>{tag}&lt;suffix&gt;.csv</code> per unique condition tag (e.g. <code>Emotional_summary.csv</code>), a
+video with several pipe-delimited tags appearing under each. These are what most
+cross-video analyses should pull from.</p>
+<h2 id="the-resume-ledger">The resume ledger<a class="headerlink" href="#the-resume-ledger" title="Permanent link">&para;</a></h2>
+<p>Project runs resume by default. MindSight keeps a per-batch ledger at
+<code>Outputs/_run/ledger.json</code> recording each video's status, so an interrupted or
+re-launched batch skips work that is already complete. Forcing a full reprocess
+(<code>--no-resume</code>) reprocesses every video in place. The ledger is bookkeeping, not
+analysis data -- you do not hand it to an analyst.</p>
+<h2 id="where-the-files-land">Where the files land<a class="headerlink" href="#where-the-files-land" title="Permanent link">&para;</a></h2>
+<p>The default directory layout differs slightly between a CLI single-video run and
+a project-mode run. Both are shown below.</p>
+<p><strong>CLI single-video run</strong> (paths from the bare <code>--summary</code> / <code>--save</code> /
+<code>--heatmap</code> defaults; <code>--log</code> needs an explicit path):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Outputs/
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── CSV Files/
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   ├── {stem}_summary.csv              # tidy summary
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   ├── {stem}_phenomena_events.csv     # merged episode stream
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   ├── {stem}_scanpath.csv             # per-tracker streams (when produced)
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│   └── {stem}_manifest.json            # provenance manifest
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>├── Video/                              # annotated video ({stem}_Video_Output.mp4)
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>├── heatmaps/
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│   └── {stem}_Heatmap_Output/          # one PNG per participant
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>└── Charts/                             # time-series charts
+</code></pre></div>
+<p><strong>Project-mode run</strong> (under the project's <code>Outputs/</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Outputs/
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├── CSV Files/
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│   ├── {stem}_summary.csv              # per video
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│   ├── {stem}_Events.csv               # per video (per-frame events)
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│   ├── {stem}_phenomena_events.csv     # per video (episode stream)
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│   ├── {stem}_scanpath.csv             # per video (when produced)
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>│   ├── {stem}_manifest.json            # per video
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>│   ├── Global_summary.csv              # project aggregate
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│   ├── Global_Events.csv
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>│   ├── Global_phenomena_events.csv
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>│   └── Global_scanpath.csv             # (+ feature-plugin globals)
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>├── Videos/                             # annotated videos (plural)
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>├── {stem}_Heatmap/                     # per-participant heatmaps (one dir per video)
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>├── Charts/                             # time-series charts
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>├── By Condition/                       # per-condition splits (when conditions defined)
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>└── _run/
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    └── ledger.json                     # resume bookkeeping
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The two key differences are the annotated-video directory (<code>Video/</code> singular
+in CLI mode, <code>Videos/</code> plural in project mode) and the heatmap directory
+(<code>heatmaps/{stem}_Heatmap_Output/</code> in CLI mode, <code>{stem}_Heatmap/</code> directly
+under <code>Outputs/</code> in project mode). Run-folder projects gather each run's
+per-video files under <code>Outputs/Runs/&lt;run_id&gt;/</code> instead, named by run id; the
+<code>Global_*.csv</code>, <code>By Condition/</code>, and <code>_run/</code> locations are unchanged.</p>
+</div>
+<h2 id="what-to-hand-to-an-analyst">What to hand to an analyst<a class="headerlink" href="#what-to-hand-to-an-analyst" title="Permanent link">&para;</a></h2>
+<p>For most studies the handoff is small: the <strong>summary CSV</strong> (or the project-mode
+<code>Global_summary.csv</code> / <code>By Condition/</code> files), the <strong>phenomena-events CSV</strong> when
+timing or duration matters, plus the <strong>provenance manifest</strong> so the numbers are
+traceable. Include the per-frame <strong>events CSV</strong> only when the analysis needs
+frame-level detail. Heatmaps, charts, and the annotated video are for review and
+communication, not for statistics.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

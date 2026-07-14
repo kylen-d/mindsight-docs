@@ -1,0 +1,2967 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../frame-context/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Architecture Deep Dive - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-deep-dive" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Architecture Deep Dive
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../studies/run-a-study-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/inference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/pipeline-yaml-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-dependency-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Dependency Graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-orchestrator-mindsightpipelinepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Orchestrator: mindsight/pipeline.py
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Orchestrator: mindsight/pipeline.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-in-mindsightclipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        main() (in mindsight/cli.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runsource-yolo-face_det-gaze_eng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        run(source, yolo, face_det, gaze_eng, ...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process_framectx-yolo-face_det-gaze_eng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        process_frame(ctx, *, yolo, face_det, gaze_eng, ...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factorybuild_from_namespacens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        factory.build_from_namespace(ns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Stages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-argument-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Argument Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-frame-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Frame Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gui-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUI Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Integration Points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-video-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary Video Streams
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gaze-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-dependency-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Dependency Graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-orchestrator-mindsightpipelinepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Orchestrator: mindsight/pipeline.py
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Orchestrator: mindsight/pipeline.py">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-in-mindsightclipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        main() (in mindsight/cli.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runsource-yolo-face_det-gaze_eng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        run(source, yolo, face_det, gaze_eng, ...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process_framectx-yolo-face_det-gaze_eng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        process_frame(ctx, *, yolo, face_det, gaze_eng, ...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factorybuild_from_namespacens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        factory.build_from_namespace(ns)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline Stages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-argument-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Argument Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-frame-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Frame Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gui-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUI Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin Integration Points
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-video-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary Video Streams
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="architecture-deep-dive">Architecture Deep Dive<a class="headerlink" href="#architecture-deep-dive" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><code>MindSight.py</code> at the repo root is a <strong>6-line shim</strong> — it just calls
+<code>mindsight.cli.main</code>. The real orchestration lives in <strong><code>mindsight/pipeline.py</code></strong>,
+which wires together four pipeline stage modules. All stages communicate through a
+shared <code>FrameContext</code> (<code>ctx</code>) dict created once per frame. The orchestrator itself
+contains no domain logic — it sequences the stages, manages the video capture
+loop, and holds run-level state such as smoothers, trackers, and output paths.</p>
+<p>The four stages are:</p>
+<ol>
+<li><strong>Object Detection</strong> -- detect people and objects in the frame.</li>
+<li><strong>Gaze Tracking</strong> -- estimate gaze rays for each detected face.</li>
+<li><strong>Phenomena Analysis</strong> -- derive higher-level social gaze phenomena.</li>
+<li><strong>Data Collection</strong> -- accumulate metrics and write outputs.</li>
+</ol>
+<h2 id="module-dependency-graph">Module Dependency Graph<a class="headerlink" href="#module-dependency-graph" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    MS[MindSight.py shim] --&gt; CLI[mindsight/cli.main]
+    CLI --&gt; PL[mindsight/pipeline.py: run / process_frame]
+    PL --&gt; DP[mindsight/ObjectDetection/detection_pipeline]
+    PL --&gt; GP[mindsight/GazeTracking/gaze_pipeline]
+    PL --&gt; PP[mindsight/Phenomena/phenomena_pipeline]
+    PL --&gt; DC[mindsight/outputs/data_pipeline]
+
+    DP --&gt; OD[mindsight/ObjectDetection/object_detection]
+    DP --&gt; MF[mindsight/ObjectDetection/model_factory]
+
+    GP --&gt; GPR[mindsight/GazeTracking/gaze_processing]
+    GP --&gt; RF[mindsight/PostProcessing/RayForming/*]
+    GP --&gt; GBE[mindsight/GazeTracking/Backends/MGaze only]
+
+    PP --&gt; PC[mindsight/Phenomena/phenomena_config]
+    PP --&gt; PH[mindsight/Phenomena/helpers]
+    PP --&gt; PD[mindsight/Phenomena/Default/*]
+
+    DC --&gt; CSV[mindsight/outputs/csv_output]
+    DC --&gt; HM[mindsight/outputs/heatmap_output]
+    DC --&gt; DB[mindsight/outputs/dashboard_output]
+
+    PL --&gt; CFG[mindsight/pipeline_config.py]
+    CLI --&gt; FAC[mindsight/factory.build_from_namespace]
+    FAC --&gt; PLG[Plugins/__init__.py]
+
+    PLG --&gt; GREG[gaze_registry]
+    PLG --&gt; OREG[object_detection_registry]
+    PLG --&gt; PREG[phenomena_registry]
+    PLG --&gt; DREG[data_collection_registry]</code></pre>
+<p><code>Plugins/__init__.py</code> provides base classes and four registries that each plugin subdirectory hooks into via a module-level <code>PLUGIN_CLASS</code> sentinel. <code>mindsight/pipeline_config.py</code> defines <code>FrameContext</code> and the configuration dataclasses consumed by every stage.</p>
+<h2 id="the-orchestrator-mindsightpipelinepy">The Orchestrator: <code>mindsight/pipeline.py</code><a class="headerlink" href="#the-orchestrator-mindsightpipelinepy" title="Permanent link">&para;</a></h2>
+<h3 id="main-in-mindsightclipy"><code>main()</code> (in <code>mindsight/cli.py</code>)<a class="headerlink" href="#main-in-mindsightclipy" title="Permanent link">&para;</a></h3>
+<p>Entry point behind the <code>MindSight.py</code> shim. Parses CLI arguments (each module
+registers its own flags), loads an optional pipeline YAML file, calls
+<code>factory.build_from_namespace</code> to wire the models, and dispatches into either
+single-video mode or project mode (batch processing a directory of videos).</p>
+<h3 id="runsource-yolo-face_det-gaze_eng"><code>run(source, yolo, face_det, gaze_eng, ...)</code><a class="headerlink" href="#runsource-yolo-face_det-gaze_eng" title="Permanent link">&para;</a></h3>
+<p>Module-level generator in <code>mindsight/pipeline.py</code> (there is also a <code>Pipeline</code>
+class wrapping the same loop). It opens the video capture and creates the per-run
+tracker objects that persist across frames:</p>
+<ul>
+<li><code>GazeSmootherReID</code> — temporal smoothing of gaze rays with re-identification.</li>
+<li><code>GazeLockTracker</code> — fixation lock-on / dwell detection (from <code>PostProcessing/RayForming/fixation.py</code>).</li>
+<li><code>SnapTemporalState</code> — temporal snap-to-object state (from <code>PostProcessing/RayForming/object_snap.py</code>).</li>
+</ul>
+<p>These are bundled into <code>run_ctx_base</code> and seeded into every <code>FrameContext</code>. The loop then iterates frames, calling <code>process_frame()</code> for each one.</p>
+<h3 id="process_framectx-yolo-face_det-gaze_eng"><code>process_frame(ctx, *, yolo, face_det, gaze_eng, ...)</code><a class="headerlink" href="#process_framectx-yolo-face_det-gaze_eng" title="Permanent link">&para;</a></h3>
+<p>Calls the four pipeline stages in order:</p>
+<ol>
+<li><code>run_detection_step(ctx, ...)</code></li>
+<li><code>run_gaze_step(ctx, ...)</code></li>
+<li><code>update_phenomena_step(ctx)</code></li>
+<li><code>collect_frame_data(ctx, ...)</code></li>
+</ol>
+<p>After the stages complete, the run loop handles display rendering and dashboard updates.</p>
+<h3 id="factorybuild_from_namespacens"><code>factory.build_from_namespace(ns)</code><a class="headerlink" href="#factorybuild_from_namespacens" title="Permanent link">&para;</a></h3>
+<p>Factory function (<code>mindsight/factory.py</code>) that reads the argparse namespace and
+instantiates the correct model backends (e.g., the YOLO detector, the MobileGaze
+gaze engine, the Gaze-LLE blend provider) via the model factory and plugin
+registries. It returns the full tuple of models + config dataclasses consumed by
+<code>run()</code>.</p>
+<h2 id="pipeline-stages">Pipeline Stages<a class="headerlink" href="#pipeline-stages" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Entry Point</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detection</td>
+<td><code>run_detection_step(ctx, ...)</code></td>
+<td><code>mindsight/ObjectDetection/detection_pipeline.py</code></td>
+</tr>
+<tr>
+<td>Gaze</td>
+<td><code>run_gaze_step(ctx, ...)</code></td>
+<td><code>mindsight/GazeTracking/gaze_pipeline.py</code></td>
+</tr>
+<tr>
+<td>Phenomena</td>
+<td><code>update_phenomena_step(ctx)</code></td>
+<td><code>mindsight/Phenomena/phenomena_pipeline.py</code></td>
+</tr>
+<tr>
+<td>Data Collection</td>
+<td><code>collect_frame_data(ctx, ...)</code></td>
+<td><code>mindsight/outputs/data_pipeline.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each stage reads from and writes to the <code>FrameContext</code>. See <a href="../frame-context/">FrameContext Reference</a> for the full key registry.</p>
+<h2 id="configuration-hierarchy">Configuration Hierarchy<a class="headerlink" href="#configuration-hierarchy" title="Permanent link">&para;</a></h2>
+<p>All configuration dataclasses follow the same pattern: they are constructed via a <code>from_namespace(args)</code> class method that pulls values from the argparse namespace.</p>
+<ul>
+<li><strong>GazeConfig</strong> -- ray parameters, snap distance, cone angle, smoothing window, gaze lock thresholds.</li>
+<li><strong>DetectionConfig</strong> -- confidence threshold, COCO class IDs, blacklist labels, detection scale factor.</li>
+<li><strong>TrackerConfig</strong> -- gaze lock frames, dwell frame count, skip frames, re-ID parameters (IoU, feature distance).</li>
+<li><strong>OutputConfig</strong> -- save directory paths, PID map file, anonymization mode, video writer settings.</li>
+<li><strong>PhenomenaConfig</strong> -- per-phenomenon enable/disable toggles and their individual thresholds (e.g., mutual gaze angle, joint attention confirmation frames).</li>
+</ul>
+<p>All of these are defined in <code>mindsight/pipeline_config.py</code> or in their respective module configs (e.g., <code>mindsight/Phenomena/phenomena_config.py</code>).</p>
+<h2 id="cli-argument-registration">CLI Argument Registration<a class="headerlink" href="#cli-argument-registration" title="Permanent link">&para;</a></h2>
+<p>Core CLI flags are <strong>generated from the pydantic schema</strong> (<code>mindsight/config.py</code>). The
+ordered <code>FlagSpec</code> table in <code>mindsight/cli_flags.py</code> carries each flag's presentation
+(help, metavar, choices, group, order) while defaults and scalar types come from
+the schema field at build time, so the schema is the single source of truth for
+values. <code>mindsight/cli.py:_args</code> simply delegates to <code>cli_flags.parse_cli</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mindsight/config.py (schema)  ─┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mindsight/cli_flags.py         ─┴─►  build_parser()  ─►  argparse parser
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Plugins (each)          ────►  add_arguments(parser)   # runtime, per plugin class
+</code></pre></div>
+<p>Plugins still register their own flags at runtime through the
+<code>add_arguments(parser)</code> method on each discovered plugin class, so plugin flags
+appear alongside the generated core flags (this is the v1.0 paper contract).</p>
+<h2 id="per-frame-sequence">Per-Frame Sequence<a class="headerlink" href="#per-frame-sequence" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MS as MindSight.py (run loop)
+    participant DP as detection_pipeline
+    participant GP as gaze_pipeline
+    participant PP as phenomena_pipeline
+    participant DC as data_pipeline
+    participant DB as dashboard_output
+
+    MS-&gt;&gt;MS: ctx = FrameContext(frame, frame_no, **run_ctx_base)
+    MS-&gt;&gt;DP: run_detection_step(ctx, ...)
+    DP--&gt;&gt;MS: ctx now has all_dets, persons, objects
+    MS-&gt;&gt;GP: run_gaze_step(ctx, ...)
+    GP--&gt;&gt;MS: ctx now has face_bboxes, persons_gaze, hits, hit_events
+    MS-&gt;&gt;PP: update_phenomena_step(ctx)
+    PP--&gt;&gt;MS: ctx now has confirmed_objs, phenomenon events
+    MS-&gt;&gt;DC: collect_frame_data(ctx, ...)
+    DC--&gt;&gt;MS: metrics accumulated, CSV rows buffered
+    MS-&gt;&gt;DB: update dashboard / render overlays</code></pre>
+<h2 id="gui-architecture">GUI Architecture<a class="headerlink" href="#gui-architecture" title="Permanent link">&para;</a></h2>
+<p>The GUI is built with PyQt and lives in the <code>mindsight/GUI/</code> directory. It is a
+thin consumer of the project layer (<code>mindsight/project/</code>, which holds the single
+project-batch implementation: <code>runner.py</code>'s event-streaming <code>iter_project_runs</code>,
+plus <code>events.py</code>, <code>staging.py</code> (RunSpec discovery + run metadata), <code>preflight.py</code>,
+<code>ledger.py</code>, and the <code>Project</code> facade in <code>project.py</code>). Anything more complex than
+formatting lives project-side with a fast test.</p>
+<ul>
+<li><strong><code>main_window.py</code></strong> creates the application window with <strong>six tabs</strong> (in order:
+  Analyze Footage, Projects, VP Builder, Inference Tuning, Models, About) plus a
+  menu bar (File / View &gt; Theme / Tools &gt; Inference Settings / Help):</li>
+<li><strong>Analyze Footage</strong> (<code>run_study_tab.py</code>) -- the analysis home: a three-mode
+    switch (Project / Video File / Camera), preflight checklist with fix hints, a
+    runs table with ledger status and resume-plan preview, per-run re-run and
+    edit-metadata actions, a collapsible Study setup area (pipeline, participants,
+    conditions, anonymize toggle, output root, <code>project.yaml</code> save), and a tabbed
+    output panel (log, in-GUI charts, CSV viewer, and a live dashboard --
+    rendered via <code>run_outputs.py</code>).</li>
+<li><strong>Projects</strong> (<code>projects_tab.py</code>) -- project lifecycle: the Build New Project
+    wizard, session planning, Record Live Session, and Crop &amp; Adjust.</li>
+<li><strong>VP Builder</strong> (<code>vp_builder_tab.py</code>) -- visual prompt builder for creating,
+    testing, and exporting <code>.vp.json</code> / <code>.vp.zip</code> files.</li>
+<li><strong>Inference Tuning</strong> (<code>gaze_tab/</code>; class <code>GazeTab</code>, so the module name lags the
+    UI label) -- the decoupled parameter-tuning playground. Its panels are
+    generated from the config schema's <code>ui</code> metadata: <code>ui_spec.py</code> (pure, headless)
+    resolves schema fields + flag help into a spec tree and <code>schema_panel.py</code>
+    renders it, including checkable toggle groups and a basic/advanced tier.
+    Hand-written sections remain only for widgets the schema cannot express
+    (source/model/VP pickers, backend radios, output paths). This tab is <em>not</em> the
+    per-run authority — the Inference Settings dialog (<code>Tools</code> menu) is.</li>
+<li><strong>Models</strong> (<code>models_tab.py</code>) -- manifest-driven weight manager (install,
+    verify against checksums, re-download).</li>
+<li>
+<p><strong>About</strong> (<code>about_tab.py</code>) -- in-app documentation reader that renders bundled
+    guide-card Markdown via <code>render_mkdocs_markdown</code>.</p>
+</li>
+<li>
+<p><strong><code>workers.py</code></strong> contains <code>threading.Thread</code>-based workers that keep the UI
+  responsive. <code>ProjectWorker</code> is a thin consumer of <code>iter_project_runs</code> (the same
+  generator the CLI consumes) -- it translates the <code>ProjectEvent</code> stream into queue
+  messages and frame previews; all discovery, ledger, and global-CSV logic lives
+  in the project layer.</p>
+</li>
+<li><strong><code>pipeline_dialog.py</code></strong> provides import/export for pipeline YAML files; the
+  export derives its sections and defaults from the config schema, so an exported
+  config round-trips through <code>load_pipeline</code>.</li>
+<li><strong><code>widgets.py</code></strong> supplies reusable UI components.</li>
+<li><strong><code>plugin_panel.py</code></strong> renders plugin configuration controls dynamically from registered plugins.</li>
+</ul>
+<h2 id="plugin-integration-points">Plugin Integration Points<a class="headerlink" href="#plugin-integration-points" title="Permanent link">&para;</a></h2>
+<p>Plugins hook into four registries defined in <code>Plugins/__init__.py</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Registry</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gaze_registry</code></td>
+<td>Alternative gaze estimation backends</td>
+<td>Gaze-LLE (<code>gazelle</code>)</td>
+</tr>
+<tr>
+<td><code>object_detection_registry</code></td>
+<td>Alternative detection backends</td>
+<td>Custom YOLO variants</td>
+</tr>
+<tr>
+<td><code>phenomena_registry</code></td>
+<td>New social gaze phenomena</td>
+<td>Custom attention metrics</td>
+</tr>
+<tr>
+<td><code>data_collection_registry</code></td>
+<td>Custom data sinks built via <code>from_args</code> and consumed at <code>finalize_run</code></td>
+<td>JSON loggers, custom exports</td>
+</tr>
+</tbody>
+</table>
+<p>Auto-discovery scans <code>Plugins/</code> subdirectories at startup; each plugin module
+exposes a module-level <code>PLUGIN_CLASS</code> <strong>sentinel</strong> that <code>PluginRegistry.discover()</code>
+finds and registers — there is no per-package "registration function". Load
+failures are recorded per registry (<code>registry.load_errors</code>) and surfaced loudly by
+project preflight. The built-in MobileGaze backend is not discovered this way — it
+is a core backend resolved directly by <code>gaze_factory</code> and does not live in a
+registry. Plugins provide <code>add_arguments(parser)</code> to register CLI flags, but note
+that only the gaze, object-detection, and phenomena registries are looped into the
+parser in v1.0.0 — <code>data_collection_registry</code> is built via <code>from_args</code> but its
+<code>add_arguments</code> is not wired (see <a href="../../reference/plugin-base-classes/">Plugin Base Classes</a>).</p>
+<h2 id="auxiliary-video-streams">Auxiliary Video Streams<a class="headerlink" href="#auxiliary-video-streams" title="Permanent link">&para;</a></h2>
+<p>MindSight supports optional per-participant auxiliary video feeds (e.g., eye cameras, first-person views) that are frame-synchronised with the main source. Auxiliary streams are configured via <code>--aux-stream</code> CLI flags
+(<code>SOURCE:VIDEO_TYPE:LABEL:PIDS</code>) or the <code>aux_streams</code> YAML section and are parsed
+into <code>AuxStreamConfig</code> instances. Each frame, the run loop reads one frame from
+every auxiliary capture and stores them in <code>FrameContext['aux_frames']</code> keyed by
+the <strong>3-tuple</strong> <code>(pid, stream_label, video_type)</code> (<code>mindsight/io/sources.py:92</code>).
+Auxiliary frames are not processed by any built-in pipeline stage but are passed to
+plugins (gaze backends, phenomena trackers) for consumption via
+<code>PhenomenaPlugin.get_aux_frame(...)</code>.</p>
+<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../frame-context/">FrameContext Reference</a></li>
+<li><a href="../object-detection-module/">Object Detection Module</a></li>
+<li><a href="../gaze-processing-module/">Gaze Processing Module</a></li>
+<li><a href="../plugin-system/">Plugin System</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

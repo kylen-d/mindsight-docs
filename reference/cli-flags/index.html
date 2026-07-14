@@ -1,0 +1,3858 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../inference-settings/">
+      
+      
+        <link rel="next" href="../pipeline-yaml-schema/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>CLI Flags - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-flags-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI Flags
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../studies/run-a-study-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-flags-relate-to-pipelineyaml-and-the-inference-settings-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How flags relate to pipeline.yaml and the Inference Settings dialog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How flags relate to pipeline.yaml and the Inference Settings dialog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input &amp; Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-ray-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze &amp; Ray Intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth Estimation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ray-forming-gazelle-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ray Forming (Gazelle blend)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gazelle-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gazelle backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mgaze-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MGaze backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iris-refined-gaze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iris-Refined Gaze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phenomena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-boost-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze Boost plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye-movement-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eye Movement plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#novel-salience-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Novel Salience plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pupillometry-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pupillometry plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline-yaml-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-flags-relate-to-pipelineyaml-and-the-inference-settings-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How flags relate to pipeline.yaml and the Inference Settings dialog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How flags relate to pipeline.yaml and the Inference Settings dialog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input &amp; Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-ray-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze &amp; Ray Intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth Estimation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ray-forming-gazelle-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ray Forming (Gazelle blend)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gazelle-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gazelle backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mgaze-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MGaze backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iris-refined-gaze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iris-Refined Gaze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phenomena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-boost-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze Boost plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye-movement-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eye Movement plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#novel-salience-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Novel Salience plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pupillometry-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pupillometry plugin
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cli-flags-reference">CLI Flags Reference<a class="headerlink" href="#cli-flags-reference" title="Permanent link">&para;</a></h1>
+<p>Every flag accepted by <code>python MindSight.py</code>. Run <code>python MindSight.py --help</code> for the
+built-in help text. This page is generated from the live parser
+(<code>mindsight/cli_flags.py</code> <code>CORE_FLAGS</code> plus the gaze / object-detection / phenomena
+plugin registries): <strong>151 flags</strong> in total.</p>
+<h2 id="how-flags-relate-to-pipelineyaml-and-the-inference-settings-dialog">How flags relate to <code>pipeline.yaml</code> and the Inference Settings dialog<a class="headerlink" href="#how-flags-relate-to-pipelineyaml-and-the-inference-settings-dialog" title="Permanent link">&para;</a></h2>
+<p>The CLI flags, the <code>pipeline.yaml</code> keys, and the GUI's <strong>Inference Settings</strong> dialog are
+three front-ends onto the same underlying pipeline parameters:</p>
+<ul>
+<li><strong><code>pipeline.yaml</code></strong> (loaded with <code>--pipeline</code>) sets the same values declaratively. Most
+  flags have a YAML home; the exact key spellings (which are grouped into <code>detection:</code>,
+  <code>gaze:</code>, <code>output:</code>, <code>depth:</code>, <code>phenomena:</code>, <code>performance:</code> sections, plus a <code>plugins:</code>
+  pass-through) are documented on the
+  <a href="../pipeline-yaml-schema/">pipeline.yaml schema</a> page. Plugin/backend flags that have no
+  dedicated YAML key (for example <code>--mgaze-model</code>, <code>--rf-gazelle-model</code>, the
+  <code>--gazelle-*</code> family) are set through the <code>plugins:</code> pass-through, which accepts any
+  flag's argparse destination with hyphens rewritten as underscores.</li>
+<li><strong>Inference Settings</strong> (Tools -&gt; Inference Settings in the GUI) is the per-run authority
+  for study runs; its fields map onto the same parameters. See
+  <a href="../inference-settings/">Inference Settings</a>. The decoupled <strong>Inference Tuning</strong> tab is a
+  non-authoritative playground for the same knobs.</li>
+</ul>
+<p><strong>Precedence:</strong> a CLI flag always overrides the value from <code>--pipeline</code>. YAML values are
+applied only for parameters the user did not type on the command line. Within the GUI, the
+Inference Settings dialog is authoritative for a study run.</p>
+<p>Flags marked <em>flag</em> are boolean switches (<code>store_true</code>); <em>str (optional)</em> flags (<code>--save</code>,
+<code>--summary</code>, <code>--heatmap</code>, <code>--charts</code>) may be given with no value to use an auto-named
+output path, or with a path to override it. <em>str (repeatable)</em> flags (<code>--aux-stream</code>) may
+be supplied multiple times.</p>
+<hr />
+<h3 id="input-orchestration">Input &amp; Orchestration<a class="headerlink" href="#input-orchestration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--source</code></td>
+<td>str</td>
+<td><code>"0"</code></td>
+<td>Video input source, defaults to webcam</td>
+</tr>
+<tr>
+<td><code>--pipeline</code></td>
+<td>str</td>
+<td>None</td>
+<td>Load pipeline configuration from a YAML file. CLI flags override YAML values.</td>
+</tr>
+<tr>
+<td><code>--project</code></td>
+<td>str</td>
+<td>None</td>
+<td>Run in project mode: process all staged videos (DIR/Inputs/Runs/ run folders, or the legacy flat DIR/Inputs/Videos/) using DIR/Pipeline/pipeline.yaml as config.</td>
+</tr>
+<tr>
+<td><code>--no-resume</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Project mode: reprocess every video, ignoring the resume ledger. Does not archive prior outputs. Default resumes -- skipping videos whose ledger entry is done with an unchanged config.</td>
+</tr>
+<tr>
+<td><code>--preflight</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Print the project readiness report (requires --project) and exit. Checks pipeline config, weights, VP file, runs, participants/conditions, device, disk, and plugin load errors. Exit 0 if no failures, else 1.</td>
+</tr>
+<tr>
+<td><code>--participant-ids</code></td>
+<td>str</td>
+<td>None</td>
+<td>Comma-separated participant labels for single-video mode. Positional: first label maps to track 0, second to track 1, etc. E.g. --participant-ids S70,S71,S72</td>
+</tr>
+<tr>
+<td><code>--participant-csv</code></td>
+<td>str</td>
+<td>None</td>
+<td>Path to a participant_ids.csv mapping video filenames to custom participant labels (see docs for format).</td>
+</tr>
+<tr>
+<td><code>--aux-stream</code></td>
+<td>str (repeatable)</td>
+<td>None</td>
+<td>Auxiliary video stream. Format: SOURCE:VIDEO_TYPE:LABEL:PID1,PID2 where SOURCE is the file path, VIDEO_TYPE is one of eye_only/face_closeup/wide_closeup/custom, LABEL is a user-defined stream label, and PIDS is a comma-separated list of participant labels. Repeatable for multiple streams.</td>
+</tr>
+<tr>
+<td><code>--aux-auto-detect</code></td>
+<td>flag</td>
+<td><code>True</code></td>
+<td>Enable automatic face detection on wide/face auxiliary streams (default: enabled).</td>
+</tr>
+<tr>
+<td><code>--device</code></td>
+<td><code>auto</code> / <code>cpu</code> / <code>cuda</code> / <code>mps</code></td>
+<td><code>"auto"</code></td>
+<td>Compute device for all backends: auto, cpu, cuda, or mps.  'auto' selects CUDA &gt; MPS &gt; CPU  (default: auto).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--save</code></td>
+<td>str (optional)</td>
+<td>None</td>
+<td>Save annotated video. Omit a value to use Outputs/Video/[stem]_Video_Output.mp4, or supply a custom path.</td>
+</tr>
+<tr>
+<td><code>--log</code></td>
+<td>str</td>
+<td>None</td>
+<td>Path for the per-frame CSV log.</td>
+</tr>
+<tr>
+<td><code>--summary</code></td>
+<td>str (optional)</td>
+<td>None</td>
+<td>Save post-run summary CSV. Omit a value to use Outputs/CSV Files/[stem]_Summary_Output.csv, or supply a custom path.</td>
+</tr>
+<tr>
+<td><code>--heatmap</code></td>
+<td>str (optional)</td>
+<td>None</td>
+<td>Save per-participant scene gaze heatmaps. Omit a value to use Outputs/heatmaps/[stem]_Heatmap_Output (one PNG per participant), or supply a custom directory/prefix path.</td>
+</tr>
+<tr>
+<td><code>--charts</code></td>
+<td>str (optional)</td>
+<td>None</td>
+<td>Generate post-run time-series charts for each phenomena tracker. Omit a value to use Outputs/Charts/[stem]_Charts.png, or supply a custom path.</td>
+</tr>
+<tr>
+<td><code>--anonymize</code></td>
+<td><code>blur</code> / <code>black</code></td>
+<td>None</td>
+<td>Anonymize faces in the output video: 'blur' applies heavy Gaussian blur, 'black' fills with a solid rectangle.</td>
+</tr>
+<tr>
+<td><code>--anonymize-padding</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+<td>Fraction of face bbox size added as padding for anonymization (default: 0.3).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--fast</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable bundled performance optimizations: skip phenomena on non-detection frames, throttle dashboard bridge, reduce GUI poll rate.</td>
+</tr>
+<tr>
+<td><code>--skip-phenomena</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Run phenomena trackers only every N frames (0 = every frame). Independent of --skip-frames.  (default: 0)</td>
+</tr>
+<tr>
+<td><code>--lite-overlay</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Minimal overlay: disable cone rendering, convergence markers, dwell arcs, and debug text.  Keeps gaze arrows, boxes, badges.</td>
+</tr>
+<tr>
+<td><code>--no-dashboard</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Skip dashboard composition for maximum throughput. Displays the raw annotated frame only.</td>
+</tr>
+<tr>
+<td><code>--profile</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Print per-stage timing breakdown every 100 frames.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--model</code></td>
+<td>str</td>
+<td><code>"yolov8n.pt"</code></td>
+<td>Object Detection Model, defaults to yolov8n.pt</td>
+</tr>
+<tr>
+<td><code>--conf</code></td>
+<td>float</td>
+<td><code>0.35</code></td>
+<td>Object detection confidence threshold, defaults to 0.35</td>
+</tr>
+<tr>
+<td><code>--classes</code></td>
+<td>str[]</td>
+<td><code>[]</code></td>
+<td>Specified YOLO Object Detection Classes Prompt</td>
+</tr>
+<tr>
+<td><code>--blacklist</code></td>
+<td>str[]</td>
+<td><code>[]</code></td>
+<td>Specified YOLO Object Detection Classes Blacklist</td>
+</tr>
+<tr>
+<td><code>--skip-frames</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Frames between object detection. Higher = faster but less accurate. (Defaults to 1, i.e. process every frame)</td>
+</tr>
+<tr>
+<td><code>--detect-scale</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Detection scale for Object Recognition</td>
+</tr>
+<tr>
+<td><code>--vp-file</code></td>
+<td>str</td>
+<td>None</td>
+<td>Path to visual prompt file for use with YOLOE object detection models</td>
+</tr>
+<tr>
+<td><code>--vp-model</code></td>
+<td>str</td>
+<td><code>"yoloe-26l-seg.pt"</code></td>
+<td>YOLOE model to use alongside visual prompting for object detection</td>
+</tr>
+<tr>
+<td><code>--no-detector</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Run without any object-detection model: faces, gaze rays, and gaze-tip phenomena only (no object hits or lock-on). Not compatible with --vp-file.</td>
+</tr>
+<tr>
+<td><code>--obj-persistence</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Dead-reckon object bboxes for N frames after they disappear (default 0).</td>
+</tr>
+<tr>
+<td><code>--merge-overlaps</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Merge or filter overlapping same-class detections.</td>
+</tr>
+<tr>
+<td><code>--merge-overlap-strategy</code></td>
+<td><code>filter</code> / <code>merge</code> / <code>dynamic</code></td>
+<td><code>"dynamic"</code></td>
+<td>Overlap strategy: 'filter' keeps highest-conf box, 'merge' creates encompassing box, 'dynamic' chooses per-cluster based on confidence and size (default: dynamic).</td>
+</tr>
+<tr>
+<td><code>--merge-overlap-threshold</code></td>
+<td>float</td>
+<td><code>0.7</code></td>
+<td>Overlap threshold to trigger merge (default: 0.7).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gaze-ray-intersection">Gaze &amp; Ray Intersection<a class="headerlink" href="#gaze-ray-intersection" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ray-length</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Gaze ray-length multiplier, default 1.0</td>
+</tr>
+<tr>
+<td><code>--conf-ray</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Dynamically adjust gaze ray-length based on gaze confidence value</td>
+</tr>
+<tr>
+<td><code>--gaze-tips</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Adds circular bounding-box to tip of gaze-rays, used to determine intersection between gaze-rays. Set radius with --tip-radius (default 80).</td>
+</tr>
+<tr>
+<td><code>--tip-radius</code></td>
+<td>int</td>
+<td><code>80</code></td>
+<td>Pixel radius for --gaze-tips (default 80)</td>
+</tr>
+<tr>
+<td><code>--adaptive-ray</code></td>
+<td><code>off</code> / <code>extend</code> / <code>snap</code></td>
+<td><code>"off"</code></td>
+<td>Adaptive ray mode: 'off' disables, 'extend' freely extends the ray toward the nearest object, 'snap' locks the endpoint to the object centre (default: off).</td>
+</tr>
+<tr>
+<td><code>--snap-dist</code></td>
+<td>float</td>
+<td><code>150.0</code></td>
+<td>Maximum snap distance in pixels.</td>
+</tr>
+<tr>
+<td><code>--snap-bbox-scale</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>Fraction of bbox half-diagonal added to snap radius (default 0.0)</td>
+</tr>
+<tr>
+<td><code>--snap-w-dist</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Snap scoring weight for normalized distance penalty (default 1.0)</td>
+</tr>
+<tr>
+<td><code>--snap-w-angle</code></td>
+<td>float</td>
+<td><code>0.8</code></td>
+<td>Snap scoring weight for angular deviation penalty (default 0.8)</td>
+</tr>
+<tr>
+<td><code>--snap-w-size</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>Snap scoring weight for object size reward (default 0.0)</td>
+</tr>
+<tr>
+<td><code>--snap-w-intersect</code></td>
+<td>float</td>
+<td><code>0.5</code></td>
+<td>Snap scoring bonus for ray-bbox intersection (default 0.5)</td>
+</tr>
+<tr>
+<td><code>--snap-w-temporal</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+<td>Snap scoring bonus for previous-frame target stickiness (default 0.3)</td>
+</tr>
+<tr>
+<td><code>--snap-gate-angle</code></td>
+<td>float</td>
+<td><code>60.0</code></td>
+<td>Hard angular cutoff in degrees: objects beyond this angle from the blended gaze+head direction are never snap candidates (default 60.0).</td>
+</tr>
+<tr>
+<td><code>--snap-head-blend</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+<td>Blend factor for angular scoring: 0=pure gaze direction, 1=pure head orientation (default 0.3).</td>
+</tr>
+<tr>
+<td><code>--snap-quality-thresh</code></td>
+<td>float</td>
+<td><code>0.8</code></td>
+<td>Maximum score to accept a snap match. Higher values are more permissive. Set lower to reject poor matches (default 0.8).</td>
+</tr>
+<tr>
+<td><code>--snap-tip-dist</code></td>
+<td>float</td>
+<td><code>-1.0</code></td>
+<td>Tip-snap distance threshold. -1 = use --snap-dist (default -1).</td>
+</tr>
+<tr>
+<td><code>--snap-tip-quality</code></td>
+<td>float</td>
+<td><code>-1.0</code></td>
+<td>Tip-snap quality threshold. -1 = use --snap-quality-thresh (default -1).</td>
+</tr>
+<tr>
+<td><code>--hit-conf-gate</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>Minimum per-face gaze confidence for ray-object hit detection. 0.0 = disabled (default).</td>
+</tr>
+<tr>
+<td><code>--detect-extend</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>Extend gaze-object detection N pixels past the visual ray/cone endpoint. 0 = detection matches visual exactly (default: the default).</td>
+</tr>
+<tr>
+<td><code>--detect-extend-scope</code></td>
+<td><code>objects</code> / <code>phenomena</code> / <code>both</code></td>
+<td><code>"objects"</code></td>
+<td>Scope for --detect-extend: 'objects' extends only ray-object hit detection, 'phenomena' extends only phenomena tracking (mutual gaze, social ref), 'both' extends both (default: objects).</td>
+</tr>
+<tr>
+<td><code>--gaze-cone</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>Replaces standard gaze vectors with vision cones of a specified angle in degrees (disabled by default).</td>
+</tr>
+<tr>
+<td><code>--gaze-lock</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable fixation lock-on (default: off).</td>
+</tr>
+<tr>
+<td><code>--dwell-frames</code></td>
+<td>int</td>
+<td><code>15</code></td>
+<td>Frames of sustained gaze required to trigger lock-on.</td>
+</tr>
+<tr>
+<td><code>--lock-dist</code></td>
+<td>int</td>
+<td><code>100</code></td>
+<td>Maximum pixel distance for lock-on to persist.</td>
+</tr>
+<tr>
+<td><code>--gaze-debug</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Draw debug annotations for gaze processing.</td>
+</tr>
+<tr>
+<td><code>--snap-release-frames</code></td>
+<td>int</td>
+<td><code>5</code></td>
+<td>Frames of no-match before releasing the held snap target (default 5).</td>
+</tr>
+<tr>
+<td><code>--snap-engage-frames</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Frames of consistent match required before engaging snap for the first time. 0 = instant engage (default 0).</td>
+</tr>
+<tr>
+<td><code>--reid-grace-seconds</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Seconds a lost face track stays in the re-ID buffer (default 1.0).</td>
+</tr>
+<tr>
+<td><code>--forward-gaze-threshold</code></td>
+<td>float</td>
+<td><code>5.0</code></td>
+<td>Pitch/yaw angles below this (degrees) are treated as looking forward at the camera. Set to 0 to disable (default 5.0).</td>
+</tr>
+<tr>
+<td><code>--smooth-snap</code></td>
+<td><code>off</code> / <code>objects</code> / <code>gaze_tips</code> / <code>all</code></td>
+<td><code>"off"</code></td>
+<td>Smooth snap mode: smoothly interpolate the ray toward snap targets instead of jumping instantly. 'objects' = smooth object snaps only, 'gaze_tips' = smooth gaze-tip snaps only, 'all' = both (default: off).</td>
+</tr>
+<tr>
+<td><code>--smooth-snap-alpha</code></td>
+<td>float</td>
+<td><code>0.2</code></td>
+<td>EMA rate for smooth snap: lower = smoother/slower, higher = faster/more responsive (default: 0.20).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="depth-estimation">Depth Estimation<a class="headerlink" href="#depth-estimation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--depth</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable monocular depth estimation.</td>
+</tr>
+<tr>
+<td><code>--no-depth</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Explicitly disable depth estimation.</td>
+</tr>
+<tr>
+<td><code>--depth-backend</code></td>
+<td>str</td>
+<td><code>"midas_small"</code></td>
+<td>Depth model backend (default: midas_small).</td>
+</tr>
+<tr>
+<td><code>--depth-input-size</code></td>
+<td>int</td>
+<td><code>384</code></td>
+<td>Depth model input resolution (default: 384).</td>
+</tr>
+<tr>
+<td><code>--depth-skip-frames</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Run depth every N detection cycles (default: 1).</td>
+</tr>
+<tr>
+<td><code>--depth-aware-scoring</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable depth-weighted snap scoring.</td>
+</tr>
+<tr>
+<td><code>--depth-w-depth</code></td>
+<td>float</td>
+<td><code>0.4</code></td>
+<td>Depth match weight in snap scoring (default: 0.4).</td>
+</tr>
+<tr>
+<td><code>--depth-sample-radius</code></td>
+<td>int</td>
+<td><code>2</code></td>
+<td>Half-size of patch for depth sampling (default: 2).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ray-forming-gazelle-blend">Ray Forming (Gazelle blend)<a class="headerlink" href="#ray-forming-gazelle-blend" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--rf-gazelle-model</code></td>
+<td>str</td>
+<td>None</td>
+<td>Path to a Gaze-LLE checkpoint (.pt) for Gazelle blend ray forming. Used alongside a pitch/yaw backend (MGaze, etc.) to periodically correct rays with Gaze-LLE heatmaps.</td>
+</tr>
+<tr>
+<td><code>--rf-gazelle-name</code></td>
+<td><code>gazelle_dinov2_vitb14</code> / <code>gazelle_dinov2_vitb14_inout</code> / <code>gazelle_dinov2_vitl14</code> / <code>gazelle_dinov2_vitl14_inout</code></td>
+<td><code>"gazelle_dinov2_vitb14"</code></td>
+<td>Gaze-LLE model variant for ray forming (default: gazelle_dinov2_vitb14).</td>
+</tr>
+<tr>
+<td><code>--rf-gazelle-interval</code></td>
+<td>int</td>
+<td>None</td>
+<td>(Legacy) alias for --min-call-gap. If both are given, --min-call-gap wins. Kept so old scripts/YAMLs keep working (default: unset -&gt; min_call_gap default).</td>
+</tr>
+<tr>
+<td><code>--min-call-gap</code></td>
+<td>int</td>
+<td>None</td>
+<td>Minimum frames between Gaze-LLE inference calls. The scheduler also requires at least one participant to be fixating before firing (default: 30).</td>
+</tr>
+<tr>
+<td><code>--fixation-v-threshold</code></td>
+<td>float</td>
+<td><code>0.04</code></td>
+<td>Smoothed pitch/yaw velocity (rad/frame) at which a face is treated as 50% fixating. Lower = safer anchoring (default: 0.04).</td>
+</tr>
+<tr>
+<td><code>--fixation-d-threshold</code></td>
+<td>float</td>
+<td><code>0.15</code></td>
+<td>Windowed pitch/yaw dispersion (rad) at which a face is treated as 50% fixating (default: 0.15).</td>
+</tr>
+<tr>
+<td><code>--dir-min-cutoff</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Direction One Euro smoother floor cutoff (Hz). Lower = smoother at rest (default: 1.0).</td>
+</tr>
+<tr>
+<td><code>--dir-beta</code></td>
+<td>float</td>
+<td><code>0.5</code></td>
+<td>Direction One Euro responsiveness. Higher = snaps to fast motion (default: 0.5).</td>
+</tr>
+<tr>
+<td><code>--len-min-cutoff</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Length One Euro smoother floor cutoff (Hz) (default: 1.0).</td>
+</tr>
+<tr>
+<td><code>--len-beta</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+<td>Length One Euro responsiveness. Lower than direction by default so length holds steadier (default: 0.3).</td>
+</tr>
+<tr>
+<td><code>--len-hold-tau</code></td>
+<td>float</td>
+<td><code>5.0</code></td>
+<td>Seconds the Gaze-LLE-derived ray length persists after an accepted inference before decaying back to the pitch/yaw baseline. Direction reverts quickly on its own; raise this to hold ray reach longer between inferences (default: 5.0).</td>
+</tr>
+<tr>
+<td><code>--depth-ray-length</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Use depth map to scale ray length based on scene geometry (default: off).</td>
+</tr>
+<tr>
+<td><code>--depth-length-min</code></td>
+<td>float</td>
+<td><code>0.5</code></td>
+<td>Ray length multiplier at depth=0 (nearest) (default: 0.5).</td>
+</tr>
+<tr>
+<td><code>--depth-length-max</code></td>
+<td>float</td>
+<td><code>3.0</code></td>
+<td>Ray length multiplier at depth=1 (farthest) (default: 3.0).</td>
+</tr>
+<tr>
+<td><code>--depth-belief-boost</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+<td>How much depth agreement boosts Gaze-LLE heatmap confidence in the belief update (default: 0.0).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gazelle-backend">Gazelle backend<a class="headerlink" href="#gazelle-backend" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--gazelle-model</code></td>
+<td>str</td>
+<td>None</td>
+<td>Path to a Gazelle checkpoint (.pt).  Activates the Gazelle backend.</td>
+</tr>
+<tr>
+<td><code>--gazelle-name</code></td>
+<td><code>gazelle_dinov2_vitb14</code> / <code>gazelle_dinov2_vitb14_inout</code> / <code>gazelle_dinov2_vitl14</code> / <code>gazelle_dinov2_vitl14_inout</code></td>
+<td><code>"gazelle_dinov2_vitb14"</code></td>
+<td>Gazelle model variant  (choices: gazelle_dinov2_vitb14, gazelle_dinov2_vitb14_inout, gazelle_dinov2_vitl14, gazelle_dinov2_vitl14_inout;  default: gazelle_dinov2_vitb14).</td>
+</tr>
+<tr>
+<td><code>--gazelle-inout-threshold</code></td>
+<td>float</td>
+<td><code>0.5</code></td>
+<td>In/out-of-view confidence threshold for *_inout model variants.  No effect on non-inout models  (default: 0.5).</td>
+</tr>
+<tr>
+<td><code>--gazelle-device</code></td>
+<td><code>auto</code> / <code>cpu</code> / <code>cuda</code> / <code>mps</code></td>
+<td><code>"auto"</code></td>
+<td>Compute device: auto, cpu, cuda, or mps.  'auto' selects CUDA &gt; MPS &gt; CPU  (default: auto).</td>
+</tr>
+<tr>
+<td><code>--gazelle-skip-frames</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Reuse the previous gaze result for N frames between inference runs.  0 = no skipping  (default: 0).</td>
+</tr>
+<tr>
+<td><code>--gazelle-fp16</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Use half-precision (float16) inference on CUDA/MPS (ignored on CPU).</td>
+</tr>
+<tr>
+<td><code>--gazelle-compile</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Use torch.compile() for the Gazelle model (PyTorch 2.0+ only).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mgaze-backend">MGaze backend<a class="headerlink" href="#mgaze-backend" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--mgaze-model</code></td>
+<td>str</td>
+<td>(bundled ONNX weights)</td>
+<td>Path to MGaze model weights (.onnx or .pt)</td>
+</tr>
+<tr>
+<td><code>--mgaze-arch</code></td>
+<td><code>resnet18</code> / <code>resnet34</code> / <code>resnet50</code> / <code>mobilenetv2</code> / <code>mobileone_s0</code> / <code>mobileone_s1</code> / <code>mobileone_s2</code> / <code>mobileone_s3</code> / <code>mobileone_s4</code></td>
+<td>None</td>
+<td>Architecture name (required for .pt models)</td>
+</tr>
+<tr>
+<td><code>--mgaze-dataset</code></td>
+<td>str</td>
+<td><code>"gaze360"</code></td>
+<td>Dataset config key (default: gaze360)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iris-refined-gaze">Iris-Refined Gaze<a class="headerlink" href="#iris-refined-gaze" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--iris-refine</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable iris-based gaze refinement (wraps active backend).</td>
+</tr>
+<tr>
+<td><code>--iris-refine-weight</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+<td>Blending weight for iris correction (default: 0.3).</td>
+</tr>
+<tr>
+<td><code>--iris-refine-upscale</code></td>
+<td>float</td>
+<td><code>2.0</code></td>
+<td>Upscale face crops before iris extraction (default: 2.0).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phenomena">Phenomena<a class="headerlink" href="#phenomena" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--joint-attention</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable joint-attention tracking.</td>
+</tr>
+<tr>
+<td><code>--ja-window</code></td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Temporal consistency window (frames). 0 = disabled (default).</td>
+</tr>
+<tr>
+<td><code>--ja-window-thresh</code></td>
+<td>float</td>
+<td><code>0.7</code></td>
+<td>Fraction of window frames an object must be attended for JA confirmation.</td>
+</tr>
+<tr>
+<td><code>--ja-quorum</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+<td>Fraction of faces required for joint attention (default 1.0).</td>
+</tr>
+<tr>
+<td><code>--mutual-gaze</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable mutual-gaze detection.</td>
+</tr>
+<tr>
+<td><code>--social-ref</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable social-referencing detection.</td>
+</tr>
+<tr>
+<td><code>--social-ref-window</code></td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Window size (frames) for social referencing.</td>
+</tr>
+<tr>
+<td><code>--gaze-follow</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable gaze-following detection.</td>
+</tr>
+<tr>
+<td><code>--gaze-follow-lag</code></td>
+<td>int</td>
+<td><code>30</code></td>
+<td>Maximum lag (frames) for gaze-following alignment.</td>
+</tr>
+<tr>
+<td><code>--gaze-aversion</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable gaze-aversion detection.</td>
+</tr>
+<tr>
+<td><code>--aversion-window</code></td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Window size (frames) for gaze aversion.</td>
+</tr>
+<tr>
+<td><code>--aversion-conf</code></td>
+<td>float</td>
+<td><code>0.5</code></td>
+<td>Confidence threshold for gaze aversion.</td>
+</tr>
+<tr>
+<td><code>--scanpath</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable scanpath recording.</td>
+</tr>
+<tr>
+<td><code>--scanpath-dwell</code></td>
+<td>int</td>
+<td><code>8</code></td>
+<td>Minimum fixation dwell (frames) for scanpath points.</td>
+</tr>
+<tr>
+<td><code>--gaze-leader</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable gaze-leadership detection.</td>
+</tr>
+<tr>
+<td><code>--gaze-leader-tips</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Also detect leadership via gaze-tip convergence (requires --gaze-tips).</td>
+</tr>
+<tr>
+<td><code>--gaze-leader-tip-lag</code></td>
+<td>int</td>
+<td><code>15</code></td>
+<td>Lookback frames for tip-arrival priority (default: 15).</td>
+</tr>
+<tr>
+<td><code>--attn-span</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Track per-participant per-object average attention span (mean completed-glance duration). Most salient object shown in HUD.</td>
+</tr>
+<tr>
+<td><code>--all-phenomena</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable all gaze-phenomena trackers at once.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gaze-boost-plugin">Gaze Boost plugin<a class="headerlink" href="#gaze-boost-plugin" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--gaze-boost</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Boost confidence of detections near gaze endpoints.</td>
+</tr>
+<tr>
+<td><code>--gaze-boost-factor</code></td>
+<td>float</td>
+<td><code>1.5</code></td>
+<td>Multiplicative confidence boost (default: 1.5).</td>
+</tr>
+<tr>
+<td><code>--gaze-boost-radius</code></td>
+<td>float</td>
+<td><code>100.0</code></td>
+<td>Pixel radius around gaze endpoints (default: 100).</td>
+</tr>
+<tr>
+<td><code>--gaze-boost-min-conf</code></td>
+<td>float</td>
+<td><code>0.1</code></td>
+<td>Minimum YOLO conf for sub-threshold candidates (default: 0.10).</td>
+</tr>
+<tr>
+<td><code>--gaze-boost-max-conf</code></td>
+<td>float</td>
+<td><code>0.95</code></td>
+<td>Cap on boosted confidence (default: 0.95).</td>
+</tr>
+<tr>
+<td><code>--gaze-boost-classes</code></td>
+<td>str[]</td>
+<td>None</td>
+<td>Only boost these class names (default: all non-person classes).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eye-movement-plugin">Eye Movement plugin<a class="headerlink" href="#eye-movement-plugin" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--eye-movement</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable eye movement classification.</td>
+</tr>
+<tr>
+<td><code>--em-source</code></td>
+<td><code>gaze</code> / <code>iris</code></td>
+<td><code>"gaze"</code></td>
+<td>Velocity source (default: gaze).</td>
+</tr>
+<tr>
+<td><code>--em-saccade-thresh</code></td>
+<td>float</td>
+<td><code>30.0</code></td>
+<td>Saccade threshold px/frame (default: 30.0).</td>
+</tr>
+<tr>
+<td><code>--em-fixation-thresh</code></td>
+<td>float</td>
+<td><code>10.0</code></td>
+<td>Fixation threshold px/frame (default: 10.0).</td>
+</tr>
+<tr>
+<td><code>--em-min-fixation</code></td>
+<td>int</td>
+<td><code>4</code></td>
+<td>Min fixation duration frames (default: 4).</td>
+</tr>
+<tr>
+<td><code>--em-velocity-window</code></td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Median filter window (default: 3).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="novel-salience-plugin">Novel Salience plugin<a class="headerlink" href="#novel-salience-plugin" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--novel-salience</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable novel-salience detection (rapid gaze-shift tracking).</td>
+</tr>
+<tr>
+<td><code>--ns-speed-thresh</code></td>
+<td>float</td>
+<td><code>40.0</code></td>
+<td>Gaze-endpoint speed threshold in pixels/frame to flag a novel-salience event (default: 40).  Lower = more sensitive.</td>
+</tr>
+<tr>
+<td><code>--ns-cooldown</code></td>
+<td>int</td>
+<td><code>20</code></td>
+<td>Minimum frames between consecutive novel-salience events for the same face track (default: 20).</td>
+</tr>
+<tr>
+<td><code>--ns-history</code></td>
+<td>int</td>
+<td><code>2</code></td>
+<td>Sliding-window depth for velocity smoothing (default: 2).  1 = instantaneous; 3 = heavier smoothing.</td>
+</tr>
+<tr>
+<td><code>--ns-flash</code></td>
+<td>int</td>
+<td><code>12</code></td>
+<td>Frames the visual saccade indicator persists after an event (default: 12).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pupillometry-plugin">Pupillometry plugin<a class="headerlink" href="#pupillometry-plugin" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Type / choices</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pupillometry</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable pupillometry tracking.</td>
+</tr>
+<tr>
+<td><code>--pupil-mode</code></td>
+<td><code>rgb</code> / <code>ir</code></td>
+<td><code>"rgb"</code></td>
+<td>Measurement mode (default: rgb).</td>
+</tr>
+<tr>
+<td><code>--pupil-baseline</code></td>
+<td>int</td>
+<td><code>90</code></td>
+<td>Baseline frames for calibration (default: 90).</td>
+</tr>
+<tr>
+<td><code>--pupil-upscale</code></td>
+<td>float</td>
+<td><code>2.0</code></td>
+<td>Upscale factor for RGB mode (default: 2.0).</td>
+</tr>
+<tr>
+<td><code>--pupil-ir-thresh</code></td>
+<td>int</td>
+<td><code>40</code></td>
+<td>IR threshold for dark-pupil segmentation (default: 40).</td>
+</tr>
+<tr>
+<td><code>--pupil-filter</code></td>
+<td><code>kalman</code> / <code>ema</code></td>
+<td><code>"kalman"</code></td>
+<td>Ratio smoothing filter (default: kalman).</td>
+</tr>
+<tr>
+<td><code>--pupil-ema-alpha</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+<td>EMA smoothing alpha -- only used when --pupil-filter is ema (default: 0.3).</td>
+</tr>
+<tr>
+<td><code>--pupil-kalman-process-noise</code></td>
+<td>float</td>
+<td><code>0.0001</code></td>
+<td>Kalman process noise -- controls how fast the filter adapts to ratio changes. Only used when --pupil-filter is kalman (default: 0.0001).</td>
+</tr>
+<tr>
+<td><code>--pupil-kalman-meas-noise</code></td>
+<td>float</td>
+<td><code>0.01</code></td>
+<td>Kalman measurement noise -- higher values smooth more aggressively. Only used when --pupil-filter is kalman (default: 0.01).</td>
+</tr>
+<tr>
+<td><code>--pupil-ear-thresh</code></td>
+<td>float</td>
+<td><code>0.21</code></td>
+<td>EAR threshold for blink detection (default: 0.21).</td>
+</tr>
+<tr>
+<td><code>--pupil-blink-frames</code></td>
+<td>int</td>
+<td><code>2</code></td>
+<td>Min consecutive low-EAR frames for blink (default: 2).</td>
+</tr>
+<tr>
+<td><code>--pupil-outlier-window</code></td>
+<td>int</td>
+<td><code>15</code></td>
+<td>Hampel outlier filter window size (default: 15).</td>
+</tr>
+<tr>
+<td><code>--pupil-per-eye</code></td>
+<td>flag</td>
+<td>off</td>
+<td>Enable per-eye (left/right) measurements.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

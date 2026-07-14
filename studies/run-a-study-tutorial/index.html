@@ -1,0 +1,3547 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../../getting-started/installation/">
+      
+      
+        <link rel="next" href="../../getting-started/quickstart-cli/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Run a Study (Tutorial) - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#run-a-study-with-mindsight" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Run a Study (Tutorial)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-mindsight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install MindSight
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-home-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The home screen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-the-study-project-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Open the study project folder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-build-a-project-with-the-wizard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Build a project with the wizard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-read-the-preflight-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Read the preflight checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-add-edit-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Add, edit, record
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Add, edit, record">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a recording
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-a-recordings-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit a recording's metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record-a-session-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record a session (live)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-wide-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Study-wide settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-run-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Run the analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-outputs-and-what-to-hand-the-analyst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Outputs and what to hand the analyst
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-re-run-one-failed-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Re-run one failed video
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-fix-a-recording-crop-and-frame-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Fix a recording: crop and frame rate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-analysis-without-a-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick analysis without a project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-the-other-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: the other tabs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix: the other tabs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-prompts-vp-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual prompts (VP Builder)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-troubleshooting-every-preflight-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Troubleshooting: every preflight message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-this-guide-as-a-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save this guide as a PDF
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/inference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/pipeline-yaml-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-mindsight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install MindSight
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-home-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The home screen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-the-study-project-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Open the study project folder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-build-a-project-with-the-wizard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Build a project with the wizard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-read-the-preflight-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Read the preflight checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-add-edit-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Add, edit, record
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Add, edit, record">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a recording
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-a-recordings-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit a recording's metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record-a-session-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record a session (live)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-wide-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Study-wide settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-run-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Run the analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-outputs-and-what-to-hand-the-analyst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Outputs and what to hand the analyst
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-re-run-one-failed-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Re-run one failed video
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-fix-a-recording-crop-and-frame-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Fix a recording: crop and frame rate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-analysis-without-a-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick analysis without a project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-the-other-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: the other tabs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix: the other tabs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-prompts-vp-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visual prompts (VP Builder)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-troubleshooting-every-preflight-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Troubleshooting: every preflight message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-this-guide-as-a-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save this guide as a PDF
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="run-a-study-with-mindsight">Run a Study with MindSight<a class="headerlink" href="#run-a-study-with-mindsight" title="Permanent link">&para;</a></h1>
+<p>This is a start-to-finish walkthrough for a research assistant who has been
+handed a set of recordings and asked to run them through MindSight. It assumes
+<strong>no prior experience</strong> with the command line -- every step is a click in the
+app.</p>
+<p>The guide is deliberately generic. Wherever it says <em>your study</em> or <em>your study
+lead</em>, fill in the specifics your lab gave you. The concrete example it points
+at is the <code>Projects/ExampleStudy/</code> folder that ships with MindSight and the
+shipped preset <code>configs/pipeline_known_good.yaml</code> -- use them as a reference for
+the shape of a real project.</p>
+<div class="admonition note">
+<p class="admonition-title">What you need before you start</p>
+<ul>
+<li>MindSight installed (below).</li>
+<li>The <strong>study project folder</strong> your study lead prepared, or the videos plus
+  the participant/condition scheme to build one.</li>
+<li>A rough idea of your study's <em>conditions</em> (the experimental labels for each
+  recording) and <em>participants</em> (who is in each recording).</li>
+</ul>
+</div>
+<hr />
+<h2 id="1-install-mindsight">1. Install MindSight<a class="headerlink" href="#1-install-mindsight" title="Permanent link">&para;</a></h2>
+<p>MindSight ships as a double-click installer that sets up a private Python, all
+of MindSight's dependencies, and the four required model weights (about 115 MB).
+You do not need to install anything else first -- no Python, no packages.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">macOS</label><label for="__tabbed_1_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Download the release zip (for example <code>MindSight-1.0.0-mac.zip</code>) from the
+   lab's release location. <em>(Download links go live once the first tagged
+   release is published; until then your study lead will hand you the zip.)</em></li>
+<li>Double-click the zip in Finder to extract it, then move the extracted
+   folder somewhere you can find again (Desktop or Downloads is fine).</li>
+<li>Open the extracted folder. <strong>Right-click</strong> (or Control-click)
+   <code>Install-MindSight.command</code> and choose <strong>Open</strong>.</li>
+<li>macOS Gatekeeper may warn that the file is from an unidentified developer.
+   Because you used <strong>right-click &gt; Open</strong>, the dialog gives you an <strong>Open</strong>
+   button -- click it. (A plain double-click only offers <em>Move to Trash</em>;
+   right-click &gt; Open is how you get past it. This is expected for an
+   in-house tool that is not code-signed.)</li>
+<li>A Terminal window opens and walks through six steps, printing a line for
+   each. Leave it running -- installing dependencies and downloading the
+   weights takes several minutes. It finishes with either
+   <code>MindSight install: PASS</code> or <code>MindSight install: FAILED at step N</code>.</li>
+<li>Press Return to close the window.</li>
+</ol>
+<p>The installer creates a <strong>MindSight</strong> app in your Applications folder and a
+matching <strong>MindSight</strong> link on your Desktop. Open either one to launch the
+app. The first launch may prompt Gatekeeper once more -- use
+<strong>right-click &gt; Open</strong> that one time.</p>
+<p>Everything lives under <code>~/MindSight</code> (your home folder's <code>MindSight</code>
+directory). Your results are written inside <code>~/MindSight/app/Outputs/</code>.</p>
+<p><em>(Screenshots of the macOS Finder / Gatekeeper / Terminal install steps are
+to follow. The wording above matches exactly what you will see.)</em></p>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Download the release zip (for example <code>MindSight-1.0.0-win.zip</code>).
+   <em>(Download links go live once the first tagged release is published.)</em></li>
+<li>Right-click the zip, choose <strong>Extract All...</strong>, and extract it to a folder
+   you can find again.</li>
+<li>Open the extracted folder and double-click <strong><code>Install-MindSight.bat</code></strong>.</li>
+<li>Windows may show a blue <strong>"Windows protected your PC"</strong> SmartScreen box
+   because the installer is unsigned. Click <strong>More info</strong>, then <strong>Run
+   anyway</strong>. (This is expected for an in-house tool.)</li>
+<li>A console window walks through seven steps. Leave it running; it finishes
+   with <code>MindSight install: PASS</code> or <code>MindSight install: FAILED at step N</code>.</li>
+<li>Press a key to close the window.</li>
+</ol>
+<p>Launch MindSight from the <strong>MindSight</strong> shortcut on your Desktop or Start
+Menu. Everything lives under <code>%LOCALAPPDATA%\MindSight</code> (usually
+<code>C:\Users\&lt;you&gt;\AppData\Local\MindSight</code>); results land in
+<code>...\MindSight\app\Outputs\</code>.</p>
+<p><em>(Windows install screenshots are to follow; the SmartScreen wording above is
+exactly what appears.)</em></p>
+</div>
+</div>
+</div>
+<p>If your lab set you up on a shared lab machine that already has MindSight, skip
+this section -- just open the app.</p>
+<hr />
+<h2 id="2-the-home-screen">2. The home screen<a class="headerlink" href="#2-the-home-screen" title="Permanent link">&para;</a></h2>
+<p>When MindSight opens you land on the <strong>Analyze Footage</strong> tab. At the top of the
+tab is a three-way mode switch -- <strong>Project | Video File | Camera</strong> -- and the
+whole tab changes with it:</p>
+<ul>
+<li><strong>Project</strong> -- open a study project, read its preflight checklist, and run the
+  whole batch. This is where you spend almost all of your time.</li>
+<li><strong>Video File</strong> -- analyze a single video without any project. Good for a quick
+  look at one recording.</li>
+<li><strong>Camera</strong> -- record and analyze live from a webcam.</li>
+</ul>
+<p><img alt="The Analyze Footage home screen with no project open" src="../../assets/tutorial/home-screen.png" /></p>
+<p>The other tabs are for occasional tasks:</p>
+<ul>
+<li><strong>Projects</strong> -- your project library: build a new study project with the
+  wizard, reopen a recent one, or review a project's runs, notes, and outputs.</li>
+<li><strong>VP Builder</strong> -- make a visual prompt (teaches the detector your study's
+  objects).</li>
+<li><strong>Inference Tuning</strong> -- an interactive playground for experimenting with
+  gaze settings on a live preview. <em>Settings here do NOT affect your study
+  runs</em> -- those come from the project's pipeline preset and the <strong>Inference
+  Settings</strong> dialog (see the appendix).</li>
+<li><strong>Models</strong> -- check, verify, or re-download the model weights.</li>
+</ul>
+<hr />
+<h2 id="3-open-the-study-project-folder">3. Open the study project folder<a class="headerlink" href="#3-open-the-study-project-folder" title="Permanent link">&para;</a></h2>
+<p>A MindSight <em>project</em> is just a folder with a known layout. Your study lead most
+likely handed you one already; if so, that folder is your starting point.</p>
+<p>Any of these opens it -- use whichever is closest to hand:</p>
+<ul>
+<li><strong>Projects tab</strong> -- your library lists recent projects with their run counts;
+  double-click one, or <strong>Browse...</strong> to any folder.</li>
+<li><strong>Analyze Footage, Project mode</strong> -- <strong>Browse...</strong>, paste a path and press
+  <strong>Open</strong>, or pick from the <strong>Recent projects...</strong> dropdown.</li>
+<li><strong>File menu</strong> -- <strong>Open Project...</strong>.</li>
+<li><strong>Drag and drop</strong> -- drop the project folder anywhere onto the Analyze
+  Footage tab.</li>
+</ul>
+<p>Opening a project snaps Analyze Footage into Project mode with that project
+loaded.</p>
+<p>The example project that ships with MindSight, <code>Projects/ExampleStudy/</code>, shows
+the shape a project takes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ExampleStudy/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── project.yaml            # points at the pipeline preset; holds participants/conditions
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── notes.md                # free-form study notes (shown on the Projects tab)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── Pipeline/
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── pipeline.yaml       # the pipeline preset this study runs with
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── Inputs/
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   ├── Runs/               # one subfolder per recording session (run-folder layout)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── Videos/             # (legacy flat layout) recordings directly in a folder
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   └── Prompts/            # your study&#39;s .vp.json visual prompt, if you use one
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└── Outputs/                # created for you when you Run
+</code></pre></div>
+<p>The pipeline preset is MindSight's pre-tuned known-good configuration:
+detection, gaze, and <strong>Gaze-LLE Blend</strong> settings validated on classroom-style
+footage. You normally never touch it -- the wizard writes it for you, or your
+study lead has already pointed the project at the right one.</p>
+<p>A project uses <strong>one of two layouts</strong> for its recordings:</p>
+<ul>
+<li><strong>Run-folder layout</strong> -- each recording session gets its own folder under
+  <code>Inputs/Runs/&lt;run_id&gt;/</code> holding exactly one video plus a <code>run.yaml</code> with that
+  session's participants and condition. This is what the wizard builds, and the
+  layout every new study should use.</li>
+<li><strong>Flat layout</strong> (legacy) -- videos sit directly in <code>Inputs/Videos/</code>. Still
+  supported for older projects.</li>
+</ul>
+<p>Do not mix both in one project -- preflight will stop you if a project has
+videos in both places.</p>
+<hr />
+<h2 id="4-build-a-project-with-the-wizard">4. Build a project with the wizard<a class="headerlink" href="#4-build-a-project-with-the-wizard" title="Permanent link">&para;</a></h2>
+<p>If your study lead handed you a finished project folder, skip to
+<a href="#5-read-the-preflight-checklist">preflight</a>. If you have loose recordings and
+a study scheme, the <strong>Build New Project...</strong> wizard on the Projects tab (also
+under <strong>File</strong>) assembles the folder for you in five steps:</p>
+<p><img alt="The Projects tab landing with the project library" src="../../assets/tutorial/projects-landing.png" /></p>
+<ol>
+<li><strong>Study</strong> -- name the project, choose where it lives, note how many people
+   appear per video, and type your study's <strong>conditions vocabulary</strong> (the fixed
+   list of experimental labels, e.g. <code>baseline</code>, <code>intervention</code>). Defining them
+   here turns the tagging step into simple checkboxes.</li>
+<li>
+<p><strong>Videos</strong> -- add your recordings. Each gets an editable, unique <strong>run name</strong>
+   (this becomes its folder and output name). Files are <strong>copied</strong> into the
+   project by default (safest); tick <em>move</em> only if you want the originals
+   gone from their old location.</p>
+<p>You do not need all the footage up front. <strong>Add Planned Sessions...</strong>
+defines future sessions now -- name them and take their participant and
+condition tags in the tagging step like any other video -- and they sit in
+the project as <em>awaiting recording</em> until the day you record them live or
+attach their footage (see <a href="#record-a-session-live">recording sessions</a>).
+If your study has a known schedule (say, ten weekly sessions), planning
+them all at creation time means the metadata is done once and each
+session day is just record-and-go.
+3. <strong>Tag each video</strong> -- one video at a time: a middle-frame preview on the
+   left, and on the right the participant fields ("Leftmost person",
+   "2nd from left", ... -- type each person's ID by their on-screen position),
+   the condition checkboxes, and date / session / notes (the date is prefilled
+   from the file). Untagged videos are allowed -- you get a warning, and can
+   fill metadata in later.</p>
+</li>
+<li>
+<p><strong>Pipeline</strong> -- pick the preset the study runs with. <strong>KG_Standard</strong> (the
+   shipped known-good preset) is the right choice unless your study lead says
+   otherwise.</p>
+</li>
+<li><strong>Review &amp; create</strong> -- a summary of everything; <strong>Create</strong> builds the
+   folder, stages every video into <code>Inputs/Runs/&lt;run_id&gt;/</code> with its
+   <code>run.yaml</code>, and writes <code>Pipeline/pipeline.yaml</code> and <code>notes.md</code>.</li>
+</ol>
+<p>When it finishes, use <strong>▶ Open in Analyze Footage</strong> on the project overview to
+go straight to preflight.</p>
+<hr />
+<h2 id="5-read-the-preflight-checklist">5. Read the preflight checklist<a class="headerlink" href="#5-read-the-preflight-checklist" title="Permanent link">&para;</a></h2>
+<p>Every time you open a project (and again whenever you click <strong>Re-run
+preflight</strong>) MindSight runs a <strong>preflight</strong> check: a readiness checklist that
+catches the common problems <em>before</em> you spend hours processing. Green checks
+are fine, yellow are warnings you can usually ignore, red are things you must
+fix.</p>
+<p><img alt="A project open with the preflight checklist passed and the runs table populated" src="../../assets/tutorial/open-project-preflight.png" /></p>
+<p>A healthy project reads <strong>PASSED</strong>, possibly with a warning or two (missing
+participant labels and low disk are warnings, not blockers). If preflight shows
+a red <strong>FAIL</strong>, do not press Run -- find the row in the
+<a href="#11-troubleshooting-every-preflight-message">troubleshooting table</a> at the
+bottom of this page, which explains every preflight message in plain language
+and who to call.</p>
+<p>Below the checklist, the <strong>Runs</strong> table lists every recording MindSight found,
+one row each, with its participants, condition, current status, and what Run
+will do to it (process it, or re-run and archive the previous output). Planned
+sessions that have no footage yet show as <em>awaiting recording</em>.</p>
+<p>Everything in the left column -- preflight, the runs table, and the <strong>Study
+setup</strong> panel -- scrolls together if it outgrows the window.</p>
+<hr />
+<h2 id="6-add-edit-record">6. Add, edit, record<a class="headerlink" href="#6-add-edit-record" title="Permanent link">&para;</a></h2>
+<p>If the project already has its videos and metadata, skip ahead to
+<a href="#7-run-the-analysis">Run</a>. These are the controls under the <strong>Runs</strong> table for
+everything else.</p>
+<h3 id="add-a-recording">Add a recording<a class="headerlink" href="#add-a-recording" title="Permanent link">&para;</a></h3>
+<p>Click <strong>Add single run...</strong> to add one recording at a time. Pick the video with
+<strong>Browse...</strong>, then fill in the fields:</p>
+<p><img alt="The Add single run dialog" src="../../assets/tutorial/add-single-run.png" /></p>
+<ul>
+<li><strong>Participants</strong> -- a <code>track:label</code> map, e.g. <code>0:P0, 1:P1</code>. The number is the
+  detected face's tracking id; the label is your name for that person. Leave it
+  blank and MindSight defaults to <code>P0, P1, ...</code>.</li>
+<li><strong>Import CSV...</strong> -- if your study keeps a <code>participant_ids.csv</code>, load a row
+  from it instead of typing.</li>
+<li><strong>Conditions</strong> -- the experimental condition tag(s) for this recording, e.g.
+  <code>condition_a</code>. These become a column in the outputs and drive the
+  per-condition aggregates.</li>
+<li><strong>Date / Session / Notes</strong> -- optional bookkeeping.</li>
+<li><strong>Move original into the project</strong> -- leave unchecked to copy the video in
+  (the default, and safest); check it to move the file instead, so the original
+  leaves its old location.</li>
+</ul>
+<p>Click <strong>Run now</strong> to process immediately, or <strong>Save to project...</strong> to add it
+and run everything later.</p>
+<h3 id="edit-a-recordings-metadata">Edit a recording's metadata<a class="headerlink" href="#edit-a-recordings-metadata" title="Permanent link">&para;</a></h3>
+<p>To change a recording's participants or condition after adding it, select its
+row and use <strong>Edit run...</strong>:</p>
+<p><img alt="Editing a run's participants and conditions" src="../../assets/tutorial/edit-run-metadata.png" /></p>
+<h3 id="record-a-session-live">Record a session (live)<a class="headerlink" href="#record-a-session-live" title="Permanent link">&para;</a></h3>
+<p>If your study records participants live at the computer, <strong>⏺ Record
+Session...</strong> captures straight into the project: pick the camera, pick (or
+name) the session -- planned sessions prefill their tags -- and press Start.
+The preview shows the live feed and the status line counts time and frames.
+Press <strong>End Session</strong> to stop: the raw recording is staged into
+<code>Inputs/Runs/&lt;run_id&gt;/</code> like any other video and analysis starts on it
+automatically.</p>
+<p>To use footage recorded on another device (a camcorder, a phone), right-click
+the planned session's row and choose <strong>Attach footage...</strong> -- the file is
+copied in (your original is untouched) and MindSight offers to analyze it.</p>
+<p>Sessions do not have to be planned in the wizard: for an existing project,
+<strong>＋ Plan Session...</strong> (next to the runs table on the project's Projects-tab
+overview) adds a future session -- name and tags now, footage later. And
+unplanned sessions land just as easily: <strong>⏺ Record Session...</strong> can target
+<em>a new session</em> named on the spot, and footage that arrives as a file goes in
+through <strong>Add single run...</strong>. Planning ahead just means the tags are already
+filled in when the session day comes.</p>
+<h3 id="study-wide-settings">Study-wide settings<a class="headerlink" href="#study-wide-settings" title="Permanent link">&para;</a></h3>
+<p>Expand the <strong>Study setup</strong> panel (below the runs table) for settings that
+apply to the whole project -- the pipeline preset in use, a project-wide
+participant map, and an <strong>Anonymize Footage</strong> toggle that blurs or blacks out
+faces in the annotated video and heatmap backgrounds (turn this on if your
+ethics protocol requires de-identified outputs).</p>
+<p><img alt="The Study setup panel expanded" src="../../assets/tutorial/study-setup.png" /></p>
+<hr />
+<h2 id="7-run-the-analysis">7. Run the analysis<a class="headerlink" href="#7-run-the-analysis" title="Permanent link">&para;</a></h2>
+<p>When preflight passes and the runs table looks right, press the green <strong>▶ Run</strong>
+button on the project card at the top of the tab. It turns into a red <strong>Stop</strong>
+while the batch is live. MindSight processes each recording in turn.</p>
+<p><strong>What normal progress looks like.</strong> The preview pane shows the annotated video
+as it processes, and the <strong>Log</strong> panel prints a line-by-line trace: it loads
+the models (you will see the <strong>MobileGaze</strong> gaze backend and the <strong>Gaze-LLE</strong>
+scene model come up), then reports per-frame progress, then a <code>Done</code> line per
+video with the frame count and how many gaze-object hit events it recorded.
+The runs table fills in as each video completes.</p>
+<p><strong>How long it takes.</strong> Expect each video to take from about its own duration up
+to several times longer, depending heavily on the machine and on whether the
+annotated video is being rendered (rendering is the slowest output by far). As a
+rough anchor, a short clip runs in a few minutes on Apple Silicon; a full
+30-minute session can take substantially longer, especially on a CPU-only
+machine. <strong>Treat a full study batch as an overnight job</strong>: start it at the end of
+the day, leave the machine awake and plugged in, and check it in the morning. If
+it is interrupted, MindSight resumes where it left off (see
+<a href="#9-re-run-one-failed-video">section 9</a>) -- you will not lose completed work.</p>
+<p>You can press <strong>Stop</strong> to halt after the current frame; already-completed videos
+keep their outputs. If you try to quit mid-run, MindSight asks first -- choosing
+<strong>Yes</strong> stops cleanly and finishes writing the current video's summary before
+closing, so you never end up with a half-written output.</p>
+<hr />
+<h2 id="8-outputs-and-what-to-hand-the-analyst">8. Outputs and what to hand the analyst<a class="headerlink" href="#8-outputs-and-what-to-hand-the-analyst" title="Permanent link">&para;</a></h2>
+<p>When a batch finishes, its results are under the project's <code>Outputs/</code> folder.
+You can inspect them without leaving the app:</p>
+<ul>
+<li>The <strong>Charts</strong> tab (in the output panel, bottom right) shows the phenomena
+  charts for a selected run -- a quick visual sanity check.</li>
+</ul>
+<p><img alt="The Charts tab showing per-run phenomena charts" src="../../assets/tutorial/output-charts.png" /></p>
+<ul>
+<li>The <strong>Output CSVs</strong> tab is a read-only viewer over the run's event and summary
+  CSVs.</li>
+</ul>
+<p><img alt="The Output CSVs tab viewing a run's Events CSV" src="../../assets/tutorial/output-csv.png" /></p>
+<p>The files themselves live under <code>Outputs/Runs/&lt;run_id&gt;/</code> (run-folder projects)
+or <code>Outputs/CSV Files/</code> (flat projects, and the project-wide <code>Global_*</code>
+aggregates). The full catalogue -- what each file is and when to use it -- is on
+the <a href="../../concepts/outputs/">Understanding the Outputs</a> page. The short version:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it is</th>
+<th>Hand to analyst?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{stem}_summary.csv</code> (and <code>Global_summary.csv</code>, <code>By Condition/</code>)</td>
+<td>Aggregated look-time and phenomena metrics</td>
+<td><strong>Yes -- this is the main file</strong></td>
+</tr>
+<tr>
+<td><code>{stem}_manifest.json</code></td>
+<td>Provenance: exact config, model hashes, versions</td>
+<td><strong>Yes -- keeps results traceable</strong></td>
+</tr>
+<tr>
+<td><code>{stem}_Events.csv</code> (and <code>Global_Events.csv</code>)</td>
+<td>One row per gaze-object hit per frame</td>
+<td>Only if the analysis needs frame-level detail</td>
+</tr>
+<tr>
+<td>Heatmaps, Charts, annotated video</td>
+<td>Visual review aids</td>
+<td>No -- for review, not statistics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The handoff is usually small:</strong> the <strong>summary CSV</strong> (or the project-mode
+<code>Global_summary.csv</code> / <code>By Condition/</code> files) plus the <strong>manifest JSON</strong> so the
+numbers are traceable. When in doubt about which files your study wants, ask your
+study lead or the analyst.</p>
+<hr />
+<h2 id="9-re-run-one-failed-video">9. Re-run one failed video<a class="headerlink" href="#9-re-run-one-failed-video" title="Permanent link">&para;</a></h2>
+<p>If a single recording failed or you fixed its metadata and want just that one
+reprocessed, you do not re-run the whole batch. Project runs <strong>resume by
+default</strong>: MindSight keeps a ledger of what is already done and skips completed
+videos.</p>
+<ul>
+<li>To reprocess <strong>one</strong> recording, right-click its row in the runs table and
+  choose <strong>Re-run this run</strong>. The row's status tells you what Run will do to
+  it -- <em>re-run + archive</em> means the previous output is set aside first, not
+  deleted.</li>
+<li><strong>Run</strong> processes everything that is not already complete.</li>
+<li><strong>Re-run all</strong> (it asks for confirmation) reprocesses everything from
+  scratch, ignoring the ledger; prior outputs are archived. Your study lead can
+  tell you when that is warranted.</li>
+</ul>
+<p>Because runs resume, an interrupted overnight batch is safe to simply start
+again -- it picks up the remaining videos.</p>
+<hr />
+<h2 id="10-fix-a-recording-crop-and-frame-rate">10. Fix a recording: crop and frame rate<a class="headerlink" href="#10-fix-a-recording-crop-and-frame-rate" title="Permanent link">&para;</a></h2>
+<p>If a camera captured more room than the study needs, or a device recorded at an
+odd frame rate, use <strong>Crop &amp; Adjust Videos...</strong> on the project overview
+(Projects tab). Drag a rectangle over the preview to crop, or set a new frame
+rate; queue edits across several videos and apply them in one batch.</p>
+<p>Cropping is worth doing: MindSight generally performs best when the footage is
+<strong>tightly cropped to the areas that matter to your study</strong>. For a desk task,
+that means the participants and the desktop -- crop away the feet, the floor,
+and the blank space above their heads. Less irrelevant frame means fewer
+spurious detections and more of the resolution spent on faces and objects.</p>
+<ul>
+<li>Edits are <strong>non-destructive by default</strong>: the untouched original is kept in
+  an <code>original/</code> folder beside the video. (A warned checkbox overwrites
+  instead.)</li>
+<li><strong>Auto-crop</strong> can place the rectangle for you: name the objects that matter
+  ("person, dining table") or point it at your study's visual prompt file, and
+  it fits the crop around what it finds, plus padding. You always get to review
+  and adjust the rectangle before applying. An <strong>Advanced...</strong> toggle picks the
+  detector model and sets each side's padding independently (negative padding
+  crops inside the detections).</li>
+<li>An edited video is detected automatically on the next <strong>Run</strong> -- its old
+  outputs are archived and it reprocesses with the new picture.</li>
+</ul>
+<hr />
+<h2 id="quick-analysis-without-a-project">Quick analysis without a project<a class="headerlink" href="#quick-analysis-without-a-project" title="Permanent link">&para;</a></h2>
+<p>For a fast look at a single recording -- no folders, no metadata -- switch
+Analyze Footage to <strong>Video File</strong> mode: browse to the file (or drop it onto
+the tab), and press <strong>Analyze</strong>. Live charts fill the left pane while it
+processes, and the output folder (prefilled, editable) gets the same CSVs a
+project run produces.</p>
+<p><strong>Camera</strong> mode does the same from a webcam: <strong>Refresh</strong> lists your cameras by
+name, <strong>Start Camera</strong> records and analyzes live, and <strong>Stop</strong> finalizes the
+outputs. The optional <strong>Session details</strong> fields (participants, session,
+notes) carry your labels into the output CSVs, so an ad-hoc recording can
+still land with proper metadata.</p>
+<p>Quick runs use the settings from the <strong>Inference Settings</strong> dialog (the
+button is right on the tab) -- fresh installs start on the shipped known-good
+preset, so the numbers match a project run out of the box.</p>
+<hr />
+<h2 id="appendix-the-other-tabs">Appendix: the other tabs<a class="headerlink" href="#appendix-the-other-tabs" title="Permanent link">&para;</a></h2>
+<p>You will not need these for a routine batch, but here is what they are for.</p>
+<h3 id="visual-prompts-vp-builder">Visual prompts (VP Builder)<a class="headerlink" href="#visual-prompts-vp-builder" title="Permanent link">&para;</a></h3>
+<p>The known-good preset uses a <strong>YOLOE</strong> open-vocabulary detector, which works best
+<em>with</em> a visual prompt: a small <code>.vp.json</code> file that gives the detector example
+boxes of the objects your study cares about. Your study lead usually prepares
+this once and drops it in <code>Inputs/Prompts/</code>.</p>
+<p>If you need to build one, the <strong>VP Builder</strong> tab loads reference images, lets you
+name object classes and draw boxes on them, then <strong>Save VP File...</strong>:</p>
+<p><img alt="The empty VP Builder" src="../../assets/tutorial/vp-builder-empty.png" /></p>
+<p><img alt="The VP Builder with classes and drawn boxes" src="../../assets/tutorial/vp-builder-annotated.png" /></p>
+<p>The reference image should match your video's resolution -- YOLOE encodes object
+size in pixels. <strong>Extract Frames...</strong> on the toolbar pulls evenly spaced stills
+straight out of a video (or out of every video in a project) to use as
+reference images.</p>
+<p>To share a visual prompt between machines, <strong>Export Portable...</strong> packs the
+prompt and its reference images into a single <code>.vp.zip</code>; <strong>Load VP File</strong> on the
+other machine opens it directly. To use a prompt in your study's runs, set the
+<strong>Visual prompt file</strong> in the Inference Settings dialog, or have your study
+lead add it to the project's pipeline preset.</p>
+<h3 id="inference-settings">Inference Settings<a class="headerlink" href="#inference-settings" title="Permanent link">&para;</a></h3>
+<p><strong>Inference Settings...</strong> (a button on every Analyze Footage mode, and under
+the Tools menu) is the control panel for how runs launched from Analyze Footage
+are processed -- models and compute device, gaze estimation, object detection,
+which phenomena are tracked, outputs, and performance, across seven tabs.</p>
+<p><img alt="The Inference Settings dialog" src="../../assets/tutorial/inference-settings.png" /></p>
+<p>The header shows which preset the settings come from (fresh installs:
+<strong>KG_Standard</strong>, the shipped known-good preset) and whether you have modified
+it. Values you type can go beyond a slider's usual range -- the value shows
+amber instead of being clamped. <strong>Save to project pipeline...</strong> writes the
+current settings into the open project's preset so the whole study runs with
+them; coordinate with your study lead before changing a running study's
+settings.</p>
+<h3 id="inference-tuning">Inference Tuning<a class="headerlink" href="#inference-tuning" title="Permanent link">&para;</a></h3>
+<p>The <strong>Inference Tuning</strong> tab is an interactive playground: load a clip, watch
+the gaze overlay live, and experiment with detector and ray settings to see
+their effect immediately. It is the right place to <em>find</em> good values -- and
+since it is deliberately decoupled from everything else, nothing you try here
+changes your study's runs. When an experiment is worth keeping, bring it
+across with <strong>Import from Inference Tuning</strong> in the Inference Settings dialog
+(or the Study setup panel's pipeline import).</p>
+<p><img alt="Inference Tuning, basic view" src="../../assets/tutorial/gaze-tuning-basic.png" /></p>
+<h3 id="models">Models<a class="headerlink" href="#models" title="Permanent link">&para;</a></h3>
+<p>The <strong>Models</strong> tab lists every model weight, whether it is required, present, and
+verified against its published checksum. If preflight complains about a weight,
+come here to <strong>Verify</strong> or <strong>Re-download</strong> it.</p>
+<p><img alt="The Models manager" src="../../assets/tutorial/models-manager.png" /></p>
+<h3 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<p>For each surface above, the GUI Guides cover it in more depth:</p>
+<ul>
+<li><a href="../../getting-started/quickstart-gui/">GUI Tour</a> -- a map of the whole window.</li>
+<li><a href="../../guides/projects-and-sessions/">Projects and sessions</a> -- building
+  projects, planning and recording sessions, run management.</li>
+<li><a href="../../guides/analyze-footage/">Analyze footage</a> -- the Project, Video File, and
+  Camera modes in depth.</li>
+<li><a href="../../guides/visual-prompts/">Visual prompts</a> -- building, tuning, and sharing
+  <code>.vp.json</code> files.</li>
+<li><a href="../../guides/crop-and-adjust/">Crop and adjust</a> -- re-framing recordings and
+  auto-crop.</li>
+<li><a href="../../guides/inference-settings-and-tuning/">Inference settings and tuning</a> --
+  the dialog vs. the tuning tab.</li>
+<li><a href="../../guides/about-and-theming/">About and theming</a> -- the in-app reader and
+  theme control.</li>
+<li><a href="../../guides/where-things-live/">Where things live</a> -- every file on disk.</li>
+</ul>
+<hr />
+<h2 id="11-troubleshooting-every-preflight-message">11. Troubleshooting: every preflight message<a class="headerlink" href="#11-troubleshooting-every-preflight-message" title="Permanent link">&para;</a></h2>
+<p>The table below lists every warning or failure message preflight can print,
+what it means, and who to go to. Passing (green) checks
+are not listed; the table covers only <strong>warnings</strong> (yellow -- usually safe to
+proceed) and <strong>failures</strong> (red -- must fix before Run). Placeholders like <code>{...}</code>
+are filled in with the specific file or value when you see the real message.</p>
+<table>
+<thead>
+<tr>
+<th>Preflight message</th>
+<th>What it means</th>
+<th>Severity / who to call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project directory not found: {path}</code></td>
+<td>The folder you opened is not there -- wrong path, or an external drive is unmounted.</td>
+<td>FAIL. Re-open the correct project folder; remount the drive.</td>
+</tr>
+<tr>
+<td><code>both Inputs/Runs/ and Inputs/Videos/ are populated -- the layout is ambiguous</code></td>
+<td>The project mixes flat and run-folder layouts; MindSight cannot tell which to use.</td>
+<td>FAIL. Keep run folders <strong>or</strong> flat videos, not both. Ask your study lead which layout this study uses.</td>
+</tr>
+<tr>
+<td><code>missing Inputs/Videos/ under {project}</code></td>
+<td>Flat-layout project has no <code>Inputs/Videos/</code> folder to read from.</td>
+<td>FAIL. Create <code>Inputs/Videos/</code> and add the recordings (or use <strong>Add single run...</strong>).</td>
+</tr>
+<tr>
+<td><code>no pipeline config found; schema defaults will apply</code></td>
+<td>The project does not point at a pipeline preset, so built-in defaults are used.</td>
+<td>WARN. Fine for a quick look; for a real study, set <code>pipeline:</code> in <code>project.yaml</code> to <code>configs/pipeline_known_good.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>{name} invalid: {exc}</code></td>
+<td>The pipeline YAML has a syntax or value error.</td>
+<td>FAIL. The message names the file and the problem; ask your study lead, or fix the pipeline YAML.</td>
+</tr>
+<tr>
+<td><code>no weights configured (auto-download names not resolved)</code></td>
+<td>No model weight paths are set in the config.</td>
+<td>WARN. Usually fine (the preset names them); if detection does nothing, check the config with your study lead.</td>
+</tr>
+<tr>
+<td><code>weight file(s) not found -- {msg}</code></td>
+<td>A model weight file is missing. The message prints the exact absolute path where each missing file is expected (the shared <code>Weights/</code> folder -- weight resolution is global, not per-project).</td>
+<td>FAIL. Put the weight at the printed path: the <strong>Models</strong> tab can <strong>Re-download</strong> the standard ones, or run the installer again.</td>
+</tr>
+<tr>
+<td><code>manifest unavailable: {exc}</code></td>
+<td>The checksum manifest that verifies weights could not be read.</td>
+<td>WARN. Reinstall or restore <code>weights_manifest.json</code>; weights still load.</td>
+</tr>
+<tr>
+<td><code>{name} differs from the published '{label}' weight</code></td>
+<td>A weight file does not match its published checksum -- corrupted or altered.</td>
+<td>FAIL. <strong>Models</strong> tab &gt; <strong>Re-download</strong> that weight (or <code>mindsight-weights --force</code>).</td>
+</tr>
+<tr>
+<td><code>custom weight(s) not in the manifest: {names}</code></td>
+<td>You are using a weight the manifest does not know about.</td>
+<td>WARN. Custom weights are allowed; expected if your lab uses a custom model.</td>
+</tr>
+<tr>
+<td><code>VP-mode detector configured but no .vp.json in Inputs/Prompts/</code></td>
+<td>The config expects a visual prompt but none is present.</td>
+<td>WARN. Add your study's <code>.vp.json</code> to <code>Inputs/Prompts/</code> (VP Builder), or ask your study lead for it.</td>
+</tr>
+<tr>
+<td><code>{name} is not valid JSON: {exc}</code></td>
+<td>The visual prompt file is corrupted.</td>
+<td>FAIL. Re-export the <code>.vp.json</code> from the VP Builder.</td>
+</tr>
+<tr>
+<td><code>{name} has no reference with annotations</code></td>
+<td>The visual prompt has no annotated reference image.</td>
+<td>FAIL. Add an annotated reference in the VP Builder and re-save.</td>
+</tr>
+<tr>
+<td><code>ambiguous layout -- no runs to process</code></td>
+<td>Layout is ambiguous, so no recordings could be listed.</td>
+<td>FAIL. Resolve the flat-vs-run-folder ambiguity (see above).</td>
+</tr>
+<tr>
+<td><code>no run folders found in Inputs/Runs/</code></td>
+<td>Run-folder project has an empty <code>Inputs/Runs/</code>.</td>
+<td>FAIL. Add <code>Inputs/Runs/&lt;run_id&gt;/</code> folders, each with one video.</td>
+</tr>
+<tr>
+<td><code>all {n} session(s) awaiting recording</code></td>
+<td>Every session in this project is planned -- it has its <code>run.yaml</code> metadata but no footage yet. Nothing can be processed until at least one is recorded or attached.</td>
+<td>WARN. Record the sessions live (<strong>⏺ Record Session...</strong>) or right-click each row and <strong>Attach footage...</strong>.</td>
+</tr>
+<tr>
+<td><code>run folder(s) not holding exactly one video: {bad}</code></td>
+<td>A run folder has several videos, or none <em>and</em> no <code>run.yaml</code> (a videoless folder <strong>with</strong> a <code>run.yaml</code> is a planned session, which is fine).</td>
+<td>FAIL. Put exactly one primary video in each named run folder.</td>
+</tr>
+<tr>
+<td><code>output name collision: {names} both write {file}</code></td>
+<td>Two source recordings would write the same output CSV (e.g. <code>a.mp4</code> and <code>a.mov</code> both produce <code>a_Events.csv</code>), so one would overwrite the other's results.</td>
+<td>FAIL. Rename one of the colliding source files.</td>
+</tr>
+<tr>
+<td><code>Inputs/Videos/ is missing -- no runs to process</code></td>
+<td>Flat project has no videos folder, so nothing to run.</td>
+<td>FAIL. Create <code>Inputs/Videos/</code> and add recordings.</td>
+</tr>
+<tr>
+<td><code>no video/image sources found in Inputs/Videos/</code></td>
+<td>The videos folder exists but is empty.</td>
+<td>FAIL. Add at least one recording (or use <strong>Add single run...</strong>).</td>
+</tr>
+<tr>
+<td><code>run.yaml problem(s): {errs}</code></td>
+<td>A run folder's <code>run.yaml</code> metadata is invalid.</td>
+<td>FAIL. Fix the <code>run.yaml</code> as the message describes; ask your study lead if unsure.</td>
+</tr>
+<tr>
+<td><code>unknown run.yaml key(s): {warns}</code></td>
+<td>A <code>run.yaml</code> has keys MindSight does not recognize (likely a typo).</td>
+<td>WARN. Use only the known keys (participants, conditions, date, session, notes, extra).</td>
+</tr>
+<tr>
+<td><code>{n}/{m} run(s) without participant labels: {ids}</code></td>
+<td>Some recordings have no participant map.</td>
+<td>WARN. Optional -- MindSight defaults to <code>P0, P1, ...</code>. Add labels if your analysis needs named participants.</td>
+</tr>
+<tr>
+<td><code>{n}/{m} run(s) without conditions: {ids}</code></td>
+<td>Some recordings have no condition tag.</td>
+<td>WARN. Optional, but per-condition aggregates need condition tags -- add them if your study uses conditions.</td>
+</tr>
+<tr>
+<td><code>device '{req}' check failed: {exc}</code></td>
+<td>The requested compute device could not be initialized.</td>
+<td>FAIL. Set the device to <strong>auto</strong> or <strong>cpu</strong>; report to your study lead if it persists.</td>
+</tr>
+<tr>
+<td><code>device '{req}' is not available</code></td>
+<td>The requested device (e.g. a GPU) is not present on this machine.</td>
+<td>FAIL. Choose an available device, or <strong>auto</strong> / <strong>cpu</strong>.</td>
+</tr>
+<tr>
+<td><code>could not check free space: {exc}</code></td>
+<td>MindSight could not read the disk's free space.</td>
+<td>WARN. Verify the volume has room manually and proceed.</td>
+</tr>
+<tr>
+<td><code>low disk: {free} GB free &lt; {need} GB (1.5x inputs)</code></td>
+<td>Not much free space for outputs.</td>
+<td>WARN. Free up space, or turn off the annotated video output, before a big batch.</td>
+</tr>
+<tr>
+<td><code>plugin load error(s): {errs}</code></td>
+<td>An analysis plugin failed to load.</td>
+<td>FAIL. Fix or remove the failing plugin; report to your study lead / a developer.</td>
+</tr>
+<tr>
+<td><code>check crashed: {exc}</code></td>
+<td>A preflight check itself errored -- unexpected.</td>
+<td>FAIL. Report this to a developer with the message; it is a bug, not your setup.</td>
+</tr>
+</tbody>
+</table>
+<p>Two behaviors worth knowing alongside the table: the disk-space check only runs
+when the annotated video output is enabled (with it off, no extra headroom is
+needed), and in <strong>no-object-detection mode</strong> (an Inference Settings option some
+studies use) the detector-weight and visual-prompt rows above simply do not
+apply -- preflight skips them.</p>
+<hr />
+<h2 id="save-this-guide-as-a-pdf">Save this guide as a PDF<a class="headerlink" href="#save-this-guide-as-a-pdf" title="Permanent link">&para;</a></h2>
+<p>To keep an offline copy, print this page to PDF from your browser:</p>
+<ul>
+<li><strong>macOS</strong> -- <strong>File &gt; Print</strong> (or ⌘P), then in the print dialog choose <strong>Save
+  as PDF</strong> from the PDF dropdown (bottom-left) and save.</li>
+<li><strong>Windows</strong> -- <strong>Ctrl+P</strong>, then choose <strong>Microsoft Print to PDF</strong> (or <strong>Save as
+  PDF</strong>) as the printer and save.</li>
+<li><strong>Chrome / Edge (any OS)</strong> -- <strong>Ctrl/⌘P</strong>, set the destination to <strong>Save as
+  PDF</strong>, and save.</li>
+</ul>
+<p>A pre-generated PDF of this tutorial,
+<a href="../run-a-study-tutorial.pdf"><code>run-a-study-tutorial.pdf</code></a>, is committed alongside
+this page for convenience.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

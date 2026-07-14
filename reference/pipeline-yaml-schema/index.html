@@ -1,0 +1,3474 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../cli-flags/">
+      
+      
+        <link rel="next" href="../config-dataclasses/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>pipeline.yaml Schema - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pipelineyaml-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              pipeline.yaml Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../studies/run-a-study-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top-level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaze-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#participants-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Participants Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phenomena-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena Section
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phenomena Section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toggle-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toggle strings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-tracker-parameter-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-tracker parameter keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins-section-pass-through" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugins Section (pass-through)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-streams-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary Streams Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fully-annotated-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully Annotated Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precedence-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precedence Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top-level
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaze-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#participants-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Participants Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phenomena-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena Section
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phenomena Section">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toggle-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toggle strings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-tracker-parameter-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-tracker parameter keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins-section-pass-through" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugins Section (pass-through)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-streams-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary Streams Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fully-annotated-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fully Annotated Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precedence-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precedence Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pipelineyaml-schema">pipeline.yaml Schema<a class="headerlink" href="#pipelineyaml-schema" title="Permanent link">&para;</a></h1>
+<p>MindSight loads a declarative configuration file with <code>python MindSight.py --pipeline
+path/to/pipeline.yaml</code>. The loader (<code>mindsight.config_compat.load_pipeline</code>) reads the
+YAML, maps each recognised key onto an argparse destination, and merges it into the run
+namespace. The GUI's <strong>Import Pipeline YAML</strong> and <strong>Load Preset</strong> actions use the same
+loader. CLI flags always take precedence over YAML values.</p>
+<p>Every key on this page corresponds to a CLI flag documented in the
+<a href="../cli-flags/">CLI Flags Reference</a>; the YAML form is the declarative equivalent.</p>
+<div class="admonition warning">
+<p class="admonition-title">Unknown keys are silently ignored</p>
+<p>The loader recognises a fixed set of key spellings (the tables below). Any key it does
+not recognise is dropped with no error and no warning. In particular, a few natural
+guesses do <strong>not</strong> work: <code>output.charts</code>, <code>output.conditions</code>, and <code>output.pid_map</code>
+have no YAML home; <code>gaze.smooth_snap</code>, <code>gaze.smooth_snap_alpha</code>, and
+<code>gaze.forward_gaze_threshold</code> are <strong>not</strong> gaze-section keys (set them through the
+<code>plugins:</code> pass-through instead); and mapping-style <code>phenomena: {joint_attention:
+true}</code> is ignored because the loader only reads the <strong>list</strong> form of <code>phenomena:</code>
+(see below). When a value seems not to take effect, check its spelling against these
+tables first.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Two loaders</p>
+<p><code>--pipeline</code> and the GUI use <code>load_pipeline</code>, which merges into an argparse namespace
+and passes the <strong>entire</strong> <code>plugins:</code> section through to flag destinations. A second,
+schema-validated loader, <code>load_yaml</code> (returning a <code>PipelineConfig</code>), applies the same
+scalar/section keys, the phenomena list, and <code>aux_streams</code>, but only routes the
+ray-forming interval keys from <code>plugins:</code>. This page documents the runtime
+(<code>load_pipeline</code>) behaviour; the annotated example at the end is verified against both.</p>
+</div>
+<hr />
+<h2 id="top-level">Top-level<a class="headerlink" href="#top-level" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td><code>source</code></td>
+<td>str</td>
+<td><code>"0"</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>source</code> is normally omitted from a preset: it is a runtime input, and pinning it would
+override the video the user selected.</p>
+<h2 id="detection-section">Detection Section<a class="headerlink" href="#detection-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>detection.model</code></td>
+<td><code>model</code></td>
+<td>str</td>
+<td><code>"yolov8n.pt"</code></td>
+</tr>
+<tr>
+<td><code>detection.conf</code></td>
+<td><code>conf</code></td>
+<td>float</td>
+<td><code>0.35</code></td>
+</tr>
+<tr>
+<td><code>detection.classes</code></td>
+<td><code>classes</code></td>
+<td>list[str]</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>detection.blacklist</code></td>
+<td><code>blacklist</code></td>
+<td>list[str]</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>detection.detect_scale</code></td>
+<td><code>detect_scale</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>detection.vp_file</code></td>
+<td><code>vp_file</code></td>
+<td>str</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>detection.vp_model</code></td>
+<td><code>vp_model</code></td>
+<td>str</td>
+<td><code>"yoloe-26l-seg.pt"</code></td>
+</tr>
+<tr>
+<td><code>detection.skip_frames</code></td>
+<td><code>skip_frames</code></td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>detection.obj_persistence</code></td>
+<td><code>obj_persistence</code></td>
+<td>int</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>detection.classes</code> / <code>detection.blacklist</code> are class <strong>names</strong> (e.g. <code>[person, chair]</code>),
+not COCO ids; they are resolved against the loaded model at build time. The
+<code>merge_overlaps</code> family has no dedicated detection key -- set it through <code>plugins:</code>.</p>
+<h2 id="gaze-section">Gaze Section<a class="headerlink" href="#gaze-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gaze.ray_length</code></td>
+<td><code>ray_length</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.adaptive_ray</code></td>
+<td><code>adaptive_ray</code></td>
+<td>str</td>
+<td><code>"off"</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_dist</code></td>
+<td><code>snap_dist</code></td>
+<td>float</td>
+<td><code>150.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_bbox_scale</code></td>
+<td><code>snap_bbox_scale</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_w_dist</code></td>
+<td><code>snap_w_dist</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_w_angle</code></td>
+<td><code>snap_w_angle</code></td>
+<td>float</td>
+<td><code>0.8</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_w_size</code></td>
+<td><code>snap_w_size</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_w_intersect</code></td>
+<td><code>snap_w_intersect</code></td>
+<td>float</td>
+<td><code>0.5</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_w_temporal</code></td>
+<td><code>snap_w_temporal</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_gate_angle</code></td>
+<td><code>snap_gate_angle</code></td>
+<td>float</td>
+<td><code>60.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_head_blend</code></td>
+<td><code>snap_head_blend</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_quality_thresh</code></td>
+<td><code>snap_quality_thresh</code></td>
+<td>float</td>
+<td><code>0.8</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_tip_dist</code></td>
+<td><code>snap_tip_dist</code></td>
+<td>float</td>
+<td><code>-1.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_tip_quality</code></td>
+<td><code>snap_tip_quality</code></td>
+<td>float</td>
+<td><code>-1.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.conf_ray</code></td>
+<td><code>conf_ray</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>gaze.gaze_tips</code></td>
+<td><code>gaze_tips</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>gaze.tip_radius</code></td>
+<td><code>tip_radius</code></td>
+<td>int</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>gaze.gaze_cone</code></td>
+<td><code>gaze_cone</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.gaze_lock</code></td>
+<td><code>gaze_lock</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>gaze.dwell_frames</code></td>
+<td><code>dwell_frames</code></td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>gaze.lock_dist</code></td>
+<td><code>lock_dist</code></td>
+<td>int</td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td><code>gaze.gaze_debug</code></td>
+<td><code>gaze_debug</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_release_frames</code></td>
+<td><code>snap_release_frames</code></td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>gaze.snap_engage_frames</code></td>
+<td><code>snap_engage_frames</code></td>
+<td>int</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>gaze.reid_grace_seconds</code></td>
+<td><code>reid_grace_seconds</code></td>
+<td>float</td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.hit_conf_gate</code></td>
+<td><code>hit_conf_gate</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.detect_extend</code></td>
+<td><code>detect_extend</code></td>
+<td>float</td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>gaze.detect_extend_scope</code></td>
+<td><code>detect_extend_scope</code></td>
+<td>str</td>
+<td><code>"objects"</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>gaze.adaptive_ray</code> is the <code>off</code> / <code>extend</code> / <code>snap</code> enum. (Legacy YAMLs that used a
+boolean <code>adaptive_ray:</code> plus an <code>adaptive_snap:</code> companion are still accepted and mapped
+onto the enum.) The old <code>gaze.snap_switch_frames</code> key no longer exists; the snap
+hysteresis is now split into <code>snap_release_frames</code> (default 5) and <code>snap_engage_frames</code>
+(default 0). <code>smooth_snap</code>, <code>smooth_snap_alpha</code>, and <code>forward_gaze_threshold</code> are set
+through <code>plugins:</code>, not here.</p>
+<h2 id="output-section">Output Section<a class="headerlink" href="#output-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>output.save_video</code></td>
+<td><code>save</code></td>
+<td>str/bool</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>output.log_csv</code></td>
+<td><code>log</code></td>
+<td>str</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>output.summary_csv</code></td>
+<td><code>summary</code></td>
+<td>str</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>output.heatmaps</code></td>
+<td><code>heatmap</code></td>
+<td>str</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>output.anonymize</code></td>
+<td><code>anonymize</code></td>
+<td>str (<code>blur</code>/<code>black</code>)</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>output.anonymize_padding</code></td>
+<td><code>anonymize_padding</code></td>
+<td>float</td>
+<td><code>0.3</code></td>
+</tr>
+</tbody>
+</table>
+<p>These six are the <strong>only</strong> recognised <code>output</code> keys. There is no YAML key for charts,
+conditions, or the participant map: <code>--charts</code> is CLI-only, and conditions / participant
+labels come from project metadata (<code>project.yaml</code>) or <code>participants:</code> (below). A boolean
+<code>true</code> for <code>save_video</code> / <code>log_csv</code> / <code>summary_csv</code> / <code>heatmaps</code> selects the auto-named
+output path.</p>
+<h2 id="participants-section">Participants Section<a class="headerlink" href="#participants-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>participants.csv</code></td>
+<td><code>participant_csv</code></td>
+<td>str</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>participants.ids</code></td>
+<td><code>participant_ids</code></td>
+<td>str</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><code>participants.ids</code> is a <strong>positional</strong> comma-separated label list (<code>"S70,S71,S72"</code>): the
+first label maps to track 0, the second to track 1, and so on -- it is not a <code>id:name</code>
+mapping. <code>participants.csv</code> points at a <code>participant_ids.csv</code> mapping video filenames to
+labels. (These are runtime keys honoured by <code>load_pipeline</code>; the schema loader <code>load_yaml</code>
+leaves participant resolution to build time.)</p>
+<h2 id="performance-section">Performance Section<a class="headerlink" href="#performance-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>performance.fast</code></td>
+<td><code>fast</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>performance.skip_phenomena</code></td>
+<td><code>skip_phenomena</code></td>
+<td>int</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>performance.lite_overlay</code></td>
+<td><code>lite_overlay</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>performance.no_dashboard</code></td>
+<td><code>no_dashboard</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>performance.profile</code></td>
+<td><code>profile</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="depth-section">Depth Section<a class="headerlink" href="#depth-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>YAML Key</th>
+<th>Argparse dest</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>depth.enabled</code></td>
+<td><code>depth</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>depth.backend</code></td>
+<td><code>depth_backend</code></td>
+<td>str</td>
+<td><code>"midas_small"</code></td>
+</tr>
+<tr>
+<td><code>depth.input_size</code></td>
+<td><code>depth_input_size</code></td>
+<td>int</td>
+<td><code>384</code></td>
+</tr>
+<tr>
+<td><code>depth.skip_frames</code></td>
+<td><code>depth_skip_frames</code></td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>depth.depth_aware_scoring</code></td>
+<td><code>depth_aware_scoring</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>depth.snap_w_depth</code></td>
+<td><code>depth_w_depth</code></td>
+<td>float</td>
+<td><code>0.4</code></td>
+</tr>
+<tr>
+<td><code>depth.gaze_sample_radius</code></td>
+<td><code>depth_sample_radius</code></td>
+<td>int</td>
+<td><code>2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Monocular depth estimation. The ray-length-from-depth knobs (<code>--depth-ray-length</code>,
+<code>--depth-length-min/max</code>, <code>--depth-belief-boost</code>) belong to ray forming and are set
+through <code>plugins:</code>.</p>
+<h2 id="phenomena-section">Phenomena Section<a class="headerlink" href="#phenomena-section" title="Permanent link">&para;</a></h2>
+<p><code>phenomena</code> is read as a <strong>YAML list</strong> of tracker toggles. Each entry is either a plain
+string (enable with defaults) or a single-key mapping (enable with parameters):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">phenomena</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mutual_gaze</span><span class="w">                 </span><span class="c1"># enable with defaults</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scanpath</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">joint_attention</span><span class="p">:</span><span class="w">           </span><span class="c1"># enable with parameters</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">ja_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">ja_quorum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">social_referencing</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nt">window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gaze_following</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nt">lag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</code></pre></div>
+<p>A <code>phenomena:</code> mapping (rather than a list) is ignored. Three joint-attention parameters
+may <strong>also</strong> appear as top-level <code>phenomena.*</code> keys, independent of the list:
+<code>phenomena.ja_window</code>, <code>phenomena.ja_window_thresh</code>, <code>phenomena.ja_quorum</code>.</p>
+<h3 id="toggle-strings">Toggle strings<a class="headerlink" href="#toggle-strings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>YAML string</th>
+<th>Enables (dest)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>joint_attention</code></td>
+<td><code>joint_attention</code></td>
+</tr>
+<tr>
+<td><code>mutual_gaze</code></td>
+<td><code>mutual_gaze</code></td>
+</tr>
+<tr>
+<td><code>social_referencing</code></td>
+<td><code>social_ref</code></td>
+</tr>
+<tr>
+<td><code>gaze_following</code></td>
+<td><code>gaze_follow</code></td>
+</tr>
+<tr>
+<td><code>gaze_aversion</code></td>
+<td><code>gaze_aversion</code></td>
+</tr>
+<tr>
+<td><code>scanpath</code></td>
+<td><code>scanpath</code></td>
+</tr>
+<tr>
+<td><code>gaze_leadership</code></td>
+<td><code>gaze_leader</code></td>
+</tr>
+<tr>
+<td><code>attention_span</code></td>
+<td><code>attn_span</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="per-tracker-parameter-keys">Per-tracker parameter keys<a class="headerlink" href="#per-tracker-parameter-keys" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Param key</th>
+<th>Argparse dest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ja_window</code></td>
+<td><code>ja_window</code></td>
+</tr>
+<tr>
+<td><code>ja_quorum</code></td>
+<td><code>ja_quorum</code></td>
+</tr>
+<tr>
+<td><code>ja_window_thresh</code></td>
+<td><code>ja_window_thresh</code></td>
+</tr>
+<tr>
+<td><code>window</code></td>
+<td><code>social_ref_window</code></td>
+</tr>
+<tr>
+<td><code>lag</code></td>
+<td><code>gaze_follow_lag</code></td>
+</tr>
+<tr>
+<td><code>aversion_window</code></td>
+<td><code>aversion_window</code></td>
+</tr>
+<tr>
+<td><code>aversion_conf</code></td>
+<td><code>aversion_conf</code></td>
+</tr>
+<tr>
+<td><code>dwell</code></td>
+<td><code>scanpath_dwell</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="plugins-section-pass-through">Plugins Section (pass-through)<a class="headerlink" href="#plugins-section-pass-through" title="Permanent link">&para;</a></h2>
+<p>The <code>plugins:</code> section is a direct pass-through: every key is mapped to an argparse
+destination with hyphens rewritten as underscores, and set on the namespace as-is. It
+therefore accepts <strong>any</strong> flag's destination -- there is no per-key allow-list. This is how
+backend and plugin flags that have no dedicated section are configured, and it is how the
+shipped <code>configs/pipeline_known_good.yaml</code> preset sets roughly twenty core parameters,
+for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">plugins</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">all_phenomena</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">               </span><span class="c1"># -&gt; --all-phenomena</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">mgaze_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resnet50</span><span class="w">             </span><span class="c1"># -&gt; --mgaze-model (bare name resolves per install)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">mgaze_dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gaze360</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">rf_gazelle_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gazelle_dinov2_vitb14.pt</span><span class="w">   </span><span class="c1"># -&gt; --rf-gazelle-model (Gaze-LLE blend)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">rf_gazelle_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gazelle_dinov2_vitb14</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">min_call_gap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">forward_gaze_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.0</span><span class="w">      </span><span class="c1"># gaze knob with no gaze-section key</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">smooth_snap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">smooth_snap_alpha</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">merge_overlaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">              </span><span class="c1"># detection knob with no detection-section key</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nt">merge_overlap_strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nt">merge_overlap_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span>
+</code></pre></div>
+<p>Unknown <code>plugins:</code> keys become namespace attributes and are silently ignored if no backend
+consumes them.</p>
+<h2 id="auxiliary-streams-section">Auxiliary Streams Section<a class="headerlink" href="#auxiliary-streams-section" title="Permanent link">&para;</a></h2>
+<p><code>aux_streams</code> is a list of optional per-participant video feeds, frame-synchronised with the
+main source and exposed to plugins in <code>FrameContext['aux_frames']</code>. Each entry requires
+<code>source</code>, <code>stream_label</code>, and a non-empty <code>participants</code> list; an entry missing any of the
+three is skipped.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">aux_streams</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/s70_eye.mp4</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">video_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eye_only</span><span class="w">          </span><span class="c1"># wide_closeup | face_closeup | eye_only | custom</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">stream_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left_eye_cam</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">participants</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">S70</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">auto_detect_faces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">      </span><span class="c1"># default true; runs face detection on wide/face streams</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td>str</td>
+<td>yes</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>video_type</code></td>
+<td>enum</td>
+<td>no</td>
+<td><code>custom</code></td>
+</tr>
+<tr>
+<td><code>stream_label</code></td>
+<td>str</td>
+<td>yes</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>participants</code></td>
+<td>list[str]</td>
+<td>yes</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>auto_detect_faces</code></td>
+<td>bool</td>
+<td>no</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>video_type</code> must be one of <code>wide_closeup</code>, <code>face_closeup</code>, <code>eye_only</code>, or <code>custom</code>; an
+unrecognised value falls back to <code>custom</code> with a warning. Entries parse into
+<code>AuxStreamConfig</code> instances.</p>
+<hr />
+<h2 id="fully-annotated-example">Fully Annotated Example<a class="headerlink" href="#fully-annotated-example" title="Permanent link">&para;</a></h2>
+<p>This example is verified by loading it through <code>mindsight.config_compat.load_yaml</code> and
+<code>load_pipeline</code> (see the proof note below).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># pipeline.yaml -- fully annotated MindSight pipeline configuration</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/experiment_01.mp4</span><span class="w">      </span><span class="c1"># runtime input; a preset normally omits this</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">detection</span><span class="p">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolov8n.pt</span><span class="w">                  </span><span class="c1"># YOLO weights (bare name resolves per install)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">conf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.30</span><span class="w">                         </span><span class="c1"># detection confidence threshold</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">classes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">person</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">chair</span><span class="p p-Indicator">]</span><span class="w">           </span><span class="c1"># whitelist of class NAMES (not COCO ids)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nt">detect_scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">skip_frames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w">                     </span><span class="c1"># detect every 2nd frame (-&gt; tracker.skip_frames)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nt">obj_persistence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w">                 </span><span class="c1"># dead-reckon boxes for 3 frames after a miss</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nt">gaze</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="nt">ray_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.3</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="nt">adaptive_ray</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snap</span><span class="w">                 </span><span class="c1"># off | extend | snap</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="nt">snap_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">180.0</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="nt">snap_w_intersect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nt">gaze_tips</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="nt">tip_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="nt">gaze_cone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w">                     </span><span class="c1"># YAML key is gaze_cone (-&gt; gaze.gaze_cone_angle)</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="nt">gaze_lock</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                    </span><span class="c1"># -&gt; tracker.gaze_lock</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="nt">dwell_frames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">                   </span><span class="c1"># -&gt; tracker.dwell_frames</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="nt">lock_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span><span class="w">                     </span><span class="c1"># -&gt; tracker.lock_dist</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="nt">snap_release_frames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w">             </span><span class="c1"># -&gt; tracker.snap_release_frames</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="nt">snap_engage_frames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">              </span><span class="c1"># -&gt; tracker.snap_engage_frames</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span><span class="nt">reid_grace_seconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.5</span><span class="w">            </span><span class="c1"># -&gt; tracker.reid_grace_seconds</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span><span class="nt">detect_extend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span><span class="nt">detect_extend_scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">both</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="nt">output</span><span class="p">:</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span><span class="nt">save_video</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/results/annotated.mp4</span><span class="w">   </span><span class="c1"># -&gt; output.save</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span><span class="nt">log_csv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/results/frames.csv</span><span class="w">          </span><span class="c1"># -&gt; output.log_path</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span><span class="nt">summary_csv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/results/summary.csv</span><span class="w">     </span><span class="c1"># -&gt; output.summary_path</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span><span class="nt">heatmaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/results/heatmaps</span><span class="w">           </span><span class="c1"># -&gt; output.heatmap_path</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span><span class="nt">anonymize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blur</span><span class="w">                       </span><span class="c1"># blur | black</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">  </span><span class="nt">anonymize_padding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="nt">participants</span><span class="p">:</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span><span class="nt">ids</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;S70,S71&quot;</span><span class="w">                     </span><span class="c1"># positional labels (first -&gt; track 0)</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="nt">performance</span><span class="p">:</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">  </span><span class="nt">fast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">  </span><span class="nt">skip_phenomena</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">  </span><span class="nt">no_dashboard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="nt">depth</span><span class="p">:</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">midas_small</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">  </span><span class="nt">input_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">384</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">  </span><span class="nt">skip_frames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="w">  </span><span class="nt">depth_aware_scoring</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="w">  </span><span class="nt">snap_w_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="w">  </span><span class="nt">gaze_sample_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="nt">phenomena</span><span class="p">:</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">joint_attention</span><span class="p">:</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">      </span><span class="nt">ja_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">      </span><span class="nt">ja_quorum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="w">      </span><span class="nt">ja_window_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mutual_gaze</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">social_referencing</span><span class="p">:</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="w">      </span><span class="nt">window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gaze_following</span><span class="p">:</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="w">      </span><span class="nt">lag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gaze_aversion</span><span class="p">:</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">      </span><span class="nt">aversion_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">      </span><span class="nt">aversion_conf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scanpath</span><span class="p">:</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="w">      </span><span class="nt">dwell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gaze_leadership</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attention_span</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="nt">plugins</span><span class="p">:</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="w">  </span><span class="nt">mgaze_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resnet50</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="w">  </span><span class="nt">mgaze_dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gaze360</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="w">  </span><span class="nt">rf_gazelle_model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gazelle_dinov2_vitb14.pt</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="w">  </span><span class="nt">rf_gazelle_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gazelle_dinov2_vitb14</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="w">  </span><span class="nt">min_call_gap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="w">  </span><span class="nt">forward_gaze_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13.0</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="w">  </span><span class="nt">smooth_snap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="w">  </span><span class="nt">smooth_snap_alpha</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a><span class="w">  </span><span class="nt">merge_overlaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a><span class="w">  </span><span class="nt">merge_overlap_strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="w">  </span><span class="nt">merge_overlap_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a>
+<a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a><span class="nt">aux_streams</span><span class="p">:</span>
+<a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/s70_eye.mp4</span>
+<a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a><span class="w">    </span><span class="nt">video_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eye_only</span>
+<a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="w">    </span><span class="nt">stream_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">left_eye_cam</span>
+<a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a><span class="w">    </span><span class="nt">participants</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">S70</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="w">    </span><span class="nt">auto_detect_faces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>Loaded through the schema loader, the section keys, phenomena list, and <code>aux_streams</code> all
+land as expected (e.g. <code>detection.conf</code> -&gt; <code>0.30</code>, <code>detection.skip_frames</code> -&gt;
+<code>tracker.skip_frames</code> = <code>2</code>, <code>gaze.adaptive_ray</code> -&gt; <code>"snap"</code>, <code>gaze.gaze_cone</code> -&gt;
+<code>gaze.gaze_cone_angle</code> = <code>5.0</code>, <code>output.save_video</code> -&gt; <code>output.save</code>, <code>depth.enabled</code> -&gt;
+<code>True</code>, <code>joint_attention</code> with <code>ja_window=30</code>, <code>social_referencing</code>'s <code>window</code> -&gt;
+<code>social_ref_window=90</code>, <code>scanpath</code>'s <code>dwell</code> -&gt; <code>scanpath_dwell=10</code>, and the <code>aux_streams</code>
+entry as <code>video_type=eye_only</code>, <code>auto_detect_faces=false</code>). The full <code>plugins:</code> block
+(<code>merge_overlaps</code>, <code>mgaze_model</code>, <code>forward_gaze_threshold</code>, <code>smooth_snap</code>, ...) is applied
+by the runtime <code>load_pipeline</code> path that <code>--pipeline</code> and the GUI use.</p>
+<h2 id="precedence-rules">Precedence Rules<a class="headerlink" href="#precedence-rules" title="Permanent link">&para;</a></h2>
+<ol>
+<li>A CLI flag always overrides the corresponding YAML value.</li>
+<li>On the CLI, YAML is applied to every parameter the user did <strong>not</strong> type on the command
+   line (the parser records the exact flags typed). GUI / synthetic namespaces fall back to
+   a "default-like" heuristic: a YAML value overwrites only an attribute that is missing or
+   still at a default-like value (None, False, 0, empty string/list).</li>
+<li>The <code>phenomena</code> list, <code>plugins</code> pass-through, and <code>aux_streams</code> follow the same
+   precedence rule.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

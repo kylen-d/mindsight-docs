@@ -1,0 +1,3669 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eye-Gaze Intersection Tracker for Behavioral Neuroscience Research">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../cli-flags/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/brand/mindsight_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Inference Settings - MindSight</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/mindsight.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inference-settings" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MindSight" class="md-header__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MindSight
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inference Settings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/projects-and-sessions/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  GUI Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/pipeline/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts & Phenomena
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developer/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Develop
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MindSight" class="md-nav__button md-logo" aria-label="MindSight" data-md-component="logo">
+      
+  <img src="../../assets/brand/mindsight_icon.png" alt="logo">
+
+    </a>
+    MindSight
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../studies/run-a-study-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run a Study (Tutorial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (CLI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart (GUI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GUI Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/projects-and-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects and Sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/analyze-footage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyze Footage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/visual-prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/crop-and-adjust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crop and Adjust
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/inference-settings-and-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/about-and-theming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About and Theming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/where-things-live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Where Things Live
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts & Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts & Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../phenomena/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phenomena
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/joint-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joint Attention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/mutual-gaze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual Gaze
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/social-referencing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Referencing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-following/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Following
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-aversion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Aversion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/scanpath/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scanpath Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/gaze-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phenomena/attention-span/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attention Span
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#models-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models &amp; Device
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Models &amp; Device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaze-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze Estimation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gaze Estimation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaze-rays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze rays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-lle-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze-LLE Blend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-lock-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object lock-on
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze tips
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-object-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze-object hits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Object Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phenomena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phenomena">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced &amp; Experimental
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presets-and-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presets and persistence
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Flags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline-yaml-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pipeline.yaml Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config-dataclasses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Dataclasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keyboard-shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard Shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frame-context-keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Keys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detection-dataclass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection Dataclass
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-base-classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Develop
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Develop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/frame-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrameContext Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-processing-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Processing Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/writing-a-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/phenomena-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phenomena Plugin Tutorial: Novel Salience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/gaze-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaze Plugin Tutorial: Gaze-LLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/object-detection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Detection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/data-collection-plugin-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Collection Plugin Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/pipeline-yaml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Configuration (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#models-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models &amp; Device
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Models &amp; Device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaze-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze Estimation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gaze Estimation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gaze-rays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze rays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-lle-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze-LLE Blend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-lock-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object lock-on
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze tips
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaze-object-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaze-object hits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Object Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phenomena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phenomena
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phenomena">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced &amp; Experimental
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presets-and-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presets and persistence
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="inference-settings">Inference Settings<a class="headerlink" href="#inference-settings" title="Permanent link">&para;</a></h1>
+<p><strong>Inference Settings</strong> is the control panel for <em>how</em> footage is processed. Every
+run launched from Analyze Footage -- project runs, quick runs, and camera runs --
+reads its models, gaze-estimation behaviour, object detection, phenomena,
+outputs, and performance knobs from this one dialog. It does not choose <em>what</em> to
+process (source video, output folder, participants, conditions): those are set
+per run by the project or quick-run layer.</p>
+<p>Open it from the <strong>Inference Settings...</strong> button on every Analyze Footage mode,
+or from the <strong>Tools</strong> menu. The dialog is a modal panel with a vertical list of
+seven tabs on the left and a scrollable page on the right, plus <strong>OK</strong>,
+<strong>Cancel</strong>, and <strong>Apply</strong>. When a project is open you also get <strong>Save to project
+pipeline...</strong>, and you can round-trip the full configuration through <strong>Import /
+Export YAML</strong>.</p>
+<p>The header names the preset the settings came from. On a fresh install that is
+<strong>KG_Standard</strong>, the shipped known-good preset; once you change anything the
+header gains a <strong>(modified)</strong> suffix, and after <strong>Save to project pipeline...</strong>
+it reflects the open project's pipeline. Numeric settings pair a slider (which
+bounds the <em>recommended</em> range) with a typeable value box (which is
+authoritative). Typing a value beyond the slider's range never clamps it: the
+slider greys or pins and the value turns <strong>amber</strong> with a tooltip noting it is
+outside the usual range.</p>
+<div class="admonition note">
+<p class="admonition-title">Inference Tuning is decoupled</p>
+<p>The <strong>Inference Tuning</strong> tab is a live playground for <em>finding</em> good
+values; by design nothing you try there changes your study's runs. Only
+this dialog's stored settings drive runs. When an Inference Tuning
+experiment is worth keeping, bring the values across with <strong>Import from
+Inference Tuning</strong> in this dialog. See the
+<a href="../../studies/run-a-study-tutorial/#inference-tuning">Inference Tuning</a>
+section of the Run a Study tutorial.</p>
+</div>
+<p>Throughout, weight paths display as model family names or bare filenames and
+resolve against the shared <code>Weights/</code> folder -- you never type absolute paths.</p>
+<hr />
+<h2 id="models-device">Models &amp; Device<a class="headerlink" href="#models-device" title="Permanent link">&para;</a></h2>
+<p>Which models run and where. The tab links to the Models manager for downloading
+and verifying weights rather than duplicating it.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compute device</td>
+<td>Where models run: Auto picks the best available (NVIDIA GPU &gt; Apple GPU &gt; CPU).</td>
+</tr>
+<tr>
+<td>No object detection</td>
+<td>Run without an object-detection model: faces, gaze rays, and gaze-tip phenomena only. Object hits and object lock-on are disabled -- for lightweight attention studies. Not compatible with a visual prompt file.</td>
+</tr>
+<tr>
+<td>Object detection model</td>
+<td>The YOLO model that finds objects and people in each frame. Smaller = faster, larger = more accurate.</td>
+</tr>
+<tr>
+<td>Visual prompt model</td>
+<td>The YOLOE model used when a visual prompt file teaches the detector your study's custom objects.</td>
+</tr>
+<tr>
+<td>Visual prompt file</td>
+<td>The <code>.vp.json</code> from the VP Builder describing your study's objects. Empty = standard classes only.</td>
+</tr>
+<tr>
+<td>Gaze model (MobileGaze)</td>
+<td>The per-face gaze direction model. Family name (e.g. "resnet50") auto-selects the right build for your device.</td>
+</tr>
+<tr>
+<td>Gaze-LLE model</td>
+<td>The scene-aware model used by Gaze-LLE Correction (Gaze Estimation tab) to periodically correct gaze rays.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MobileGaze architecture</td>
+<td>Architecture name, required for <code>.pt</code> MobileGaze weights (e.g. resnet50).</td>
+</tr>
+<tr>
+<td>MobileGaze dataset key</td>
+<td>Dataset the gaze model was trained on (default: gaze360).</td>
+</tr>
+<tr>
+<td>Gaze-LLE variant</td>
+<td>The Gaze-LLE model variant used for correction (default: gazelle_dinov2_vitb14).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="gaze-estimation">Gaze Estimation<a class="headerlink" href="#gaze-estimation" title="Permanent link">&para;</a></h2>
+<p>How gaze rays are drawn, corrected, and matched to objects.</p>
+<h3 id="gaze-rays">Gaze rays<a class="headerlink" href="#gaze-rays" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ray length</td>
+<td>How far the drawn gaze ray reaches, as a multiplier of face size.</td>
+</tr>
+<tr>
+<td>Looking-at-camera threshold (deg)</td>
+<td>Pitch/yaw below this counts as "looking at the camera", not at the scene. 0 disables.</td>
+</tr>
+<tr>
+<td>Gaze cone (deg)</td>
+<td>Replace the thin ray with a vision cone of this angle. 0 = ray. Cones catch more objects, less precisely.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advanced</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confidence-scaled ray length</td>
+<td>Shorten the ray when the gaze model is unsure.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gaze-lle-blend">Gaze-LLE Blend<a class="headerlink" href="#gaze-lle-blend" title="Permanent link">&para;</a></h3>
+<p>The primary validated correction mode, <strong>on in KG_Standard</strong>. It periodically
+runs the scene-aware Gaze-LLE model to nudge each person's gaze ray toward what
+they are actually fixating.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable Gaze-LLE Blend</td>
+<td>Periodically run the scene-aware Gaze-LLE model to correct each person's gaze ray toward what they're actually fixating. The primary validated mode.</td>
+</tr>
+<tr>
+<td>Correction interval (frames)</td>
+<td>Minimum frames between corrections. Lower = more corrections, slower processing.</td>
+</tr>
+<tr>
+<td>Direction responsiveness</td>
+<td>How quickly the corrected ray direction follows fast motion.</td>
+</tr>
+<tr>
+<td>Length responsiveness</td>
+<td>Same, for corrected ray length.</td>
+</tr>
+<tr>
+<td>Length hold (s)</td>
+<td>How long a corrected ray length persists before decaying to baseline.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advanced</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixation velocity threshold</td>
+<td>Smoothed pitch/yaw velocity (rad/frame) at which a face is treated as 50% fixating. Lower anchors corrections more cautiously.</td>
+</tr>
+<tr>
+<td>Fixation dispersion threshold</td>
+<td>Windowed pitch/yaw dispersion (rad) at which a face is treated as 50% fixating.</td>
+</tr>
+<tr>
+<td>Direction smoother floor (Hz)</td>
+<td>One-Euro smoother floor cutoff for corrected ray direction. Lower = smoother at rest.</td>
+</tr>
+<tr>
+<td>Length smoother floor (Hz)</td>
+<td>One-Euro smoother floor cutoff for corrected ray length.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="object-lock-on">Object lock-on<a class="headerlink" href="#object-lock-on" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lock rays onto objects</td>
+<td>When a ray passes near a detected object: "reach toward object" extends it; "lock onto object" pins the endpoint to the object.</td>
+</tr>
+<tr>
+<td>Lock-on distance (px)</td>
+<td>How close a ray must pass to an object to lock on.</td>
+</tr>
+<tr>
+<td>Smooth lock-on movement</td>
+<td>Glide the ray toward its target instead of jumping: objects / gaze tips / all.</td>
+</tr>
+<tr>
+<td>Smoothing rate</td>
+<td>How fast the ray glides toward its target. Lower = smoother/slower; higher = faster/more responsive.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advanced -- lock-on scoring</strong> (how candidate objects are ranked and accepted)</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bbox scale</td>
+<td>Fraction of the object's bbox half-diagonal added to the lock-on radius.</td>
+</tr>
+<tr>
+<td>Distance weight</td>
+<td>Scoring weight for how close the ray passes to the object.</td>
+</tr>
+<tr>
+<td>Angle weight</td>
+<td>Scoring weight for angular deviation between ray and object.</td>
+</tr>
+<tr>
+<td>Size weight</td>
+<td>Scoring reward for larger objects.</td>
+</tr>
+<tr>
+<td>Intersection weight</td>
+<td>Scoring bonus when the ray actually crosses the object box.</td>
+</tr>
+<tr>
+<td>Stickiness weight</td>
+<td>Scoring bonus for staying on the previous frame's target.</td>
+</tr>
+<tr>
+<td>Gate angle (deg)</td>
+<td>Hard angular cutoff -- objects beyond this angle from the blended gaze+head direction are never candidates.</td>
+</tr>
+<tr>
+<td>Head-direction blend</td>
+<td>How much head orientation (vs pure gaze direction) drives angular scoring: 0 = gaze only, 1 = head only.</td>
+</tr>
+<tr>
+<td>Quality gate</td>
+<td>Maximum score allowed to accept a lock-on match; lower rejects poorer matches.</td>
+</tr>
+<tr>
+<td>Tip distance (px)</td>
+<td>Lock-on distance threshold for gaze tips (-1 = use Lock-on distance).</td>
+</tr>
+<tr>
+<td>Tip quality gate</td>
+<td>Quality threshold for tip lock-on (-1 = use Quality gate).</td>
+</tr>
+<tr>
+<td>Release frames</td>
+<td>Frames without a match before a held lock-on is released.</td>
+</tr>
+<tr>
+<td>Engage frames</td>
+<td>Frames of consistent match required before locking on (0 = instant).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gaze-tips">Gaze tips<a class="headerlink" href="#gaze-tips" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gaze tips (virtual targets)</td>
+<td>Mark each ray's endpoint with a circular target so two people's gaze can meet in empty space -- tip convergence counts as joint attention.</td>
+</tr>
+<tr>
+<td>Tip radius (px)</td>
+<td>Size of the endpoint target.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gaze-object-hits">Gaze-object hits<a class="headerlink" href="#gaze-object-hits" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hit confidence gate</td>
+<td>Ignore gaze-object hits from faces with weaker gaze estimates than this. 0 = off.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advanced</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extend hit reach (px)</td>
+<td>Count objects up to N px past the visible ray end as hits.</td>
+</tr>
+<tr>
+<td>Extended reach applies to</td>
+<td>Object hits, phenomena, or both.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="object-detection">Object Detection<a class="headerlink" href="#object-detection" title="Permanent link">&para;</a></h2>
+<p>How the detector accepts and de-duplicates boxes, and how long it remembers
+objects and people.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detection confidence</td>
+<td>Minimum confidence to accept a detection. Lower = more objects, more false positives.</td>
+</tr>
+<tr>
+<td>Merge overlapping detections</td>
+<td>Combine duplicate boxes on the same object.</td>
+</tr>
+<tr>
+<td>Merge strategy</td>
+<td>Keep best box / merge boxes / decide per case ("dynamic").</td>
+</tr>
+<tr>
+<td>Merge threshold</td>
+<td>How much boxes must overlap before merging.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced_1">Advanced<a class="headerlink" href="#advanced_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object classes</td>
+<td>Restrict detected classes.</td>
+</tr>
+<tr>
+<td>Class blacklist</td>
+<td>Exclude detected classes.</td>
+</tr>
+<tr>
+<td>Keep lost objects (frames)</td>
+<td>Keep an object alive N frames after the detector loses it.</td>
+</tr>
+<tr>
+<td>Track re-ID grace (s)</td>
+<td>How long a lost person track can reappear with the same identity.</td>
+</tr>
+<tr>
+<td>Gaze-guided detection boost</td>
+<td>Boost detector confidence for objects near where people look.</td>
+</tr>
+<tr>
+<td>— Boost factor</td>
+<td>Multiplier applied to detector confidence near gaze.</td>
+</tr>
+<tr>
+<td>— Boost radius (px)</td>
+<td>Pixel radius around gaze endpoints where the boost applies.</td>
+</tr>
+<tr>
+<td>— Min confidence</td>
+<td>Lowest raw detector confidence eligible for a boost.</td>
+</tr>
+<tr>
+<td>— Max confidence</td>
+<td>Cap on the boosted confidence.</td>
+</tr>
+<tr>
+<td>— Boost classes</td>
+<td>Restrict the boost to these object classes (default: all non-person classes).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phenomena">Phenomena<a class="headerlink" href="#phenomena" title="Permanent link">&para;</a></h2>
+<p>One checkable group per phenomenon: the checkbox enables the tracker, and its
+parameters sit beneath it. An <strong>Enable all phenomena</strong> button at the top is a
+bulk action, not a stored setting. The output pages -- for example
+<a href="../../phenomena/joint-attention/">Joint Attention</a> -- explain what each
+phenomenon measures.</p>
+<div class="admonition note">
+<p class="admonition-title">Tip convergence is joint attention</p>
+<p>Tip convergence <em>is</em> joint attention (a per-frame union, never
+double-counted). Enabling Gaze tips extends joint attention to gaze that
+meets in empty space.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Joint Attention</td>
+<td>Enable joint-attention tracking. Parameters: <strong>Consistency window (frames, 0 = off)</strong> -- frames a joint-attention episode must hold to count; <strong>Window threshold</strong> -- fraction of the window that must agree before it counts; <strong>Participant quorum</strong> -- fraction of participants that must share a target.</td>
+</tr>
+<tr>
+<td>Mutual Gaze</td>
+<td>Enable mutual-gaze tracking.</td>
+</tr>
+<tr>
+<td>Social Referencing</td>
+<td>Enable social-referencing tracking. <strong>Window (frames)</strong> -- frames over which a look-back is counted.</td>
+</tr>
+<tr>
+<td>Gaze Following</td>
+<td>Enable gaze-following tracking. <strong>Max follow lag (frames)</strong> -- longest delay still counted as one person following another's gaze.</td>
+</tr>
+<tr>
+<td>Gaze Leadership</td>
+<td>Enable gaze-leadership tracking. <strong>Count tip convergence</strong> -- also detect leadership via gaze-tip convergence (needs Gaze tips); <strong>Tip lookback (frames)</strong> -- lookback window for tip-arrival priority.</td>
+</tr>
+<tr>
+<td>Gaze Aversion</td>
+<td>Enable gaze-aversion tracking. <strong>Window</strong> -- frames over which aversion is measured; <strong>Confidence</strong> -- minimum gaze confidence for an aversion to count.</td>
+</tr>
+<tr>
+<td>Scanpath</td>
+<td>Enable scanpath tracking. <strong>Min dwell (frames)</strong> -- minimum frames on a target before it enters the scanpath.</td>
+</tr>
+<tr>
+<td>Attention Span</td>
+<td>Enable attention-span tracking.</td>
+</tr>
+<tr>
+<td>Eye Movement Classification</td>
+<td>Enable eye-movement classification. Fixation/saccade parameters are Advanced (below).</td>
+</tr>
+<tr>
+<td>Novel Salience</td>
+<td>Enable novel-salience tracking. Sensitivity parameters are Advanced (below).</td>
+</tr>
+<tr>
+<td>Pupillometry</td>
+<td>Enable pupillometry. Measurement and filtering parameters are Advanced (below).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced_2">Advanced<a class="headerlink" href="#advanced_2" title="Permanent link">&para;</a></h3>
+<p><strong>Eye Movement Classification</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Velocity source</td>
+<td>Signal the classifier measures velocity from (default: gaze).</td>
+</tr>
+<tr>
+<td>Saccade threshold</td>
+<td>Velocity (px/frame) above which motion counts as a saccade.</td>
+</tr>
+<tr>
+<td>Fixation threshold</td>
+<td>Velocity (px/frame) below which motion counts as a fixation.</td>
+</tr>
+<tr>
+<td>Min fixation frames</td>
+<td>Shortest run of frames that counts as a fixation.</td>
+</tr>
+<tr>
+<td>Velocity window</td>
+<td>Median-filter window for smoothing velocity.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Novel Salience</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speed threshold</td>
+<td>Gaze-endpoint speed (px/frame) that flags an event. Lower = more sensitive.</td>
+</tr>
+<tr>
+<td>Cooldown (frames)</td>
+<td>Minimum frames between events for the same face.</td>
+</tr>
+<tr>
+<td>History</td>
+<td>Sliding-window depth for velocity smoothing.</td>
+</tr>
+<tr>
+<td>Flash (frames)</td>
+<td>How long the on-video saccade indicator persists after an event.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pupillometry</strong></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measurement mode</td>
+<td>How pupil size is measured (default: rgb).</td>
+</tr>
+<tr>
+<td>Baseline frames</td>
+<td>Frames used to calibrate a baseline.</td>
+</tr>
+<tr>
+<td>Upscale</td>
+<td>Upscale factor for the eye crop in RGB mode.</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>Smoothing filter applied to the pupil ratio (default: kalman).</td>
+</tr>
+<tr>
+<td>EMA alpha</td>
+<td>Smoothing strength when the filter is EMA.</td>
+</tr>
+<tr>
+<td>Kalman measurement noise</td>
+<td>Higher values smooth more aggressively (Kalman filter only).</td>
+</tr>
+<tr>
+<td>Kalman process noise</td>
+<td>How fast the Kalman filter adapts to changes.</td>
+</tr>
+<tr>
+<td>Blink frames</td>
+<td>Consecutive low-eye-aspect-ratio frames that count as a blink.</td>
+</tr>
+<tr>
+<td>Eye-aspect-ratio threshold</td>
+<td>EAR below which a blink is detected.</td>
+</tr>
+<tr>
+<td>IR threshold</td>
+<td>Brightness cutoff for dark-pupil segmentation in IR mode.</td>
+</tr>
+<tr>
+<td>Outlier window</td>
+<td>Window size for the Hampel outlier filter.</td>
+</tr>
+<tr>
+<td>Per-eye</td>
+<td>Report left and right pupils separately.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
+<p>The events CSV and summary CSV are <strong>always</strong> written -- they are not toggles,
+and their paths come from the project or quick-run layer, so no path fields
+appear here. These settings govern the optional extras.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Save annotated video</td>
+<td>Record the video with overlays drawn.</td>
+</tr>
+<tr>
+<td>Gaze heatmaps</td>
+<td>Per-participant heatmap images after each run.</td>
+</tr>
+<tr>
+<td>Post-run charts</td>
+<td>Time-series charts per phenomenon appear in the Charts tab after a run (no separate chart files are written to disk for GUI runs).</td>
+</tr>
+<tr>
+<td>Anonymize faces</td>
+<td>Blur or black-box faces in the output video.</td>
+</tr>
+<tr>
+<td>Overlay detail</td>
+<td>Full overlays vs minimal (no cones, markers, debug text). Checked = minimal.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Anonymize on project runs</p>
+<p>On project runs the study-setup <strong>Anonymize Footage</strong> checkbox overrides this
+value at launch; the dialog value governs quick runs and YAML exports.
+Padding is honoured everywhere.</p>
+</div>
+<h3 id="advanced_3">Advanced<a class="headerlink" href="#advanced_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show dashboard panels</td>
+<td>Compose the side dashboard onto processed frames (off = fastest; the GUI Live tab works regardless).</td>
+</tr>
+<tr>
+<td>Padding</td>
+<td>Extra margin around each face box when anonymizing, as a fraction of face size.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
+<p>Speed-versus-accuracy trade-offs.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detect every Nth frame</td>
+<td>Run object detection every N frames; tracking fills gaps. Higher = faster, less accurate.</td>
+</tr>
+<tr>
+<td>Detection scale</td>
+<td>Downscale frames before detection. 1.0 = full resolution.</td>
+</tr>
+<tr>
+<td>Fast mode</td>
+<td>Bundled speed optimizations (skip phenomena on non-detection frames, throttle previews).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced_4">Advanced<a class="headerlink" href="#advanced_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phenomena every Nth frame</td>
+<td>Run phenomena trackers every N frames. 0 = every frame.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Low Power preset</p>
+<p>On weak hardware you can load the <strong>Low Power</strong> preset -- but it is
+UNVALIDATED for research conclusions.</p>
+</div>
+<hr />
+<h2 id="advanced-experimental">Advanced &amp; Experimental<a class="headerlink" href="#advanced-experimental" title="Permanent link">&para;</a></h2>
+<p>Whole unvalidated or half-wired features, grouped so a novice never mistakes them
+for supported controls. Each is off by default. Handle with care -- do not rely
+on any of these for research conclusions.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Depth estimation (EXPERIMENTAL)</td>
+<td>Estimate scene depth for depth-aware lock-on scoring.</td>
+</tr>
+<tr>
+<td>— Backend</td>
+<td>Depth model backend (default: midas_small).</td>
+</tr>
+<tr>
+<td>— Input size (px)</td>
+<td>Depth model input resolution.</td>
+</tr>
+<tr>
+<td>— Skip frames</td>
+<td>Run depth every N detection cycles.</td>
+</tr>
+<tr>
+<td>— Depth-aware lock-on scoring</td>
+<td>Fold depth agreement into lock-on scoring.</td>
+</tr>
+<tr>
+<td>— Depth weight</td>
+<td>Weight of the depth match in lock-on scoring.</td>
+</tr>
+<tr>
+<td>— Sample radius</td>
+<td>Half-size of the patch sampled for depth.</td>
+</tr>
+<tr>
+<td>Depth-scaled ray length (EXPERIMENTAL)</td>
+<td>Scale ray length from scene depth.</td>
+</tr>
+<tr>
+<td>— Min multiplier</td>
+<td>Ray length multiplier at the nearest depth.</td>
+</tr>
+<tr>
+<td>— Max multiplier</td>
+<td>Ray length multiplier at the farthest depth.</td>
+</tr>
+<tr>
+<td>— Belief boost</td>
+<td>How much depth agreement boosts Gaze-LLE heatmap confidence during correction.</td>
+</tr>
+<tr>
+<td>Iris refinement (EXPERIMENTAL)</td>
+<td>Wrap the gaze backend with iris-based correction.</td>
+</tr>
+<tr>
+<td>— Weight</td>
+<td>Blend weight for the iris correction.</td>
+</tr>
+<tr>
+<td>— Upscale</td>
+<td>Upscale face crops before iris extraction.</td>
+</tr>
+<tr>
+<td>Gaze-LLE-only backend (EXPERIMENTAL)</td>
+<td>A heatmap-only gaze backend, distinct from the validated MobileGaze + Gaze-LLE Blend path.</td>
+</tr>
+<tr>
+<td>— Variant</td>
+<td>The Gaze-LLE model variant (e.g. gazelle_dinov2_vitb14).</td>
+</tr>
+<tr>
+<td>— In/out threshold</td>
+<td>In/out-of-view confidence threshold for the <code>*_inout</code> variants.</td>
+</tr>
+<tr>
+<td>— Device</td>
+<td>Compute device for this backend (auto, cpu, cuda, or mps).</td>
+</tr>
+<tr>
+<td>— Skip frames</td>
+<td>Reuse the previous gaze result for N frames between inference runs.</td>
+</tr>
+<tr>
+<td>— FP16</td>
+<td>Half-precision inference on CUDA/MPS.</td>
+</tr>
+<tr>
+<td>— Compile</td>
+<td>Use <code>torch.compile()</code> (PyTorch 2.0+ only).</td>
+</tr>
+<tr>
+<td>Debug overlay</td>
+<td>Pitch/yaw debug text drawn on the video.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="presets-and-persistence">Presets and persistence<a class="headerlink" href="#presets-and-persistence" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Seeded from KG_Standard.</strong> A fresh install seeds the dialog from the shipped
+  known-good preset, KG_Standard. "Default" in the UI means the preset value, not
+  the raw code default.</li>
+<li><strong>Reset to preset.</strong> The header's reset control returns every setting to the
+  active preset, clearing the <strong>(modified)</strong> state.</li>
+<li><strong>Save to project pipeline.</strong> With a project open, <strong>Save to project
+  pipeline...</strong> writes the current settings into that project's pipeline preset,
+  so the whole study runs with them. Coordinate with your study lead before
+  changing a running study's settings.</li>
+<li><strong>Settings persist per user.</strong> Your choices are remembered across sessions in
+  your user profile (<code>~/.mindsight/run_settings.json</code>) and reload the next time
+  you open the dialog.</li>
+<li><strong>Weights resolve globally.</strong> Bare weight names and family names resolve
+  against the shared <code>Weights/</code> folder; weight resolution is global, not
+  per-project.</li>
+</ul>
+<p>See the <a href="../../studies/run-a-study-tutorial/#inference-settings">Inference Settings</a>
+walkthrough in the Run a Study tutorial for this dialog in context.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
