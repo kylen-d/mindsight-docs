@@ -654,6 +654,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#reinstall-doesnt-seem-to-pick-up-an-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reinstall doesn't seem to pick up an update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#import-errors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2581,6 +2592,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#reinstall-doesnt-seem-to-pick-up-an-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reinstall doesn't seem to pick up an update
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#import-errors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2799,8 +2821,15 @@ where the console command is not on PATH.)</p>
 <li>Run <code>mindsight-weights --verify-only</code> to see what is present, mismatched, or missing.</li>
 <li>Download the missing backend with <code>mindsight-weights --backend MGaze</code> (or use the GUI's <strong>Models</strong> tab).</li>
 </ul>
+<h3 id="reinstall-doesnt-seem-to-pick-up-an-update">Reinstall doesn't seem to pick up an update<a class="headerlink" href="#reinstall-doesnt-seem-to-pick-up-an-update" title="Permanent link">&para;</a></h3>
+<p>If you re-ran the installer but the app still looks out of date, a cached
+package may have been reused. Clear it and re-run the installer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>uv<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>mindsight
+</code></pre></div>
+<p>(The installer's <code>uv</code> lives on your PATH after any install; on Windows run the
+same command in the installer's console.)</p>
 <h3 id="import-errors">Import errors<a class="headerlink" href="#import-errors" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ModuleNotFoundError: No module named &#39;cv2&#39;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ModuleNotFoundError: No module named &#39;cv2&#39;
 </code></pre></div>
 <ul>
 <li>Make sure your virtual environment is activated.</li>
@@ -2808,11 +2837,11 @@ where the console command is not on PATH.)</p>
 <li>On headless servers, use <code>opencv-python-headless</code> instead of <code>opencv-python</code>.</li>
 </ul>
 <h3 id="pyqt6-issues-on-linux">PyQt6 issues on Linux<a class="headerlink" href="#pyqt6-issues-on-linux" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot;
 </code></pre></div>
 <ul>
 <li>Install system-level Qt dependencies:
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libxcb-xinerama0<span class="w"> </span>libxcb-cursor0
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libxcb-xinerama0<span class="w"> </span>libxcb-cursor0
 </code></pre></div></li>
 </ul>
 <div class="admonition info">
