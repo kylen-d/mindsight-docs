@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -822,6 +824,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -2538,9 +2568,11 @@ most accurate way to run MindSight. A MobileGaze backend runs every frame to
 supply smooth direction, and Gaze-LLE runs periodically (every <em>N</em> frames) to
 supply scene-aware corrections to both the direction and the <em>length</em> of each
 person's gaze ray. Blend is enabled by pointing <code>--rf-gazelle-model</code> at a
-Gaze-LLE checkpoint (with <code>--rf-gazelle-name</code> selecting the model variant)
-alongside a per-face pitch/yaw backend; the shipped known-good config wires both
-for you.</p>
+gaze-target model alongside a per-face pitch/yaw backend; the shipped
+known-good config wires both for you. The default engine is the
+DINOv3-generation pico ONNX export (16 MB, runs on CPU everywhere); a
+torch Gaze-LLE checkpoint (<code>.pt</code>, with <code>--rf-gazelle-name</code> selecting the
+variant) remains fully supported.</p>
 <p>A fixation-aware scheduler decides <em>when</em> those periodic corrections are
 applied: Gaze-LLE fires only while a participant is genuinely fixating, so a
 correction is never dragged onto a stale region during a head turn or smooth

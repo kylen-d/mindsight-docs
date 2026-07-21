@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -822,6 +824,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -2864,7 +2894,7 @@ and verifying weights rather than duplicating it.</p>
 </tr>
 <tr>
 <td>Gaze-LLE variant</td>
-<td>The Gaze-LLE model variant used for correction (default: gazelle_dinov2_vitb14).</td>
+<td>The Gaze-LLE model variant used for correction (default: gazelle_dinov2_vitb14). The <code>vitl14</code> variants are markedly heavier per correction (roughly 3-4x the latency spike) for a modest accuracy gain -- consider them only for offline batch runs where per-correction stalls don't matter. With the in/out gate active (v1.3), a checkpoint carrying the in/out head auto-upgrades to its <code>_inout</code> architecture unless a variant is set explicitly.</td>
 </tr>
 </tbody>
 </table>

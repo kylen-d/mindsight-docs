@@ -650,6 +650,8 @@
       
         
       
+        
+      
     
     
     
@@ -927,6 +929,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -2439,12 +2469,12 @@ fills with:</p>
 <li><strong>Runs table</strong> -- one row per recording, with participants, condition, status,
   and a resume <strong>plan</strong> (what Run will do to each row). Planned sessions show as
   <em>awaiting recording</em>.</li>
-<li>
-<p><strong>Study setup panel</strong> -- study-wide settings: the pipeline preset in use, a
-  project-wide participant map, and an <strong>Anonymize Footage</strong> toggle (blurs or
-  blacks out faces in the annotated video and heatmap backgrounds).</p>
-<p><img alt="The Study setup panel expanded" src="../../assets/tutorial/study-setup.png" /></p>
-</li>
+<li><strong>Study setup lives on the Projects tab</strong> -- the pipeline in use, the
+  project-wide participant map, and per-video conditions are edited in the
+  project overview (Projects tab) <em>before</em> running, and saved to
+  <code>project.yaml</code>. Per-run tweaks stay here: right-click a run for <strong>Edit
+  run...</strong>. Anonymization is a processing option in <strong>Inference
+  Settings...</strong> like everything else.</li>
 </ul>
 <p>Press <strong>▶ Run</strong> on the project card to process the batch. The output panel
 (bottom right) has four tabs:</p>

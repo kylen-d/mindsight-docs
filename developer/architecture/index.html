@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -822,6 +824,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -2812,12 +2842,13 @@ formatting lives project-side with a fast test.</p>
 <li><strong>Analyze Footage</strong> (<code>run_study_tab.py</code>) -- the analysis home: a three-mode
     switch (Project / Video File / Camera), preflight checklist with fix hints, a
     runs table with ledger status and resume-plan preview, per-run re-run and
-    edit-metadata actions, a collapsible Study setup area (pipeline, participants,
-    conditions, anonymize toggle, output root, <code>project.yaml</code> save), and a tabbed
+    edit-metadata actions, and a tabbed
     output panel (log, in-GUI charts, CSV viewer, and a live dashboard --
     rendered via <code>run_outputs.py</code>).</li>
 <li><strong>Projects</strong> (<code>projects_tab.py</code>) -- project lifecycle: the Build New Project
-    wizard, session planning, Record Live Session, and Crop &amp; Adjust.</li>
+    wizard, session planning, Record Live Session, Crop &amp; Adjust, and the
+    project-level Study setup panel (<code>project_setup_panel.py</code>: pipeline,
+    participants, conditions, output root, <code>project.yaml</code> save).</li>
 <li><strong>VP Builder</strong> (<code>vp_builder_tab.py</code>) -- visual prompt builder for creating,
     testing, and exporting <code>.vp.json</code> / <code>.vp.zip</code> files.</li>
 <li><strong>Inference Tuning</strong> (<code>gaze_tab/</code>; class <code>GazeTab</code>, so the module name lags the

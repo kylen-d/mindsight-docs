@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -822,6 +824,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -2531,16 +2561,18 @@
 </table>
 <h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
 <p><strong>Summary CSV</strong> (<code>{stem}_summary.csv</code>, <code>phenomenon = gaze_following</code>). Three
-metrics per leader-follower pair, with the leader in <code>participant</code> and the
-follower in <code>partner</code>:</p>
+metrics per pair, with the <strong>follower</strong> in <code>participant</code> and the <strong>leader</strong> in
+<code>partner</code> -- the participant is the one doing the following, matching the
+episode stream. (Before v1.3 the summary had these two columns swapped
+relative to the episode stream; both files now share one convention.)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>video_name,conditions,phenomenon,participant,partner,object,metric,value
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>,,gaze_following,P0,P1,,event_count,4
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>,,gaze_following,P0,P1,,mean_lag_frames,12.5
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>,,gaze_following,P0,P1,,mean_lag_seconds,0.417
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>,,gaze_following,P1,P0,,event_count,4
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>,,gaze_following,P1,P0,,mean_lag_frames,12.5
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>,,gaze_following,P1,P0,,mean_lag_seconds,0.417
 </code></pre></div>
 <p><strong>Episode stream</strong> (<code>{stem}_phenomena_events.csv</code>): each following event is a
 point event logged as one <code>gaze_following</code> row (<code>participant</code> = follower,
-<code>partner</code> = leader).</p>
+<code>partner</code> = leader -- same convention as the summary).</p>
 <p><strong>Dashboard</strong>: A "GAZE FOLLOWING" panel displays the last few detected events in
 the format <code>P1&lt;-P0 lag=12f</code>.</p>
 <p><strong>Console</strong>: Reports the total gaze following event count.</p>

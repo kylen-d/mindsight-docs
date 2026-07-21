@@ -963,6 +963,8 @@
       
         
       
+        
+      
     
     
     
@@ -1137,6 +1139,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -3093,12 +3123,14 @@ unplanned sessions land just as easily: <strong>⏺ Record Session...</strong> c
 through <strong>Add single run...</strong>. Planning ahead just means the tags are already
 filled in when the session day comes.</p>
 <h3 id="study-wide-settings">Study-wide settings<a class="headerlink" href="#study-wide-settings" title="Permanent link">&para;</a></h3>
-<p>Expand the <strong>Study setup</strong> panel (below the runs table) for settings that
-apply to the whole project -- the pipeline preset in use, a project-wide
-participant map, and an <strong>Anonymize Footage</strong> toggle that blurs or blacks out
-faces in the annotated video and heatmap backgrounds (turn this on if your
-ethics protocol requires de-identified outputs).</p>
-<p><img alt="The Study setup panel expanded" src="../../assets/tutorial/study-setup.png" /></p>
+<p>Study-wide settings -- the pipeline preset in use, the project-wide
+participant map, and per-video conditions -- are edited on the <strong>Projects</strong>
+tab: open your project's overview, expand <strong>Study setup</strong>, and press
+<strong>Save project.yaml</strong>. To de-identify outputs (blur or black out faces in
+the annotated video and heatmap backgrounds -- e.g. when your ethics
+protocol requires it), turn on <strong>Anonymize faces</strong> in the <strong>Inference
+Settings...</strong> dialog; like every processing option, it applies to any run
+you launch until you turn it off.</p>
 <hr />
 <h2 id="7-run-the-analysis">7. Run the analysis<a class="headerlink" href="#7-run-the-analysis" title="Permanent link">&para;</a></h2>
 <p>When preflight passes and the runs table looks right, press the green <strong>▶ Run</strong>
@@ -3274,7 +3306,7 @@ their effect immediately. It is the right place to <em>find</em> good values -- 
 since it is deliberately decoupled from everything else, nothing you try here
 changes your study's runs. When an experiment is worth keeping, bring it
 across with <strong>Import from Inference Tuning</strong> in the Inference Settings dialog
-(or the Study setup panel's pipeline import).</p>
+(or <strong>Import from Inference Tuning</strong> in the Projects tab's Study setup).</p>
 <p><img alt="Inference Tuning, basic view" src="../../assets/tutorial/gaze-tuning-basic.png" /></p>
 <h3 id="models">Models<a class="headerlink" href="#models" title="Permanent link">&para;</a></h3>
 <p>The <strong>Models</strong> tab lists every model weight, whether it is required, present, and

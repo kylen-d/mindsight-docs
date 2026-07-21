@@ -648,6 +648,8 @@
       
         
       
+        
+      
     
     
     
@@ -822,6 +824,34 @@
     
   
     Inference Settings and Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/validation-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation and Testing
   
 
     
@@ -1095,6 +1125,17 @@
     <span class="md-ellipsis">
       
         Per-frame events CSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#per-frame-gaze-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-frame gaze stream
       
     </span>
   </a>
@@ -2465,6 +2506,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#per-frame-gaze-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-frame gaze stream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#provenance-manifest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2661,21 +2713,48 @@ enabled -- for example <code>{stem}_novel_salience_events.csv</code>,
 <code>{stem}_eye_movement_events.csv</code>, <code>{stem}_pupillometry_timeseries.csv</code>, and
 <code>{stem}_pupillometry_blinks.csv</code>. Each is written only when it has data.</p>
 <h2 id="per-frame-events-csv">Per-frame events CSV<a class="headerlink" href="#per-frame-events-csv" title="Permanent link">&para;</a></h2>
-<p><code>{stem}_Events.csv</code> is the finest-grained table: one row per gaze-object hit per
-frame. If a participant's gaze ray intersects two objects in the same frame,
-that is two rows; if nobody hits any object on a frame, that frame contributes
-no rows. Its columns are:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>frame,t_seconds,face_idx,object,object_conf,bbox_x1,bbox_y1,bbox_x2,bbox_y2,joint_attention,joint_attention_confirmed,participant_label
+<p><code>{stem}_Events.csv</code> is one row per gaze-object hit per frame. If a
+participant's gaze ray intersects two objects in the same frame, that is two
+rows; if nobody hits any object on a frame, that frame contributes no rows.
+Its columns are:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>frame,t_seconds,face_idx,object,object_conf,bbox_x1,bbox_y1,bbox_x2,bbox_y2,joint_attention,joint_attention_confirmed,participant_label,gaze_conf,gaze_pitch,gaze_yaw,ray_end_x,ray_end_y,depth_at_hit,ray_snapped,ray_extended
 </code></pre></div>
 <p><code>t_seconds</code> is the frame's timestamp, and <code>joint_attention</code> /
 <code>joint_attention_confirmed</code> are per-frame flags for raw and temporally-confirmed
 joint attention. In project mode a <code>video_name</code> and <code>conditions</code> column are
 prepended so rows from many videos stack.</p>
-<p><strong>When to use it.</strong> Anything needing frame-level granularity -- custom
-downstream analysis, validation against human coding, fixation or transition
-extraction. If you only care about aggregate look-time per object, the summary
-CSV already has it. In project mode this file is written automatically; in CLI
+<p>The columns after <code>participant_label</code> are new in v1.3 and strictly
+<strong>additive</strong> -- the original twelve columns are unchanged, so positional
+consumers of 1.0 files keep working. <code>gaze_conf</code> is the per-face gaze
+confidence, <code>gaze_pitch</code>/<code>gaze_yaw</code> are the smoothed gaze angles in degrees,
+<code>ray_end_x</code>/<code>ray_end_y</code> is the finalized ray endpoint in pixels,
+<code>depth_at_hit</code> is the normalized scene depth sampled at the endpoint (empty
+unless depth estimation is on), and <code>ray_snapped</code>/<code>ray_extended</code> flag whether
+object snap or reach extension shaped that ray.</p>
+<p><strong>When to use it.</strong> Anything needing frame-level hit granularity -- custom
+downstream analysis, validation against human coding, transition extraction.
+If you only care about aggregate look-time per object, the summary CSV already
+has it. In project mode this file is written automatically; in CLI
 single-video mode you request it with <code>--log PATH</code>.</p>
+<h2 id="per-frame-gaze-stream">Per-frame gaze stream<a class="headerlink" href="#per-frame-gaze-stream" title="Permanent link">&para;</a></h2>
+<p><code>{stem}_gaze.csv</code> (new in v1.3) is the densest table: <strong>one row per visible
+face per frame, hits or not</strong> -- the record of where every gaze ray pointed
+even when it hit nothing. It is written alongside the summary whenever the
+summary is enabled.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>video_name,conditions,frame,t_seconds,face_idx,participant_label,gaze_conf,gaze_pitch,gaze_yaw,origin_x,origin_y,ray_end_x,ray_end_y,ray_snapped,ray_extended,trust,accepted_inference,inout_score,depth_at_end,hit_objects
+</code></pre></div>
+<p><code>origin_x/y</code> is the ray origin (eye centre), <code>ray_end_x/y</code> the finalized
+endpoint. The three blend-telemetry columns expose the Gaze-LLE blend's
+internals per face and frame: <code>trust</code> is the fixation likelihood driving the
+blend, <code>accepted_inference</code> is 1 on the frames where a fresh Gaze-LLE heatmap
+was accepted for that face, and <code>inout_score</code> is the model's
+in/out-of-frame estimate for the most recent inference (1.0 when the loaded
+variant has no in/out head). <code>hit_objects</code> lists the classes hit that frame,
+semicolon-joined, empty when the gaze landed on nothing.</p>
+<p><strong>When to use it.</strong> Gaze-trajectory analysis, accuracy evaluation against
+hand-labeled frames, and any question about frames <em>without</em> hits (aversion,
+off-target scanning). The blend columns are also the first place to look when
+tuning: they show when and how much the Gaze-LLE signal was trusted.</p>
 <h2 id="provenance-manifest">Provenance manifest<a class="headerlink" href="#provenance-manifest" title="Permanent link">&para;</a></h2>
 <p>Each run writes a <code>{stem}_manifest.json</code> beside the summary. It records exactly
 what produced that run's data: the full resolved configuration, a run-identity
@@ -2720,6 +2799,7 @@ videos carry condition tags, splits each one by condition. The global files
 <ul>
 <li><code>Global_summary.csv</code> -- every video's summary stacked.</li>
 <li><code>Global_Events.csv</code> -- every video's per-frame events stacked.</li>
+<li><code>Global_gaze.csv</code> -- every video's per-frame gaze stream stacked.</li>
 <li><code>Global_phenomena_events.csv</code> -- every video's episode stream stacked.</li>
 <li><code>Global_scanpath.csv</code> -- every video's fixation stream stacked.</li>
 <li><code>Global_novel_salience_events.csv</code>, <code>Global_eye_movement_events.csv</code>,
@@ -2744,35 +2824,35 @@ analysis data -- you do not hand it to an analyst.</p>
 a project-mode run. Both are shown below.</p>
 <p><strong>CLI single-video run</strong> (paths from the bare <code>--summary</code> / <code>--save</code> /
 <code>--heatmap</code> defaults; <code>--log</code> needs an explicit path):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Outputs/
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── CSV Files/
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   ├── {stem}_summary.csv              # tidy summary
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   ├── {stem}_phenomena_events.csv     # merged episode stream
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   ├── {stem}_scanpath.csv             # per-tracker streams (when produced)
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│   └── {stem}_manifest.json            # provenance manifest
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>├── Video/                              # annotated video ({stem}_Video_Output.mp4)
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>├── heatmaps/
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│   └── {stem}_Heatmap_Output/          # one PNG per participant
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>└── Charts/                             # time-series charts
-</code></pre></div>
-<p><strong>Project-mode run</strong> (under the project's <code>Outputs/</code>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Outputs/
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├── CSV Files/
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│   ├── {stem}_summary.csv              # per video
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│   ├── {stem}_Events.csv               # per video (per-frame events)
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│   ├── {stem}_phenomena_events.csv     # per video (episode stream)
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│   ├── {stem}_scanpath.csv             # per video (when produced)
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>│   ├── {stem}_manifest.json            # per video
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>│   ├── Global_summary.csv              # project aggregate
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│   ├── Global_Events.csv
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>│   ├── Global_phenomena_events.csv
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>│   └── Global_scanpath.csv             # (+ feature-plugin globals)
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>├── Videos/                             # annotated videos (plural)
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>├── {stem}_Heatmap/                     # per-participant heatmaps (one dir per video)
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>├── Charts/                             # time-series charts
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>├── By Condition/                       # per-condition splits (when conditions defined)
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>└── _run/
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    └── ledger.json                     # resume bookkeeping
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│   ├── {stem}_summary.csv              # tidy summary
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│   ├── {stem}_phenomena_events.csv     # merged episode stream
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│   ├── {stem}_scanpath.csv             # per-tracker streams (when produced)
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│   └── {stem}_manifest.json            # provenance manifest
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>├── Video/                              # annotated video ({stem}_Video_Output.mp4)
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>├── heatmaps/
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│   └── {stem}_Heatmap_Output/          # one PNG per participant
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>└── Charts/                             # time-series charts
+</code></pre></div>
+<p><strong>Project-mode run</strong> (under the project's <code>Outputs/</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Outputs/
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>├── CSV Files/
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>│   ├── {stem}_summary.csv              # per video
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│   ├── {stem}_Events.csv               # per video (per-frame events)
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>│   ├── {stem}_phenomena_events.csv     # per video (episode stream)
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>│   ├── {stem}_scanpath.csv             # per video (when produced)
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>│   ├── {stem}_manifest.json            # per video
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>│   ├── Global_summary.csv              # project aggregate
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>│   ├── Global_Events.csv
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>│   ├── Global_phenomena_events.csv
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>│   └── Global_scanpath.csv             # (+ feature-plugin globals)
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>├── Videos/                             # annotated videos (plural)
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>├── {stem}_Heatmap/                     # per-participant heatmaps (one dir per video)
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>├── Charts/                             # time-series charts
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>├── By Condition/                       # per-condition splits (when conditions defined)
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>└── _run/
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>    └── ledger.json                     # resume bookkeeping
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
