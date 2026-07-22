@@ -842,7 +842,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Building one in the VP Builder">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-specific-prompts-v131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition-specific prompts (v1.3.1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition-specific prompts (v1.3.1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2418,7 +2429,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Building one in the VP Builder">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-specific-prompts-v131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition-specific prompts (v1.3.1)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition-specific prompts (v1.3.1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2553,24 +2575,65 @@ bounding-box annotations showing YOLOE what each class looks like.</p>
    detect. Sampling from your actual study footage works far better than stock
    photos.</li>
 <li><strong>Add a class</strong> for each object category your study cares about.</li>
-<li><strong>Draw bounding boxes</strong> by click-and-drag on the canvas. Each box is assigned
-   to whichever class is currently selected.</li>
+<li><strong>Tag objects on the canvas</strong> (one grammar, no modes to switch):
+   <em>drag</em> to draw a box, <em>click a box</em> to delete it, and <em>click an empty
+   spot</em> to get suggested boxes (see below). Every new box is tagged with
+   the <strong>active class</strong>, shown in the colored chip under the canvas.</li>
+<li><strong>Switch classes without leaving the image</strong>: press a class's number
+   (<code>0</code>-<code>9</code>) while the mouse is over the canvas (press it again to clear),
+   cycle with <code>Ctrl</code>/<code>Cmd</code> + <code>Left</code>/<code>Right</code>, or click a class in the list
+   (clicking the selected one clears it). If you tag a box with <em>no</em> active
+   class, a small class menu pops up right at the cursor -- pick one there,
+   or create a new class on the spot.</li>
 <li><strong>Save VP File...</strong> writes the <code>.vp.json</code>.</li>
 <li><strong>Test Inference</strong> -- point a YOLOE model at a folder of test images and
    preview the detections before committing to a full run (this runs
    asynchronously, so the UI stays responsive).</li>
 </ol>
 <div class="admonition tip">
-<p class="admonition-title">Suggest mode: click instead of drawing</p>
-<p>Turn on <strong>Suggest mode</strong> under the canvas and simply <em>click</em> an object:
-MindSight segments the region under your cursor (FastSAM) and shows up to
-four dashed box proposals, most specific first. Click a proposal to accept
-it into the selected class -- exactly as if you had drawn it -- or click
-elsewhere to get new proposals. It needs the small <strong>FastSAM-s</strong> weight
-(24 MB, AGPL-3.0): download it once from the <strong>Models</strong> tab (SAM row).
+<p class="admonition-title">Suggest on click: click instead of drawing</p>
+<p>With <strong>Suggest on click</strong> enabled (it is, by default, once the weight is
+installed), <em>click an empty spot on an object</em>: MindSight segments the
+region under your cursor (FastSAM) and shows up to four numbered box
+proposals, most specific first, highlighting the one you hover. Click a
+proposal to accept it into the active class -- exactly as if you had
+drawn it -- press <code>Esc</code> (or right-click) to dismiss, or click elsewhere
+to get new proposals. It needs the small <strong>FastSAM-s</strong> weight (24 MB,
+AGPL-3.0): download it once from the <strong>Models</strong> tab (SAM row).
 Suggestions are a drawing aid only; the saved <code>.vp.json</code> is identical to
 a hand-drawn one.</p>
 </div>
+<p>Made a mess, or starting the next prompt? <strong>Start Fresh</strong> on the toolbar
+clears the whole session -- images, boxes, and classes -- after a
+confirmation, without restarting the app.</p>
+<hr />
+<h2 id="condition-specific-prompts-v131">Condition-specific prompts (v1.3.1)<a class="headerlink" href="#condition-specific-prompts-v131" title="Permanent link">&para;</a></h2>
+<p>Studies with multiple conditions rarely show the same objects in every
+session. One visual prompt file can now carry the whole study:</p>
+<ol>
+<li><strong>Conditions...</strong> on the VP Builder toolbar opens the condition editor:
+   define the condition tags (the same tags your project's videos carry) and
+   tick, per class, the conditions it appears in. A class with <strong>no</strong> ticks
+   stays active in every video. Conditioned classes show an <code>@tag</code> badge in
+   the class list.</li>
+<li><strong>In project mode it just works</strong>: each video's condition tags (from the
+   Build-Project wizard, <code>project.yaml</code>, or <code>run.yaml</code>) select the matching
+   classes -- the detector is rebuilt automatically whenever the active
+   condition set changes between videos. Untagged videos get only the
+   always-active classes, and the preflight report calls out untagged
+   videos, unmatched tags, and videos whose conditions match nothing.</li>
+<li><strong>Preview per condition</strong>: the Test Inference row's <strong>Condition</strong> combo
+   runs the test with exactly the subset a condition's videos will see.</li>
+<li><strong>Overrides</strong>: the <em>Use full visual prompt</em> checkbox in Inference
+   Settings (or <code>--vp-ignore-conditions</code>) prompts every class everywhere;
+   <code>--vp-condition warm</code> runs a single video (or a whole batch) as one
+   condition.</li>
+</ol>
+<p>Files without condition tags are byte-identical to the previous format, so
+existing <code>.vp.json</code> files, archives, and eval tooling are untouched; tagged
+files save as format version 2 (older MindSight versions cannot read those).
+Changing condition tags reprocesses affected project videos on the next
+resume (the prompt file's content is part of the run identity).</p>
 <p><img alt="The VP Builder with classes and drawn boxes" src="../../assets/tutorial/vp-builder-annotated.png" /></p>
 <div class="admonition example">
 <p class="admonition-title">🎬 Demo coming soon -- SHOT:vp-annotate</p>
